@@ -1,0 +1,16 @@
+# /_data/authors.yml
+
+Admin:
+  name        : "Võ Văn Tâm"
+  bio         : "What do you want, jewels? I am a very extravagant man."
+  avatar      : "/assets/images/avatar.png"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "vovantam.dev@gmail.com"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://vovantamvn.github.io"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/extravagantman"
