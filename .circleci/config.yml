@@ -1,26 +1,23 @@
 version: 2
 jobs:
-  test_build_deploy:
+  deploy:
     docker:
-      - image: jekyll/jekyll
+      - image: circleci/ruby:2.4.3-node-browsers
     steps:
       - checkout
-      # - run:
-      #     name: Install
-      #     command: bundle
-      - run:
-          name: Build
-          command: jekyll build
-      - run:
-          name: Deploy
+      - run: npm install
+      - run: bundle install
+      - run: bundle exec jekyll build
+      - deploy:
+          name: Deploy Release to GitHub
           command: sh deploy.sh
 
 
 workflows:
   version: 2
-  main:
+  build:
     jobs:
-      - test_build_deploy:
+      - deploy:
           filters:
             branches:
               ignore: gh-pages
