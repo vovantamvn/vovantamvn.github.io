@@ -5,9 +5,9 @@ jobs:
       - image: jekyll/jekyll
     steps:
       - checkout
-      - run:
-          name: Install
-          command: bundle
+      # - run:
+      #     name: Install
+      #     command: bundle
       - run:
           name: Build
           command: jekyll build
