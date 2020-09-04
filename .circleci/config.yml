@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  test_build_deploy:
+    docker:
+      - image: jekyll/jekyll
+    steps:
+      - checkout
+      - run:
+          name: Install
+          command: bundle
+      - run:
+          name: Build
+          command: jekyll build
+      - run:
+          name: Deploy
+          command: sh deploy.sh
+
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - test_build_deploy:
+          filters:
+            branches:
+              ignore: gh-pages
