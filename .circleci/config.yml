@@ -17,9 +17,12 @@ jobs:
           key: dependency-cache-{{checksum "package-lock.json"}}
           paths:
             - ./node_modules
-      - deploy:
+      - run:
+          name: build gatsby
+          command: npm build
+      - run:
           name: deploy to github
-          command: bash ./deploy
+          command: bash ./deploy.sh
 
 workflows:
   version: 2
