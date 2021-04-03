@@ -19,7 +19,7 @@ jobs:
             - ./node_modules
       - run:
           name: build gatsby
-          command: npm build
+          command: npm run build
       - run:
           name: deploy to github
           command: bash ./deploy.sh
