@@ -1,4 +1,5 @@
 rm -rf .git/
+mv -r ./.circleci public
 cd public
 
 git config --global user.email "vovantam.dev@gmail.com"
