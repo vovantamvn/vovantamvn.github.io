@@ -31,4 +31,4 @@ workflows:
       - build-and-deploy:
           filters:
             branches:
-              only: /features/setup-google-analytics/
+              only: /master/
