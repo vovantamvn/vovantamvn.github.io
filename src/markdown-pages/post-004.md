@@ -2,6 +2,7 @@
 slug: "/blog/airbnb-javascript-style-guide-2"
 date: "2021-04-15"
 title: "Hướng dẫn Style Javascript Airbnb (Phần 2)"
+tags: ["javascript", "clean code"]
 ---
 
 Đây là một loạt bài viết nói về phong cách viết javascript của Airbnb mà mình dịch từ [github](https://github.com/airbnb/javascript). Trong quá trình dịch không tránh khỏi sai sót, cũng như một số thuật ngữ mình không thể dịch thì mình sẽ để nguyên văn.

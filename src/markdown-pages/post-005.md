@@ -2,6 +2,7 @@
 slug: "/blog/cach-viet-readme-cho-du-an-cua-ban"
 date: "2021-04-21"
 title: "Cách viết README cho dự án của bạn"
+tags: ["git"]
 ---
 
 README là gì? README là một file dùng để mô tả các thông tin của dự án, giúp chúng ta tiếp cận dự án một cách nhanh nhất hoặc đơn giản hiểu về dự án này đang làm gì.

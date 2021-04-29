@@ -2,6 +2,7 @@
 slug: "/blog/cach-them-google-analytics-cho-gatsby"
 date: "2021-04-04"
 title: "Cách thêm Google Analytics cho Gatsby"
+tags: ["gatsby"]
 ---
 
 ## Tại sao lại cần Google Analytics
