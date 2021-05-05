@@ -2,6 +2,7 @@
 slug: "/blog/cach-viet-readme-cho-du-an-cua-ban"
 date: "2021-04-21"
 title: "Cách viết README cho dự án của bạn"
+tags: ["git"]
 ---
 
 README là gì? README là một file dùng để mô tả các thông tin của dự án, giúp chúng ta tiếp cận dự án một cách nhanh nhất hoặc đơn giản hiểu về dự án này đang làm gì.
@@ -46,4 +47,4 @@ Bạn sẽ để danh sách những người đã đóng góp vào dự án củ
 
 Có nhiều loại giấy phép, bạn nên cân nhắc để chọn giấy phép sao cho hợp lý.
 
-***Bonus***: [Đây](https://github.com/kefranabg/readme-md-generator) là một dự án cho phép bạn tạo nhanh README.
+**_Bonus_**: [Đây](https://github.com/kefranabg/readme-md-generator) là một dự án cho phép bạn tạo nhanh README.
