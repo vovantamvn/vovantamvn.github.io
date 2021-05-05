@@ -1,9 +1,20 @@
-import React from "react"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { graphql } from "gatsby"
+import React from "react";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import { graphql } from "gatsby";
 
-export default function Template({ data }) {
+interface Props {
+  data: {
+    markdownRemark: {
+      frontmatter: {
+        title: string,
+      },
+      html: string,
+    }
+  }
+}
+
+export default function Template({ data }: Props) {
     const { markdownRemark } = data
     const { frontmatter, html } = markdownRemark
     const { title } = frontmatter

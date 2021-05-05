@@ -1,12 +1,31 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
 
 // Utilities
-import kebabCase from "lodash/kebabCase"
+import kebabCase from "lodash/kebabCase";
 
 // Components
-import { Helmet } from "react-helmet"
-import { Link, graphql } from "gatsby"
+import { Helmet } from "react-helmet";
+import { Link, graphql } from "gatsby";
+
+interface Site {
+  siteMetadata: {
+    title: string,
+  }
+}
+
+interface MarkdownRemark {
+  fieldValue: string,
+  totalCount: number,
+}
+
+interface Props {
+  data: {
+    allMarkdownRemark: {
+      group: Array<MarkdownRemark>,
+    },
+    site: Site,
+  }
+}
 
 const TagsPage = ({
   data: {
@@ -15,7 +34,7 @@ const TagsPage = ({
       siteMetadata: { title },
     },
   },
-}) => (
+}: Props) => (
   <div>
     <Helmet title={title} />
     <div>
@@ -32,24 +51,6 @@ const TagsPage = ({
     </div>
   </div>
 )
-
-TagsPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      group: PropTypes.arrayOf(
-        PropTypes.shape({
-          fieldValue: PropTypes.string.isRequired,
-          totalCount: PropTypes.number.isRequired,
-        }).isRequired
-      ),
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }),
-    }),
-  }),
-}
 
 export default TagsPage
 
