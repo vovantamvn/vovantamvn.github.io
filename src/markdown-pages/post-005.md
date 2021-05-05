@@ -47,4 +47,4 @@ Bạn sẽ để danh sách những người đã đóng góp vào dự án củ
 
 Có nhiều loại giấy phép, bạn nên cân nhắc để chọn giấy phép sao cho hợp lý.
 
-***Bonus***: [Đây](https://github.com/kefranabg/readme-md-generator) là một dự án cho phép bạn tạo nhanh README.
+**_Bonus_**: [Đây](https://github.com/kefranabg/readme-md-generator) là một dự án cho phép bạn tạo nhanh README.

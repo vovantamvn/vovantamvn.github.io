@@ -1,29 +1,26 @@
-import React from "react";
-
-// Utilities
-import kebabCase from "lodash/kebabCase";
-
-// Components
-import { Helmet } from "react-helmet";
-import { Link, graphql } from "gatsby";
+import React from "react"
+import kebabCase from "lodash/kebabCase"
+import { Helmet } from "react-helmet"
+import { Link, graphql } from "gatsby"
+import Layout from "../components/layout"
 
 interface Site {
   siteMetadata: {
-    title: string,
+    title: string
   }
 }
 
 interface MarkdownRemark {
-  fieldValue: string,
-  totalCount: number,
+  fieldValue: string
+  totalCount: number
 }
 
 interface Props {
   data: {
     allMarkdownRemark: {
-      group: Array<MarkdownRemark>,
-    },
-    site: Site,
+      group: Array<MarkdownRemark>
+    }
+    site: Site
   }
 }
 
@@ -35,21 +32,23 @@ const TagsPage = ({
     },
   },
 }: Props) => (
-  <div>
-    <Helmet title={title} />
+  <Layout>
     <div>
-      <h1>Tags</h1>
-      <ul>
-        {group.map(tag => (
-          <li key={tag.fieldValue}>
-            <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-              {tag.fieldValue} ({tag.totalCount})
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <Helmet title={title} />
+      <div>
+        <h1>Tags</h1>
+        <ul>
+          {group.map(tag => (
+            <li key={tag.fieldValue}>
+              <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                {tag.fieldValue} ({tag.totalCount})
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
-  </div>
+  </Layout>
 )
 
 export default TagsPage

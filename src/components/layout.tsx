@@ -5,21 +5,21 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import * as React from "react";
-import { useStaticQuery, graphql } from "gatsby";
+import * as React from "react"
+import { useStaticQuery, graphql } from "gatsby"
 
-import Header from "./header";
-import "./layout.css";
+import Header from "./header"
+import "./layout.css"
 
 const footerStyle = {
-    marginTop: `2rem`
-};
+  marginTop: `2rem`,
+}
 
 const rootStyle = {
-    margin: `0 auto`,
-    maxWidth: 960,
-    padding: `0 1.0875rem 1.45rem`,
-};
+  margin: `0 auto`,
+  maxWidth: 960,
+  padding: `0 1.0875rem 1.45rem`,
+}
 
 interface Props {
   children: React.ReactNode

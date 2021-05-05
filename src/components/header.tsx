@@ -1,8 +1,8 @@
-import * as React from "react";
-import { Link } from "gatsby";
+import * as React from "react"
+import { Link } from "gatsby"
 
 interface Props {
-  siteTitle?: string,
+  siteTitle?: string
 }
 
 const Header = ({ siteTitle }: Props) => (
