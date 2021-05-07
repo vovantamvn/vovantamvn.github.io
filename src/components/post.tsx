@@ -27,7 +27,10 @@ export default function Post({ node }: Props) {
       <div>
         {tags.map(tag => (
           <span className="tag">
-            <Link className="non-text-decoration" to={`/tags/${kebabCase(tag)}`}>
+            <Link
+              className="non-text-decoration"
+              to={`/tags/${kebabCase(tag)}`}
+            >
               {tag}
             </Link>
           </span>
