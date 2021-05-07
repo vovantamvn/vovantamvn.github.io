@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import kebabCase from "lodash/kebabCase"
+import "./post.css"
 
 interface Props {
   node: {
@@ -19,11 +20,19 @@ export default function Post({ node }: Props) {
   const { title, slug, date, tags } = frontmatter
 
   return (
-    <div>
-      <Link to={slug}>{title}</Link>
-      {tags.map(tag => (
-        <Link to={`/tags/${kebabCase(tag)}`}>{tag}</Link>
-      ))}
+    <div className="post-container card">
+      <Link className="post-title link non-text-decoration" to={slug}>
+        {title}
+      </Link>
+      <div>
+        {tags.map(tag => (
+          <span className="tag">
+            <Link className="non-text-decoration" to={`/tags/${kebabCase(tag)}`}>
+              {tag}
+            </Link>
+          </span>
+        ))}
+      </div>
       <p>Date: {date}</p>
     </div>
   )
