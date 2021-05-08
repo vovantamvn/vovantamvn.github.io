@@ -1,0 +1,39 @@
+.header-container {
+  background-color: #20232a;
+  margin-bottom: 1.45rem;
+}
+
+.nav-container {
+  max-width: 960;
+
+  margin: 0 auto;
+  padding: 1.2rem 3rem;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.header-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.75rem;
+}
+
+.header-link:hover {
+  color: #61dafb;
+}
+
+.nav-element {
+  margin-left: 3rem;
+}
+
+.header-element {
+  text-decoration: none;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  color: white;
+}
+
+.header-element:hover {
+  color: #61dafb;
+}
