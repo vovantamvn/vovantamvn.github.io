@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import kebabCase from "lodash/kebabCase"
+import Tag from "./tag"
 import "./post.css"
 
 interface Props {
@@ -24,16 +25,10 @@ export default function Post({ node }: Props) {
       <Link className="post-title link non-text-decoration" to={slug}>
         {title}
       </Link>
-      <div>
+      <br/>
+      <div className="tag-container">
         {tags.map(tag => (
-          <span className="tag">
-            <Link
-              className="non-text-decoration"
-              to={`/tags/${kebabCase(tag)}`}
-            >
-              {tag}
-            </Link>
-          </span>
+          <Tag title={tag} link={`/tags/${kebabCase(tag)}`} />
         ))}
       </div>
       <p>Date: {date}</p>

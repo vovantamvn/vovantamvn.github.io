@@ -3,6 +3,7 @@ import kebabCase from "lodash/kebabCase"
 import { Helmet } from "react-helmet"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
+import Tag from "../components/tag"
 
 interface Site {
   siteMetadata: {
@@ -40,9 +41,13 @@ const TagsPage = ({
         <ul>
           {group.map(tag => (
             <li key={tag.fieldValue}>
-              <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+              {/* <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
                 {tag.fieldValue} ({tag.totalCount})
-              </Link>
+              </Link> */}
+              <Tag
+                title={`${tag.fieldValue} (${tag.totalCount})`}
+                link={`/tags/${kebabCase(tag.fieldValue)}`}
+              />
             </li>
           ))}
         </ul>

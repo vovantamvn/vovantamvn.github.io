@@ -31,10 +31,7 @@
   color: rgba(0, 0, 0, 0.88);
 }
 
-.tag {
-  padding: 0.25rem;
-  background-color: burlywood;
-  margin-right: 8px;
-  border-radius: 00.25rem;
+.tag-container {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
-
