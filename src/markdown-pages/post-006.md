@@ -22,31 +22,31 @@ Tiếp theo chúng ta cài đặt formit `npm install formik`
 Trong file App.js chúng ta có như sau:
 
 ```js
-import React from 'react';
-import { useFormik } from 'formik';
+import React from "react"
+import { useFormik } from "formik"
 
 function App() {
   const formik = useFormik({
     initialValues: {
-      phone: '',
+      phone: "",
     },
-    validate: (values) => {
-      console.log('validate', values);
+    validate: values => {
+      console.log("validate", values)
 
-      const errors = {};
+      const errors = {}
 
-      if (values.phone === '') {
-        errors.phone = "Phone can't empty";
+      if (values.phone === "") {
+        errors.phone = "Phone can't empty"
       } else if (!/^[0-9]{10}$/.test(values.phone)) {
-        errors.phone = 'Phone invalid';
+        errors.phone = "Phone invalid"
       }
 
-      return errors;
+      return errors
     },
-    onSubmit: (values) => {
-      console.log('You are submit', values);
+    onSubmit: values => {
+      console.log("You are submit", values)
     },
-  });
+  })
 
   return (
     <div>
@@ -59,15 +59,15 @@ function App() {
           values={formik.values.phone}
           onChange={formik.handleChange}
         />
-        <p style={{ color: 'red' }}>{formik.errors.phone}</p>
+        <p style={{ color: "red" }}>{formik.errors.phone}</p>
 
         <input type="submit" value="Submit" />
       </form>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
 ```
 
 Bạn để ý sẽ có 3 tham số bạn cần quan tâm:
