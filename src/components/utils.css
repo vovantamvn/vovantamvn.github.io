@@ -1,5 +1,18 @@
+/*
+** Text
+*/
+
 .text-decoration-none {
   text-decoration: none;
+}
+
+
+/*
+** Color
+*/
+
+.color-white {
+  color: white;
 }
 
 .color-link {
@@ -7,14 +20,22 @@
 }
 
 .color-title {
-  color: rgba(255, 255, 255, 0.15);
+  color: #1488cc;
 }
+
+/*
+** Border
+*/
 
 .rounder {
   border-radius: 0.25rem;
   border: 1px solid;
   border-color: rgba(27, 31, 35, 0.15);
 }
+
+/*
+** Background
+*/
 
 .bg-btn {
   background-color: #fafbfc;
@@ -28,20 +49,48 @@
   background-color: white;
 }
 
+/*
+** Flex
+*/
+
+.flex {
+  display: flex;
+}
+
+.flex-direction-row {
+  flex-direction: row;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+/*
+** Font
+*/
+
 .font-sm {
-  font-size: 12px;
+  font-size: 0.8rem;
 }
 
 .font-sl {
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .font-xs {
-  font-size: 16px;
+  font-size: 1.2px;
 }
 
 .font-xl {
-  font-size: 18px;
+  font-size: 1.4rem;
+}
+
+.font-xxs {
+  font-size: 1.6rem;
+}
+
+.font-xxl {
+  font-size: 1.8rem;
 }
 
 /*

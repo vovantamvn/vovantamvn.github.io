@@ -2,8 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 import kebabCase from "lodash/kebabCase"
 import Tag from "./tag"
-import "./post.css"
-
 interface Props {
   node: {
     frontmatter: {
@@ -21,12 +19,12 @@ export default function Post({ node }: Props) {
   const { title, slug, date, tags } = frontmatter
 
   return (
-    <div className="post-container card">
-      <Link className="post-title link non-text-decoration" to={slug}>
+    <div className="rounder mb-2 pt-4 pr-4 pl-4">
+      <Link className="text-decoration-none color-title font-xxs" to={slug}>
         {title}
       </Link>
-      <br/>
-      <div className="tag-container">
+      <br />
+      <div className="mt-1 mb-1">
         {tags.map(tag => (
           <Tag title={tag} link={`/tags/${kebabCase(tag)}`} />
         ))}

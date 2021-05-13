@@ -8,7 +8,7 @@ interface Props {
 export default function Tag({ link, title }: Props) {
   return (
     <span className="bg-btn rounder mr-1 pt-1 pb-1 pr-2 pl-2">
-      <Link className="font-sl color-link text-decoration-none" to={link}>
+      <Link className="font-sm color-link text-decoration-none" to={link}>
         {title}
       </Link>
     </span>
