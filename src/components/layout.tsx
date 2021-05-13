@@ -10,6 +10,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
+import "./utils.css"
 
 const footerStyle = {
   marginTop: `2rem`,
