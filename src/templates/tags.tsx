@@ -42,12 +42,16 @@ const Tags = ({ pageContext, data }: Props) => {
             const { slug, title } = node.frontmatter
             return (
               <li key={slug}>
-                <Link to={slug} className="text-decoration-none color-link">{title}</Link>
+                <Link to={slug} className="text-decoration-none color-link">
+                  {title}
+                </Link>
               </li>
             )
           })}
         </ul>
-        <Link to="/tags" className="text-decoration-none color-link">All tags</Link>
+        <Link to="/tags" className="text-decoration-none color-link">
+          All tags
+        </Link>
       </div>
     </Layout>
   )
