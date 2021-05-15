@@ -6,20 +6,23 @@ jobs:
     steps:
       - checkout
       - run:
-          name: update-npm
+          name: update npm
           command: 'sudo npm install -g npm@latest'
-      - restore_cache:
-          key: dependency-cache-{{checksum "package-lock.json"}}
       - run:
-          name: install-npm
-          command: npm install
+          name: install yarn
+          command: 'npm install --global yarn'
+      - restore_cache:
+          key: dependency-cache-{{checksum "yarn.lock"}}
+      - run:
+          name: install dependencies
+          command: yarn install
       - save_cache:
-          key: dependency-cache-{{checksum "package-lock.json"}}
+          key: dependency-cache-{{checksum "yarn.lock"}}
           paths:
             - ./node_modules
       - run:
           name: build gatsby
-          command: npm run build
+          command: yarn run build
       - run:
           name: deploy to github
           command: bash ./deploy.sh
