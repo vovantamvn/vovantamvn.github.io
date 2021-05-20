@@ -9,12 +9,12 @@ jobs:
           name: update npm
           command: 'sudo npm install -g npm@latest'
       - restore_cache:
-          key: dependency-cache-{{checksum "yarn.lock"}}
+          key: dependency-cache-{{checksum "package.json"}}
       - run:
           name: install dependencies
           command: yarn install
       - save_cache:
-          key: dependency-cache-{{checksum "yarn.lock"}}
+          key: dependency-cache-{{checksum "package.json"}}
           paths:
             - ./node_modules
       - run:
