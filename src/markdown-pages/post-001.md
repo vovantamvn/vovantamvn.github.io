@@ -3,7 +3,6 @@ slug: "/blog/cach-viet-code-sach"
 date: "2021-04-03"
 title: "Cách viết code sạch"
 tags: ["clean code"]
-descriptions: "day la description...................."
 ---
 
 ## Tại sao lại cần viết code sạch

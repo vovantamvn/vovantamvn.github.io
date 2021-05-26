@@ -1,9 +1,4 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
-const _ = require("lodash")
+const lodash = require("lodash")
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions
@@ -57,7 +52,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   // Make tag pages
   tags.forEach(tag => {
     createPage({
-      path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
+      path: `/tags/${lodash.kebabCase(tag.fieldValue)}/`,
       component: tagTemplate,
       context: {
         tag: tag.fieldValue,
