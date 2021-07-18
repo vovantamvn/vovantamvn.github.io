@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://vovantamvn.github.io/tags</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/categories</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/pages/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/pages/contacts/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/posts/cach-viet-code-sach</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/posts/airbnb-javascript-style-guide</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/posts/cach-them-google-analytics-cho-gatsby</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/posts/airbnb-javascript-style-guide-2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/posts/cach-viet-readme-cho-du-an-cua-ban</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/posts/cach-validate-form-voi-formik</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/posts/thuat-toan-tim-kiem-nhi-phan</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/posts/cach-cai-dat-i18n-tren-react</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/posts/cach-nhap-chuoi-trong-c++</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/posts/quy-tac-dat-ten-trong-lap-trinh</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/posts/bai-tap-mang-1-chieu-c++</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/posts/kiem-tra-so-nguyen-to-trong-c</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/posts/nhap-xuat-mang-2-chieu-trong-c</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/posts/cach-tim-so-lon-thu-2-trong-c</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/tag/algorithm</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/tag/c-c</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/tag/clean-code</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/tag/gatsby</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/tag/git</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/tag/javascript</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/tag/react</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/category/technical</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/category/technical/page/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/category/technical/page/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/category/technical/page/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/page/1</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/page/2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://vovantamvn.github.io/page/3</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+</urlset>
