@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Cách cài đặt i18n trên React</title>
+  <meta name="description" content="Bài viết này chúng ta cùng tìm hiểu cách cài đặt i18n trên react. I18n là một thư viện được sử dụng để thiết kế các website đa ngôn ngữ.">
+  
+  <link rel="shortcut icon" type="image/png" href="/assets/images/photo.jpg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://vovantamvn.github.io/technical/cach-cai-dat-i18n-tren-react.html">
+  <link rel="alternate" type="application/rss+xml" title="Tâm's Blog" href="https://vovantamvn.github.io/feed.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0EM3PWHD1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M0EM3PWHD1');
+  </script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Tâm's Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Cách cài đặt i18n trên React</h1>
+    <p class="post-meta"><time datetime="2021-06-07T00:00:00+00:00" itemprop="datePublished">Jun 7, 2021</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Bài viết này chúng ta cùng tìm hiểu cách cài đặt i18n trên react. I18n là một thư viện được sử dụng để thiết kế các website đa ngôn ngữ.</p>
+
+<h2 id="cách-cài-đặt">Cách cài đặt</h2>
+
+<h3 id="đầu-tiên-chúng-ta-khởi-tạo-dự-án">Đầu tiên chúng ta khởi tạo dự án</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">npx create-react-app i18n-app</code></li>
+</ul>
+
+<h3 id="cài-đặt-thư-viện">Cài đặt thư viện</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">npm install i18next react-i18next</code></li>
+</ul>
+
+<h3 id="cấu-hình-cho-i18n">Cấu hình cho i18n</h3>
+
+<p>Bên dưới thư mục <code class="language-plaintext highlighter-rouge">src</code> chúng ta tạo thêm một thư mục <code class="language-plaintext highlighter-rouge">locates</code>. Sau đó tiếp tục tạo hai thư mục con là <code class="language-plaintext highlighter-rouge">vi</code>, <code class="language-plaintext highlighter-rouge">en</code>.</p>
+
+<ul>
+  <li>file <code class="language-plaintext highlighter-rouge">src/locates/vi/common.json</code></li>
+</ul>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"hello"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xin chào"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li>file <code class="language-plaintext highlighter-rouge">src/locates/en/common.json</code></li>
+</ul>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"hello"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ul>
+  <li>file <code class="language-plaintext highlighter-rouge">src/index.js</code></li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">ReactDOM</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-dom</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">i18n</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">i18next</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">I18nextProvider</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-i18next</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">./index.css</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./App</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">reportWebVitals</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./reportWebVitals</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">common_vi</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./locates/vi/common.json</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">common_en</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./locates/en/common.json</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">i18n</span><span class="p">.</span><span class="nx">init</span><span class="p">({</span>
+  <span class="na">interpolation</span><span class="p">:</span> <span class="p">{</span> <span class="na">escapeValue</span><span class="p">:</span> <span class="kc">false</span> <span class="p">},</span>
+  <span class="na">lng</span><span class="p">:</span> <span class="dl">'</span><span class="s1">en</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">resources</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">vi</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">common</span><span class="p">:</span> <span class="nx">common_vi</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">en</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">common</span><span class="p">:</span> <span class="nx">common_en</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+  <span class="na">defaultNS</span><span class="p">:</span> <span class="dl">'</span><span class="s1">common</span><span class="dl">'</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">StrictMode</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">I18nextProvider</span> <span class="nx">i18n</span><span class="o">=</span><span class="p">{</span><span class="nx">i18n</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">App</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="sr">/I18nextProvider</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/React.StrictMode&gt;</span><span class="err">,
+</span>  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="c1">// If you want to start measuring performance in your app, pass a function</span>
+<span class="c1">// to log results (for example: reportWebVitals(console.log))</span>
+<span class="c1">// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals</span>
+<span class="nx">reportWebVitals</span><span class="p">();</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>lng: Ngôn ngữ sử dụng để translate, ở đây mình đang để là en.</p>
+  </li>
+  <li>
+    <p>resource: Dùng để khai báo các tệp translate cho các ngôn ngữ. Như trên mình đang khai báo khai ngôn ngữ là <code class="language-plaintext highlighter-rouge">en</code> và <code class="language-plaintext highlighter-rouge">vi</code>. Bên trong mỗi ngôn ngữ mình khai báo một namespace là <code class="language-plaintext highlighter-rouge">common</code>.</p>
+  </li>
+  <li>
+    <p>defaultNS: Giá trị mặc định của namespace.</p>
+  </li>
+  <li>
+    <p>file <code class="language-plaintext highlighter-rouge">src/App.js</code></p>
+  </li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useTranslation</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-i18next</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">./App.css</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">t</span><span class="p">,</span> <span class="nx">i18n</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">useTranslation</span><span class="p">();</span>
+
+  <span class="kd">const</span> <span class="nx">changeLanguage</span> <span class="o">=</span> <span class="p">(</span><span class="nx">lang</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">i18n</span><span class="p">.</span><span class="nx">changeLanguage</span><span class="p">(</span><span class="nx">lang</span><span class="p">);</span>
+  <span class="p">};</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">t</span><span class="p">(</span><span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">)}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">changeLanguage</span><span class="p">(</span><span class="dl">'</span><span class="s1">en</span><span class="dl">'</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">En</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">changeLanguage</span><span class="p">(</span><span class="dl">'</span><span class="s1">vi</span><span class="dl">'</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">Vi</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>useTranslation: Là hook được cung cấp bởi thư viện <code class="language-plaintext highlighter-rouge">react-i18next</code>. Nếu bạn không chỉ định namespace thì giá trị mặc định sẽ là <code class="language-plaintext highlighter-rouge">defaultNS</code> ở trên.</li>
+  <li>t: function dùng để translate.</li>
+</ul>
+
+<h2 id="kết-luận">Kết luận</h2>
+
+<p>Các bạn có thể tham khảo repository tại đây <a href="https://github.com/friendly-devs/demo-i18n">Github</a>.</p>
+
+<p>Tài liệu:</p>
+
+<ul>
+  <li><a href="https://www.i18next.com/">i18next</a></li>
+  <li><a href="https://react.i18next.com/">react-i18next</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Tâm's Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Tâm's Blog</li>
+          <li><a href="mailto:vovantam.dev@gmail.com">vovantam.dev@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://gitlab.com/vovantamvn"><span class="icon icon--gitlab"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.97 9.058l-.895-2.756L13.3.842c-.09-.282-.488-.282-.58 0L10.946 6.3H5.054L3.28.842C3.188.56 2.79.56 2.7.84L.924 6.3.03 9.058c-.082.25.008.526.22.682L8 15.37l7.75-5.63c.212-.156.302-.43.22-.682"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/vovantamvn"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Ghi lại những gì đã học được là sở thích của mình.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

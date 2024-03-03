@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Biểu thức chính quy - Regex</title>
+  <meta name="description" content="Xin chào các bạn, bài viết này mình sẽ giới thiệu với các bạn một vài kiến thức của biểu thức chính quy hay còn gọi regular expression (viết tắt là regex).">
+  
+  <link rel="shortcut icon" type="image/png" href="/assets/images/photo.jpg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://vovantamvn.github.io/technical/bieu-thuc-chinh-quy-regexp.html">
+  <link rel="alternate" type="application/rss+xml" title="Tâm's Blog" href="https://vovantamvn.github.io/feed.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0EM3PWHD1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M0EM3PWHD1');
+  </script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Tâm's Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Biểu thức chính quy - Regex</h1>
+    <p class="post-meta"><time datetime="2021-07-20T00:00:00+00:00" itemprop="datePublished">Jul 20, 2021</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Xin chào các bạn, bài viết này mình sẽ giới thiệu với các bạn một vài kiến thức của biểu thức chính quy hay còn gọi regular expression (viết tắt là regex).</p>
+
+<p>Đây là bài viết mình viết ra trong quá trình tìm hiểu về regex, nếu có sai sót gì mong các bạn phản hồi giúp mình.</p>
+
+<h2 id="biểu-thức-chính-quy-là-gì">Biểu thức chính quy là gì</h2>
+
+<p>Theo <a href="https://vi.wikipedia.org/wiki/Bi%E1%BB%83u_th%E1%BB%A9c_ch%C3%ADnh_quy">Wiki định nghĩa</a>:</p>
+
+<p>Biểu thức chính quy (tiếng Anh: regular expression, viết tắt là regexp, regex hay regxp) là một chuỗi miêu tả một bộ các chuỗi khác, theo những quy tắc cú pháp nhất định.</p>
+
+<p>Biểu thức chính quy thường được dùng trong các trình biên tập văn bản và các tiện ích tìm kiếm và xử lý văn bản dựa trên các mẫu được quy định.</p>
+
+<h2 id="các-thành-phần-của-biểu-thức-chính-quy">Các thành phần của biểu thức chính quy</h2>
+
+<p>Trước khi vào tìm hiểu thì mình giới thiệu cho các bạn một tool để kiểm tra regex, bạn có thể sử dụng <a href="https://regexr.com/">tại đây</a>.</p>
+
+<h3 id="modifiers-bổ-ngữ">Modifiers (Bổ ngữ)</h3>
+
+<p>Trong regex có một vài modifiers phổ biến như sau:</p>
+
+<ul>
+  <li>/g: (global) nếu không có bổ ngữ <strong>g</strong> thì regex chỉ khớp với phần tử đầu tiên. Nếu có bổ ngữ <strong>g</strong> thì nó sẽ khớp với tất cả những phần tử.</li>
+  <li>/i: (case insensitive) bổ ngữ <strong>i</strong> được sử dụng để bỏ qua hoa thường.</li>
+  <li>/m: (multiline) được sử dụng trên nhiều dòng.</li>
+</ul>
+
+<p>Cùng xem vài ví dụ dưới đây để hiểu hơn.</p>
+
+<pre><code class="language-regex">/abc/
+</code></pre>
+
+<p><img src="/images/2021-07-20/no-modifier.png" alt="không có mdifier g" /></p>
+
+<p>Nếu không có bổ ngữ <strong>g</strong> thì nó chỉ khớp với <code class="language-plaintext highlighter-rouge">abc</code> đầu tiên.</p>
+
+<pre><code class="language-regex">/abc/g
+</code></pre>
+
+<p><img src="/images/2021-07-20/modifier-g.png" alt="có modifier g" /></p>
+
+<p>Nếu có bổ ngữ <strong>g</strong> thì nó sẽ khớp với tất cả <code class="language-plaintext highlighter-rouge">abc</code>.</p>
+
+<pre><code class="language-regex">/abc/gi
+</code></pre>
+
+<p><img src="/images/2021-07-20/modifier-gi.png" alt="có modifier gi" /></p>
+
+<p>Nếu có bổ ngữ <strong>gi</strong> thì nó sẽ khớp với tất cả <code class="language-plaintext highlighter-rouge">abc</code>, <code class="language-plaintext highlighter-rouge">Abc</code> vì bỏ qua hoa thường.</p>
+
+<p><strong>Lưu ý:</strong> <strong>gi</strong> ở đây là sự kết hợp của cả hai <strong>g</strong> (global) và <strong>i</strong> (case insensitive).</p>
+
+<h3 id="quantifiers-bộ-định-lượng">Quantifiers (Bộ định lượng)</h3>
+
+<p>Dưới đây là một số quantifiers phổ biến:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Quantifier</th>
+      <th style="text-align: left">Ý nghĩa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">*</td>
+      <td style="text-align: left">Lặp lại <strong>0</strong> hoặc nhiều lần</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">+</td>
+      <td style="text-align: left">Lặp lại ít nhất <strong>1</strong> lần</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">?</td>
+      <td style="text-align: left">Lặp lại <strong>0</strong> hoặc <strong>1</strong> lần</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">{n}</td>
+      <td style="text-align: left">Lặp lại đúng <strong>n</strong> lần</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">{n,}</td>
+      <td style="text-align: left">Lặp lại ít nhất là n lần, <strong>*</strong> có thể được xem là viết tắt của <strong>{0,}</strong> và <strong>+</strong> có thể được xem là viết tắt của <strong>{1,}</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">{n,m}</td>
+      <td style="text-align: left">Lặp lại ít nhất là <strong>n</strong> lần và tối đa là <strong>m</strong> lần</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Ví dụ:</strong></p>
+
+<ul>
+  <li>/ba*/g: <strong>b</strong>, <strong>ba</strong>, <strong>baaa</strong></li>
+  <li>/ba+/g: b, <strong>ba</strong>, <strong>baaa</strong></li>
+  <li>/ba{3}/g: b, ba, <strong>baaa</strong></li>
+</ul>
+
+<h3 id="assertions">Assertions</h3>
+
+<p>Dưới đây là một số assertion phổ biến:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Assertion</th>
+      <th style="text-align: left">Ý nghĩa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">^</td>
+      <td style="text-align: left">Đánh dấu bắt đầu của một regex</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">$</td>
+      <td style="text-align: left">Đánh dấu kết thúc của một regex</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Ví dụ:</strong></p>
+
+<p>Ta có thể kiểm tra một dòng có bắt đầu bằng kí tự <strong>a</strong> không?</p>
+
+<ul>
+  <li>/^a/: <strong>a</strong>bcd</li>
+  <li>/^a/: cabcd</li>
+</ul>
+
+<p>Ta có thể kiểm tra một dòng có kết thúc bằng kí tự <strong>d</strong> không?</p>
+
+<ul>
+  <li>/d$/: abc<strong>d</strong></li>
+  <li>/d$/: abcde</li>
+</ul>
+
+<h3 id="groups">Groups</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: left">Ý nghĩa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">()</code></td>
+      <td style="text-align: left">Dùng để đánh dấu một nhóm</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">a    | b</code></td>
+      <td style="text-align: left">Khớp với a hoặc b</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[abc]</code></td>
+      <td style="text-align: left">Khớp với a, b hoặc c. Tương đương <code class="language-plaintext highlighter-rouge">[a-c]</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[^abc]</code></td>
+      <td style="text-align: left">Khớp với kí tự bất kì khác a, b hoặc c. Tương đương <code class="language-plaintext highlighter-rouge">[^a-c]</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[a-z]</code></td>
+      <td style="text-align: left">Khớp với một kí tự bất kì trong đoạn a-z</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><code class="language-plaintext highlighter-rouge">[^a-z]</code></td>
+      <td style="text-align: left">Khớp với một kí tự bất kì mà không nằm trong đoạn a-z</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Ví dụ:</strong></p>
+
+<p>Kiểm tra định dạng ngày tháng ta có mẫu <code class="language-plaintext highlighter-rouge">^[0-9]{1,2}[-/][0-9]{1,2}[-/][0-9]{4}$</code> hay có thể viết gọn lại <code class="language-plaintext highlighter-rouge">^\d{1,2}[-/]\d{1,2}[-/]\d{4}$</code>.</p>
+
+<p>Mẫu này có thể khớp với các dữ liệu như:</p>
+
+<ul>
+  <li>25/06/1999</li>
+  <li>25-06-1999</li>
+  <li>25/06-1999</li>
+  <li>25/6/1999</li>
+  <li>2/06/1999</li>
+</ul>
+
+<p>Bạn thấy mẫu <code class="language-plaintext highlighter-rouge">25/06-1999</code> nó không đồng nhất. Giờ bạn chỉ muốn nhận <code class="language-plaintext highlighter-rouge">25/06/1999</code> hoặc <code class="language-plaintext highlighter-rouge">25-06-1999</code> thì bạn sẽ sử dụng mẫu sau <code class="language-plaintext highlighter-rouge">^\d{1,2}([-/])\d{1,2}\1\d{4}$</code></p>
+
+<p>Bạn sẽ thấy lạ khi có <code class="language-plaintext highlighter-rouge">\1</code>. Nó chính là đại diện cho mẫu <code class="language-plaintext highlighter-rouge">([-/])</code>. Nếu <code class="language-plaintext highlighter-rouge">([-/])</code> khớp với kí tự <code class="language-plaintext highlighter-rouge">-</code> thì <code class="language-plaintext highlighter-rouge">\1</code> sẽ đại diện cho kí tự <code class="language-plaintext highlighter-rouge">-</code>.</p>
+
+<p><strong>Lưu ý:</strong> Group sẽ bắt đầu từ <code class="language-plaintext highlighter-rouge">\1</code> trở đi (<code class="language-plaintext highlighter-rouge">\2</code>, …).</p>
+
+<h3 id="meta-characters">Meta characters</h3>
+
+<p>Dưới đây là một số meta characters phổ biến:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">Meta character</th>
+      <th style="text-align: left">Ý nghĩa</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">.</td>
+      <td style="text-align: left">Khớp với kí tự bất kì</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">\</td>
+      <td style="text-align: left">Dùng để thoát các kí tự đặc biệt. Ví dụ dấu chấm (.) là một kí tự đặc biệt. Để khớp với dấu chấm trong regex thì ta phải dùng thêm dấu \ phía trước dấu chấm</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">\d</td>
+      <td style="text-align: left">Khớp với một số. Tương đương <code class="language-plaintext highlighter-rouge">[0-9]</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">\D</td>
+      <td style="text-align: left">Khớp với một kí tự khác số. Tương đương <code class="language-plaintext highlighter-rouge">[^0-9]</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">\n</td>
+      <td style="text-align: left">Khớp với kí tự xuống hàng (Unix &amp; Windows)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">\r</td>
+      <td style="text-align: left">Khớp với kí tự xuống hàng (Macintosh &amp; Windows)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">\s</td>
+      <td style="text-align: left">Khớp với kí tự khoảng trắng</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">\S</td>
+      <td style="text-align: left">Khớp với kí tự không phải khoảng trắng</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">\t</td>
+      <td style="text-align: left">Khớp với kí tự tab ngang</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">\v</td>
+      <td style="text-align: left">Khớp với kí tự tab dọc</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">\w</td>
+      <td style="text-align: left">Khớp với tất cả kí tự là chữ, số và gạch dưới. Tương đương <code class="language-plaintext highlighter-rouge">[0-9a-zA-Z_]</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center">\W</td>
+      <td style="text-align: left">Khớp với tất cả kí tự không phải là chữ. Tương đương <code class="language-plaintext highlighter-rouge">[^0-9a-zA-Z_]</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="kết-luận">Kết luận</h2>
+
+<p>Như vậy bài viết này chúng ta đã hiểu được regex và cú pháp để viết một regex đơn giản. Để thành thục regex thì không có cách nào khác ngoài việc bạn phải luyện tập nhiều.</p>
+
+<p>Cám ơn các bạn đã theo dõi, chúc các bạn một ngày mới tốt lành!</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Tâm's Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Tâm's Blog</li>
+          <li><a href="mailto:vovantam.dev@gmail.com">vovantam.dev@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://gitlab.com/vovantamvn"><span class="icon icon--gitlab"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.97 9.058l-.895-2.756L13.3.842c-.09-.282-.488-.282-.58 0L10.946 6.3H5.054L3.28.842C3.188.56 2.79.56 2.7.84L.924 6.3.03 9.058c-.082.25.008.526.22.682L8 15.37l7.75-5.63c.212-.156.302-.43.22-.682"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/vovantamvn"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Ghi lại những gì đã học được là sở thích của mình.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

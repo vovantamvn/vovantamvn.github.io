@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Sơ đồ Use Case</title>
+  <meta name="description" content="Bài viết này mình cùng các bạn tìm hiểu về sơ đồ Use Case.">
+  
+  <link rel="shortcut icon" type="image/png" href="/assets/images/photo.jpg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://vovantamvn.github.io/technical/so-do-use-case.html">
+  <link rel="alternate" type="application/rss+xml" title="Tâm's Blog" href="https://vovantamvn.github.io/feed.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0EM3PWHD1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M0EM3PWHD1');
+  </script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Tâm's Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Sơ đồ Use Case</h1>
+    <p class="post-meta"><time datetime="2021-07-03T00:00:00+00:00" itemprop="datePublished">Jul 3, 2021</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Bài viết này mình cùng các bạn tìm hiểu về sơ đồ Use Case.</p>
+
+<h2 id="use-case-là-gì">Use Case là gì</h2>
+
+<p>Theo định nghĩa của <a href="https://vi.wikipedia.org/wiki/Use_case">wikipedia</a>:</p>
+
+<p>Use case là một kỹ thuật được dùng trong kỹ thuật phần mềm và hệ thống để nắm bắt yêu cầu chức năng của hệ thống. Use case mô tả sự tương tác đặc trưng giữa người dùng bên ngoài (actor) và hệ thống. Nó thể hiện ứng xử của hệ thống đối với bên ngoài, trong một hoàn cảnh nhất định, xét từ quan điểm của người sử dụng. Nó mô tả các yêu cầu đối với hệ thống, có nghĩa là những gì hệ thống phải làm chứ không phải mô tả hệ thống làm như thế nào. Tập hợp tất cả Use case của hệ thống sẽ mô tả tất cả các trường hợp mà hệ thống có thể được sử dụng. .</p>
+
+<p>Hiểu nôm na Use case được sử dụng để mô tả sự tương tác giữa người dùng bên ngoài (actor) với hệ thống.</p>
+
+<p>Ví dụ: Khi một <strong>người dùng</strong> (actor) muốn đăng nhập vào một <strong>hệ thống website bán hàng</strong>. Đó được gọi là một <strong>Use Case</strong>.</p>
+
+<p>Một trong những cách biểu diễn trực quan phổ biến hiện nay là lược đồ use case của UML.</p>
+
+<h2 id="các-thành-phần-của-sơ-đồ-use-case">Các thành phần của sơ đồ Use Case</h2>
+
+<p>Có tất cả 4 thành phần: Actor, Use Case, System Boundary, Relationship.</p>
+
+<h3 id="actor">Actor</h3>
+
+<p><img src="/assets/images/2021-07-03/actor.png" alt="actor" /></p>
+
+<p>Actor được dùng để chỉ người sử dụng hoặc một đối tượng nào đó bên ngoài tương tác với hệ thống.</p>
+
+<h3 id="use-case">Use Case</h3>
+
+<p><img src="/assets/images/2021-07-03/use-case.png" alt="use case" /></p>
+
+<p>Use Case là các chức năng mà actor sử dụng.</p>
+
+<h3 id="system-boundary">System Boundary</h3>
+
+<p><img src="/assets/images/2021-07-03/system.png" alt="system boundary" /></p>
+
+<p>System Boundary dùng để phân biệt bên trong và bên ngoài hệ thống.</p>
+
+<h3 id="relationship">Relationship</h3>
+
+<p>Trong sơ đồ Use Case có 4 loại relationship:</p>
+
+<h4 id="association">Association</h4>
+
+<p><img src="/assets/images/2021-07-03/association.png" alt="Association" /></p>
+
+<p>Quan hệ association được dùng để biểu diễn mối quan hệ giữa actor và use case.</p>
+
+<h4 id="generalization">Generalization</h4>
+
+<p><img src="/assets/images/2021-07-03/generalization.png" alt="Generalization" /></p>
+
+<p>Quan hệ generalization được dùng để biểu diễn thừa kế của hai use case.</p>
+
+<h4 id="include">Include</h4>
+
+<p><img src="/assets/images/2021-07-03/include.png" alt="Include" /></p>
+
+<p>Quan hệ include được dùng để biểu diễn trường hợp một use case xảy ra thì bắt buộc có một use case khác phải xảy ra trước đó.</p>
+
+<p>Ví dụ: Bạn muốn thanh toán thì trước tiên bạn phải đăng nhập.</p>
+
+<h4 id="extend">Extend</h4>
+
+<p><img src="/assets/images/2021-07-03/extend.png" alt="Extend" /></p>
+
+<p>Quan hệ extend được dùng để biểu diễn trường hợp khi một use case xảy ra thì có thể xảy ra tiếp một use case khác (không bắt buộc xảy ra).</p>
+
+<p>Ví dụ: Bạn xem sản phẩm thì có khả năng bạn sẽ thêm sản phẩm vào giỏ hàng.</p>
+
+<h2 id="cách-xây-dựng-sơ-đồ-use-case">Cách xây dựng sơ đồ Use Case</h2>
+
+<p>Chúng ta sẽ có thứ tự các bước như sau:</p>
+
+<ul>
+  <li>Tìm các actor của hệ thống.</li>
+  <li>Tìm các use case của actor đó.</li>
+  <li>Xác định relationship giữa các use case.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Tâm's Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Tâm's Blog</li>
+          <li><a href="mailto:vovantam.dev@gmail.com">vovantam.dev@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://gitlab.com/vovantamvn"><span class="icon icon--gitlab"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.97 9.058l-.895-2.756L13.3.842c-.09-.282-.488-.282-.58 0L10.946 6.3H5.054L3.28.842C3.188.56 2.79.56 2.7.84L.924 6.3.03 9.058c-.082.25.008.526.22.682L8 15.37l7.75-5.63c.212-.156.302-.43.22-.682"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/vovantamvn"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Ghi lại những gì đã học được là sở thích của mình.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

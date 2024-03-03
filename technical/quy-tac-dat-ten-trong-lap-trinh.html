@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Quy tắc đặt tên trong lập trình</title>
+  <meta name="description" content="Bài viết này mình sẽ nói về các quy tắc đặt tên trong lập trình. Nếu các bạn có thể áp dụng các quy tắc này vào việc đặt tên thì code của bạn chắc chắn sẽ dễ...">
+  
+  <link rel="shortcut icon" type="image/png" href="/assets/images/photo.jpg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://vovantamvn.github.io/technical/quy-tac-dat-ten-trong-lap-trinh.html">
+  <link rel="alternate" type="application/rss+xml" title="Tâm's Blog" href="https://vovantamvn.github.io/feed.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0EM3PWHD1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M0EM3PWHD1');
+  </script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Tâm's Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Quy tắc đặt tên trong lập trình</h1>
+    <p class="post-meta"><time datetime="2021-06-29T00:00:00+00:00" itemprop="datePublished">Jun 29, 2021</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Bài viết này mình sẽ nói về các quy tắc đặt tên trong lập trình. Nếu các bạn có thể áp dụng các quy tắc này vào việc đặt tên thì code của bạn chắc chắn sẽ dễ đọc hơn rất nhiều!</p>
+
+<h2 id="english-language">English language</h2>
+
+<p>Sử dụng ngôn ngữ tiếng Anh khi đặt tên cho các biến và hàm của bạn.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Bad */</span>
+<span class="kd">const</span> <span class="nx">primerNombre</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Gustavo</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">amigos</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Kate</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">];</span>
+
+<span class="cm">/* Good */</span>
+<span class="kd">const</span> <span class="nx">firstName</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Gustavo</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">friends</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Kate</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">John</span><span class="dl">'</span><span class="p">];</span>
+</code></pre></div></div>
+
+<p>Dù muốn hay không, tiếng Anh là ngôn ngữ chính trong lập trình: cú pháp của tất cả các ngôn ngữ lập trình đều được viết bằng tiếng Anh, cũng như vô số tài liệu và tài liệu học tập. Bằng cách viết code của bạn bằng tiếng Anh, bạn tăng đáng kể tính liên kết của nó.</p>
+
+<h2 id="naming-convention">Naming convention</h2>
+
+<p>Chọn <strong>một</strong> quy ước đặt tên và làm theo nó. Nó có thể là <code class="language-plaintext highlighter-rouge">camelCase</code>,<code class="language-plaintext highlighter-rouge"> PascalCase</code>, <code class="language-plaintext highlighter-rouge">solid_case</code> hoặc bất cứ thứ gì khác, miễn là nó vẫn nhất quán. Nhiều ngôn ngữ lập trình có truyền thống riêng về quy ước đặt tên; kiểm tra tài liệu về ngôn ngữ của bạn hoặc nghiên cứu một số repository phổ biến trên Github!</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Bad */</span>
+<span class="kd">const</span> <span class="nx">page_count</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">shouldUpdate</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="cm">/* Good */</span>
+<span class="kd">const</span> <span class="nx">pageCount</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">shouldUpdate</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="cm">/* Good as well */</span>
+<span class="kd">const</span> <span class="nx">page_count</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">should_update</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="s-i-d">S-I-D</h2>
+
+<p>Một cái tên phải <em>ngắn gọn</em>, <em>trực quan</em>, <em>mang tính mô tả</em>:</p>
+
+<ul>
+  <li><strong>Ngắn gọn</strong>. Tên phải không mất thời gian khi viết và do đó, hãy nhớ;</li>
+  <li><strong>Trực quan</strong>. Tên phải đọc một cách tự nhiên, càng gần với lời nói phổ thông càng tốt.</li>
+  <li><strong>Môt tả</strong>. Tên phải phản ánh những gì nó làm / sở hữu theo cách hiệu quả nhất.</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Bad */</span>
+<span class="kd">const</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="c1">// "a" could mean anything</span>
+<span class="kd">const</span> <span class="nx">isPaginatable</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// "Paginatable" sounds extremely unnatural</span>
+<span class="kd">const</span> <span class="nx">shouldPaginatize</span> <span class="o">=</span> <span class="nx">a</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// Made up verbs are so much fun!</span>
+
+<span class="cm">/* Good */</span>
+<span class="kd">const</span> <span class="nx">postCount</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">hasPagination</span> <span class="o">=</span> <span class="nx">postCount</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">shouldPaginate</span> <span class="o">=</span> <span class="nx">postCount</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// alternatively</span>
+</code></pre></div></div>
+
+<h2 id="avoid-contractions">Avoid contractions</h2>
+
+<p><strong>Không</strong> sử dụng viết tắt. Chúng không đóng góp gì nhưng giảm tính đọc hiểu của code. Tìm một cái tên ngắn gọn, mang tính mô tả có thể khó, nhưng sự co lại không phải là cái cớ để không làm như vậy.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Bad */</span>
+<span class="kd">const</span> <span class="nx">onItmClk</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{};</span>
+
+<span class="cm">/* Good */</span>
+<span class="kd">const</span> <span class="nx">onItemClick</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{};</span>
+</code></pre></div></div>
+
+<h2 id="avoid-context-duplication">Avoid context duplication</h2>
+
+<p>Tên không được trùng lặp với ngữ cảnh mà nó được xác định. Luôn xóa ngữ cảnh khỏi tên nếu điều đó không làm giảm khả năng đọc hiểu của nó.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">MenuItem</span> <span class="p">{</span>
+  <span class="cm">/* Method name duplicates the context (which is "MenuItem") */</span>
+  <span class="nx">handleMenuItemClick</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+
+  <span class="cm">/* Reads nicely as `MenuItem.handleClick()` */</span>
+  <span class="nx">handleClick</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="reflect-the-expected-result">Reflect the expected result</h2>
+
+<p>Tên phải phản ánh kết quả mong đợi.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Bad */</span>
+<span class="kd">const</span> <span class="nx">isEnabled</span> <span class="o">=</span> <span class="nx">itemCount</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">;</span>
+<span class="k">return</span> <span class="p">&lt;</span><span class="nc">Button</span> <span class="na">disabled</span><span class="p">=</span><span class="si">{</span><span class="o">!</span><span class="nx">isEnabled</span><span class="si">}</span> <span class="p">/&gt;;</span>
+
+<span class="cm">/* Good */</span>
+<span class="kd">const</span> <span class="nx">isDisabled</span> <span class="o">=</span> <span class="nx">itemCount</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="k">return</span> <span class="p">&lt;</span><span class="nc">Button</span> <span class="na">disabled</span><span class="p">=</span><span class="si">{</span><span class="nx">isDisabled</span><span class="si">}</span> <span class="p">/&gt;;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="naming-functions">Naming functions</h2>
+
+<h3 id="ahclc-pattern">A/HC/LC Pattern</h3>
+
+<p>Có một mô hình hữu ích cần tuân theo khi đặt tên cho các hàm:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>prefix? + action (A) + high context (HC) + low context? (LC)
+</code></pre></div></div>
+
+<p>Hãy xem cách mô hình này có thể được áp dụng trong bảng dưới đây.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Prefix</th>
+      <th>Action (A)</th>
+      <th>High context (HC)</th>
+      <th>Low context (LC)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getUser</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">get</code></td>
+      <td><code class="language-plaintext highlighter-rouge">User</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">getUserMessages</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">get</code></td>
+      <td><code class="language-plaintext highlighter-rouge">User</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Messages</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">handleClickOutside</code></td>
+      <td> </td>
+      <td><code class="language-plaintext highlighter-rouge">handle</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Click</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Outside</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">shouldDisplayMessage</code></td>
+      <td><code class="language-plaintext highlighter-rouge">should</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Display</code></td>
+      <td><code class="language-plaintext highlighter-rouge">Message</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Lưu ý:</strong> Thứ tự của ngữ cảnh ảnh hưởng đến ý nghĩa của một biến. Ví dụ: <code class="language-plaintext highlighter-rouge">shouldUpdateComponent</code> có nghĩa là <em>bạn</em> sắp cập nhật một component, trong khi <code class="language-plaintext highlighter-rouge">shouldComponentUpdate</code> cho bạn biết rằng <em>component</em> sẽ tự cập nhật và bạn đang kiểm soát khi nào nó nên được cập nhật.
+Nói cách khác, <strong>hight context nhấn mạnh ý nghĩa của một biến</strong>.</p>
+
+<hr />
+
+<h3 id="actions">Actions</h3>
+
+<p>Phần động từ của tên hàm của bạn. Phần quan trọng nhất chịu trách nhiệm mô tả hàm <em>làm</em> cái gì.</p>
+
+<h4 id="get">get</h4>
+
+<p>Truy cập dữ liệu ngay lập tức (tức là bộ lấy dữ liệu nội bộ viết tắt).</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">getFruitCount</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">fruits</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Xem thêm <a href="#compose">compose</a>.</p>
+
+<h4 id="set">set</h4>
+
+<p>Gắn một biến trong một cách khai báo, với giá trị <code class="language-plaintext highlighter-rouge">A</code> đến giá trị <code class="language-plaintext highlighter-rouge">B</code>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">setFruits</span><span class="p">(</span><span class="nx">nextFruits</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">fruits</span> <span class="o">=</span> <span class="nx">nextFruits</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">setFruits</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fruits</span><span class="p">);</span> <span class="c1">// 5</span>
+</code></pre></div></div>
+
+<h4 id="reset">reset</h4>
+
+<p>Gắn một biến trở lại với giá trị hoặc trạng thái ban đầu của nó.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">initialFruits</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">fruits</span> <span class="o">=</span> <span class="nx">initialFruits</span><span class="p">;</span>
+<span class="nx">setFruits</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fruits</span><span class="p">);</span> <span class="c1">// 10</span>
+
+<span class="kd">function</span> <span class="nx">resetFruits</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">fruits</span> <span class="o">=</span> <span class="nx">initialFruits</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">resetFruits</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">fruits</span><span class="p">);</span> <span class="c1">// 5</span>
+</code></pre></div></div>
+
+<h4 id="fetch">fetch</h4>
+
+<p>Yêu cầu một số dữ liệu, mất một thời gian không xác định (tức là yêu cầu không đồng bộ).</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">fetchPosts</span><span class="p">(</span><span class="nx">postCount</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://api.dev/posts</span><span class="dl">'</span><span class="p">,</span> <span class="p">{...})</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="remove">remove</h4>
+
+<p>Loại bỏ một cái gì đó <em>từ</em> một nơi nào đó.</p>
+
+<p>Ví dụ, nếu bạn có một danh sách của bộ lọc được chọn trên một trang tìm kiếm, xóa một trong số chúng từ danh sách là <code class="language-plaintext highlighter-rouge">removeFilter</code>, <strong>không phải</strong> <code class="language-plaintext highlighter-rouge">deleteFilter</code> (và đây cũng là cách bạn nói nó một cách tự nhiên trong tiếng Anh):</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">removeFilter</span><span class="p">(</span><span class="nx">filterName</span><span class="p">,</span> <span class="nx">filters</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">filters</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">name</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">name</span> <span class="o">!==</span> <span class="nx">filterName</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">selectedFilters</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">price</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">availability</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">size</span><span class="dl">'</span><span class="p">];</span>
+<span class="nx">removeFilter</span><span class="p">(</span><span class="dl">'</span><span class="s1">price</span><span class="dl">'</span><span class="p">,</span> <span class="nx">selectedFilters</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Xem thêm <a href="#delete">delete</a>.</p>
+
+<h4 id="delete">delete</h4>
+
+<p>Hoàn toàn xóa một cái gì đó khỏi các lĩnh vực tồn tại.</p>
+
+<p>Hãy tưởng tượng bạn là một biên tập nội dung và có một bài đăng khét tiếng mà bạn muốn loại bỏ. Sau khi bạn nhấp vào nút “Xóa bài đăng” sáng bóng, CMS thực hiện hành động <code class="language-plaintext highlighter-rouge">deletePost</code>, <strong>không phải</strong> ` removePost`.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">deletePost</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">database</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span> <span class="nx">id</span> <span class="p">}).</span><span class="k">delete</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Xem thêm <a href="#remove">remove</a>.</p>
+
+<h4 id="compose">compose</h4>
+
+<p>Tạo dữ liệu mới từ dữ liệu hiện có. Hầu hết áp dụng cho chuỗi, đối tượng hoặc hàm.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">composePageUrl</span><span class="p">(</span><span class="nx">pageName</span><span class="p">,</span> <span class="nx">pageId</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">pageName</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">-</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">pageId</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Xem thêm <a href="#get">get</a>.</p>
+
+<h4 id="handle">handle</h4>
+
+<p>Xử lý một hành động. Thường được sử dụng khi đặt tên một callback method.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">handleLinkClick</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Clicked a link!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">link</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="nx">handleLinkClick</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="context">Context</h3>
+
+<p>Một miền mà một chức năng hoạt động trên đó.</p>
+
+<p>Một hàm thường là một hành động trên <em>something</em>. Điều quan trọng là phải nêu rõ miền có thể hoạt động của nó là gì, hoặc ít nhất là một kiểu dữ liệu mong đợi.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* A pure function operating with primitives */</span>
+<span class="kd">function</span> <span class="nx">filter</span><span class="p">(</span><span class="nx">list</span><span class="p">,</span> <span class="nx">predicate</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">list</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">predicate</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* Function operating exactly on posts */</span>
+<span class="kd">function</span> <span class="nx">getRecentPosts</span><span class="p">(</span><span class="nx">posts</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">filter</span><span class="p">(</span><span class="nx">posts</span><span class="p">,</span> <span class="p">(</span><span class="nx">post</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">post</span><span class="p">.</span><span class="nx">date</span> <span class="o">===</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">());</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Một số giả định theo ngôn ngữ cụ thể có thể cho phép bỏ qua ngữ cảnh. Ví dụ, trong JavaScript, thông thường <code class="language-plaintext highlighter-rouge">filter</code> hoạt động trên Array. Việc thêm <code class="language-plaintext highlighter-rouge">filterArray</code> rõ ràng là không cần thiết.</p>
+
+<h3 id="prefixes">Prefixes</h3>
+
+<p>Tiền tố tăng ý nghĩa của một biến. Nó hiếm khi được sử dụng trong tên hàm.</p>
+
+<h4 id="is">is</h4>
+
+<p>Mô tả một đặc điểm hoặc trạng thái của ngữ cảnh hiện tại (thường là <code class="language-plaintext highlighter-rouge">boolean</code>).</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">color</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">blue</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">isBlue</span> <span class="o">=</span> <span class="nx">color</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">blue</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// characteristic</span>
+<span class="kd">const</span> <span class="nx">isPresent</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span> <span class="c1">// state</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">isBlue</span> <span class="o">&amp;&amp;</span> <span class="nx">isPresent</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Blue is present!</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="has">has</h4>
+
+<p>Mô tả liệu ngữ cảnh hiện tại có sở hữu một giá trị hoặc trạng thái nhất định hay không (thường là <code class="language-plaintext highlighter-rouge">boolean</code>).</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Bad */</span>
+<span class="kd">const</span> <span class="nx">isProductsExist</span> <span class="o">=</span> <span class="nx">productsCount</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">areProductsPresent</span> <span class="o">=</span> <span class="nx">productsCount</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="cm">/* Good */</span>
+<span class="kd">const</span> <span class="nx">hasProducts</span> <span class="o">=</span> <span class="nx">productsCount</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h4 id="should">should</h4>
+
+<p>Phản ánh một câu điều kiện khẳng định (thường là <code class="language-plaintext highlighter-rouge">boolean</code>) cùng với một hành động nhất định.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">shouldUpdateUrl</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">expectedUrl</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">url</span> <span class="o">!==</span> <span class="nx">expectedUrl</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="minmax">min/max</h4>
+
+<p>Đại diện cho một giá trị tối thiểu hoặc tối đa. Được sử dụng khi mô tả ranh giới hoặc giới hạn.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Renders a random amount of posts within
+ * the given min/max boundaries.
+ */</span>
+<span class="kd">function</span> <span class="nx">renderPosts</span><span class="p">(</span><span class="nx">posts</span><span class="p">,</span> <span class="nx">minPosts</span><span class="p">,</span> <span class="nx">maxPosts</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">posts</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">randomBetween</span><span class="p">(</span><span class="nx">minPosts</span><span class="p">,</span> <span class="nx">maxPosts</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="prevnext">prev/next</h4>
+
+<p>Cho biết trạng thái trước đó hoặc trạng thái tiếp theo của một biến trong ngữ cảnh hiện tại. Được sử dụng khi mô tả sự chuyển đổi trạng thái.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">fetchPosts</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">prevPosts</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">posts</span><span class="p">;</span>
+
+  <span class="kd">const</span> <span class="nx">fetchedPosts</span> <span class="o">=</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">...</span><span class="dl">'</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">nextPosts</span> <span class="o">=</span> <span class="nx">concat</span><span class="p">(</span><span class="nx">prevPosts</span><span class="p">,</span> <span class="nx">fetchedPosts</span><span class="p">);</span>
+
+  <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">posts</span><span class="p">:</span> <span class="nx">nextPosts</span> <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="singular-and-plurals">Singular and Plurals</h2>
+
+<p>Giống như tiền tố, những tên biến có thể được đặt ở dạng số ít hoặc số nhiều tùy thuộc vào việc chúng chứa một giá trị duy nhất hoặc nhiều giá trị.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Bad */</span>
+<span class="kd">const</span> <span class="nx">friends</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">friend</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Tony</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Tanya</span><span class="dl">'</span><span class="p">];</span>
+
+<span class="cm">/* Good */</span>
+<span class="kd">const</span> <span class="nx">friend</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">friends</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">Bob</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Tony</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">Tanya</span><span class="dl">'</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h2 id="reference">Reference</h2>
+
+<ul>
+  <li>https://github.com/vovantamvn/naming-cheatsheet</li>
+  <li>https://github.com/kettanaito/naming-cheatsheet</li>
+</ul>
+
+<p>Bản dịch hiện vẫn chưa hoàn thiện, nếu bạn nào muốn đóng góp cho bản dịch hoàn thiện thêm thì có thể tạo PR. Mình xin cám ơn!</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Tâm's Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Tâm's Blog</li>
+          <li><a href="mailto:vovantam.dev@gmail.com">vovantam.dev@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://gitlab.com/vovantamvn"><span class="icon icon--gitlab"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.97 9.058l-.895-2.756L13.3.842c-.09-.282-.488-.282-.58 0L10.946 6.3H5.054L3.28.842C3.188.56 2.79.56 2.7.84L.924 6.3.03 9.058c-.082.25.008.526.22.682L8 15.37l7.75-5.63c.212-.156.302-.43.22-.682"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/vovantamvn"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Ghi lại những gì đã học được là sở thích của mình.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
