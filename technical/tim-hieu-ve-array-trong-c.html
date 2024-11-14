@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Tìm hiểu về Array trong C - Khái niệm, Cách sử dụng, và Các Kỹ thuật Cơ Bản</title>
+  <meta name="description" content="Trong lập trình C, array (mảng) là một cấu trúc dữ liệu cơ bản cho phép bạn lưu trữ nhiều giá trị cùng kiểu trong một biến duy nhất. Mảng rất hữu ích khi bạn...">
+  
+  <link rel="shortcut icon" type="image/png" href="/assets/images/photo.jpg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://vovantamvn.github.io/technical/tim-hieu-ve-array-trong-c.html">
+  <link rel="alternate" type="application/rss+xml" title="Tâm's Blog" href="https://vovantamvn.github.io/feed.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0EM3PWHD1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M0EM3PWHD1');
+  </script>
+
+  <!-- Google Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2360531707906785" crossorigin="anonymous"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Tâm's Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about.html">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/password-generator.html">Password Generator</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Tìm hiểu về Array trong C - Khái niệm, Cách sử dụng, và Các Kỹ thuật Cơ Bản</h1>
+    <p class="post-meta"><time datetime="2024-11-08T00:00:00+00:00" itemprop="datePublished">Nov 8, 2024</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Trong lập trình C, <strong>array</strong> (mảng) là một cấu trúc dữ liệu cơ bản cho phép bạn lưu trữ nhiều giá trị cùng kiểu trong một biến duy nhất. Mảng rất hữu ích khi bạn cần xử lý nhiều dữ liệu có cùng kiểu, chẳng hạn như danh sách các số nguyên, tên, hoặc dữ liệu từ cảm biến trong lập trình nhúng. Sử dụng array trong C giúp tối ưu hóa việc truy cập dữ liệu, đồng thời giảm bớt độ phức tạp của mã nguồn khi thao tác với nhiều biến.</p>
+
+<h2 id="1-khái-niệm-array-trong-c">1. Khái niệm Array trong C</h2>
+
+<p>Mảng trong C là một tập hợp các phần tử có cùng kiểu dữ liệu được lưu trữ trong bộ nhớ theo thứ tự liền kề. Các phần tử trong mảng có thể được truy cập thông qua chỉ số (index), bắt đầu từ 0. Điều này có nghĩa là phần tử đầu tiên trong mảng có chỉ số là 0, phần tử thứ hai là 1, và cứ tiếp tục như vậy.</p>
+
+<h2 id="2-cách-khai-báo-và-khởi-tạo-array-trong-c">2. Cách khai báo và khởi tạo Array trong C</h2>
+
+<h3 id="khai-báo-array">Khai báo Array</h3>
+
+<p>Trong C, để khai báo một mảng, bạn cần xác định kiểu dữ liệu và số lượng phần tử của nó. Cú pháp khai báo mảng như sau:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data_type</span> <span class="n">array_name</span><span class="p">[</span><span class="n">array_size</span><span class="p">];</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>data_type</strong>: Kiểu dữ liệu của các phần tử trong mảng (ví dụ: <code class="language-plaintext highlighter-rouge">int</code>, <code class="language-plaintext highlighter-rouge">float</code>, <code class="language-plaintext highlighter-rouge">char</code>).</li>
+  <li><strong>array_name</strong>: Tên của mảng.</li>
+  <li><strong>array_size</strong>: Kích thước của mảng (số lượng phần tử).</li>
+</ul>
+
+<p>Ví dụ, khai báo một mảng <code class="language-plaintext highlighter-rouge">int</code> với 5 phần tử:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+</code></pre></div></div>
+
+<h3 id="khởi-tạo-array">Khởi tạo Array</h3>
+
+<p>Bạn có thể khởi tạo mảng khi khai báo hoặc gán giá trị cho từng phần tử sau khi khai báo.</p>
+
+<ul>
+  <li><strong>Khởi tạo khi khai báo</strong>:</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
+</code></pre></div></div>
+
+<ul>
+  <li><strong>Khởi tạo một phần tử cụ thể</strong>:</li>
+</ul>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">numbers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">numbers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Nếu bạn không cung cấp đủ giá trị cho tất cả phần tử, các phần tử còn lại sẽ được khởi tạo bằng 0:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">};</span> <span class="c1">// [1, 2, 0, 0, 0]</span>
+</code></pre></div></div>
+
+<h2 id="3-truy-cập-các-phần-tử-trong-array">3. Truy cập các phần tử trong Array</h2>
+
+<p>Để truy cập các phần tử trong mảng, bạn sử dụng cú pháp chỉ số với dấu ngoặc vuông <code class="language-plaintext highlighter-rouge">[]</code>:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">// Truy cập phần tử đầu tiên</span>
+</code></pre></div></div>
+
+<p>Bạn có thể thay đổi giá trị của phần tử:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">numbers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="c1">// Đặt phần tử thứ 3 bằng 10</span>
+</code></pre></div></div>
+
+<h2 id="4-vòng-lặp-và-array">4. Vòng lặp và Array</h2>
+
+<p>Mảng và vòng lặp thường được sử dụng cùng nhau để thao tác trên từng phần tử trong mảng. Đây là ví dụ sử dụng vòng lặp <code class="language-plaintext highlighter-rouge">for</code> để in ra tất cả phần tử trong mảng:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">numbers</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="5-các-loại-array-trong-c">5. Các loại Array trong C</h2>
+
+<p>C hỗ trợ nhiều loại mảng, từ mảng một chiều đơn giản đến mảng nhiều chiều phức tạp.</p>
+
+<h3 id="1-mảng-một-chiều">1. Mảng một chiều</h3>
+
+<p>Mảng một chiều chỉ có một hàng các phần tử và được khai báo như đã giới thiệu ở trên.</p>
+
+<h3 id="2-mảng-hai-chiều">2. Mảng hai chiều</h3>
+
+<p>Mảng hai chiều, hay ma trận, thường được sử dụng để lưu trữ dữ liệu dạng bảng. Bạn khai báo mảng hai chiều bằng cách chỉ định số hàng và số cột:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">},</span>
+    <span class="p">{</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">},</span>
+    <span class="p">{</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Để truy cập một phần tử trong mảng hai chiều, bạn cần chỉ định cả chỉ số hàng và chỉ số cột:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">value</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">];</span> <span class="c1">// Giá trị là 6</span>
+</code></pre></div></div>
+
+<h3 id="3-mảng-đa-chiều">3. Mảng đa chiều</h3>
+
+<p>Mảng đa chiều có thể có nhiều hơn hai chiều. Mảng này ít phổ biến hơn trong thực tế nhưng hữu ích trong các ứng dụng đặc biệt, chẳng hạn lưu trữ dữ liệu 3D.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">3</span><span class="p">][</span><span class="mi">4</span><span class="p">];</span> <span class="c1">// Mảng 3 chiều</span>
+</code></pre></div></div>
+
+<h2 id="6-con-trỏ-và-array">6. Con trỏ và Array</h2>
+
+<p>Trong C, tên của mảng thực chất là một con trỏ đến phần tử đầu tiên của mảng. Điều này có nghĩa là bạn có thể sử dụng con trỏ để thao tác với mảng.</p>
+
+<p>Ví dụ, bạn có thể dùng con trỏ để truy cập các phần tử của mảng:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">numbers</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
+<span class="kt">int</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="n">numbers</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">ptr</span> <span class="o">+</span> <span class="n">i</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="7-ưu-và-nhược-điểm-của-array-trong-c">7. Ưu và Nhược điểm của Array trong C</h2>
+
+<h3 id="ưu-điểm">Ưu điểm</h3>
+<ul>
+  <li><strong>Truy cập nhanh</strong>: Mảng cho phép truy cập trực tiếp đến từng phần tử thông qua chỉ số, giúp truy cập nhanh chóng.</li>
+  <li><strong>Quản lý dữ liệu dễ dàng</strong>: Mảng giúp nhóm các giá trị có cùng kiểu dữ liệu trong một biến duy nhất, tiện lợi khi thao tác với dữ liệu.</li>
+</ul>
+
+<h3 id="nhược-điểm">Nhược điểm</h3>
+<ul>
+  <li><strong>Kích thước cố định</strong>: Khi khai báo, kích thước của mảng phải cố định và không thể thay đổi sau đó.</li>
+  <li><strong>Lãng phí bộ nhớ</strong>: Nếu khai báo mảng lớn mà chỉ sử dụng một phần nhỏ, bộ nhớ sẽ bị lãng phí.</li>
+</ul>
+
+<h2 id="8-các-kỹ-thuật-và-thủ-thuật-với-array-trong-c">8. Các Kỹ thuật và Thủ thuật với Array trong C</h2>
+
+<h3 id="tìm-phần-tử-lớn-nhấtnhỏ-nhất-trong-mảng">Tìm phần tử lớn nhất/nhỏ nhất trong mảng</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="nf">findMax</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">max</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">max</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="sắp-xếp-mảng">Sắp xếp mảng</h3>
+
+<p>Các thuật toán sắp xếp phổ biến như <strong>Bubble Sort</strong>, <strong>Selection Sort</strong>, hoặc <strong>Quick Sort</strong> thường được áp dụng để sắp xếp các phần tử trong mảng.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">bubbleSort</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">size</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+                <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+                <span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+                <span class="n">arr</span><span class="p">[</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="đảo-ngược-mảng">Đảo ngược mảng</h3>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">reverseArray</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">size</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+        <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">size</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">];</span>
+        <span class="n">arr</span><span class="p">[</span><span class="n">size</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="9-kết-luận">9. Kết luận</h2>
+
+<p>Mảng là một trong những cấu trúc dữ liệu cơ bản và quan trọng nhất trong ngôn ngữ lập trình C. Hiểu rõ cách khai báo, khởi tạo, và thao tác với mảng giúp bạn tối ưu hóa mã và quản lý dữ liệu hiệu quả. Mặc dù mảng có nhược điểm, đặc biệt là kích thước cố định, nhưng với các kỹ thuật như sử dụng con trỏ hoặc các thuật toán sắp xếp, tìm kiếm, bạn có thể khai thác tối đa sức mạnh của mảng trong lập trình C.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Tâm's Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Tâm's Blog</li>
+          <li><a href="mailto:vovantam.dev@gmail.com">vovantam.dev@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://gitlab.com/vovantamvn"><span class="icon icon--gitlab"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.97 9.058l-.895-2.756L13.3.842c-.09-.282-.488-.282-.58 0L10.946 6.3H5.054L3.28.842C3.188.56 2.79.56 2.7.84L.924 6.3.03 9.058c-.082.25.008.526.22.682L8 15.37l7.75-5.63c.212-.156.302-.43.22-.682"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/vovantamvn"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Ghi lại những gì đã học được là sở thích của mình.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

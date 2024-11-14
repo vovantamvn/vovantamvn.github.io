@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Giải Pháp Cho Bài Toán Mã Đi Tuần (Knight&#39;s Tour) Trong Lập Trình C - Hướng Dẫn Từng Bước và Ví Dụ</title>
+  <meta name="description" content="Bài toán Mã Đi Tuần (Knight’s Tour) là một bài toán kinh điển trong lý thuyết đồ thị và thuật toán, thường được áp dụng trong các chương trình lập trình nhằm...">
+  
+  <link rel="shortcut icon" type="image/png" href="/assets/images/photo.jpg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://vovantamvn.github.io/technical/giai-phap-cho-bai-toan-ma-di-tuan-knight-s-tour-trong-lap-trinh-c-huong-dan-tung-buoc-va-vi-du.html">
+  <link rel="alternate" type="application/rss+xml" title="Tâm's Blog" href="https://vovantamvn.github.io/feed.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0EM3PWHD1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M0EM3PWHD1');
+  </script>
+
+  <!-- Google Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2360531707906785" crossorigin="anonymous"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Tâm's Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about.html">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/password-generator.html">Password Generator</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Giải Pháp Cho Bài Toán Mã Đi Tuần (Knight's Tour) Trong Lập Trình C - Hướng Dẫn Từng Bước và Ví Dụ</h1>
+    <p class="post-meta"><time datetime="2024-11-13T00:00:00+00:00" itemprop="datePublished">Nov 13, 2024</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Bài toán <strong>Mã Đi Tuần</strong> (Knight’s Tour) là một bài toán kinh điển trong lý thuyết đồ thị và thuật toán, thường được áp dụng trong các chương trình lập trình nhằm rèn luyện tư duy logic và khả năng tối ưu hóa thuật toán. Đây là một trong những bài toán thử thách liên quan đến cách mà quân mã di chuyển trên bàn cờ vua sao cho đi qua tất cả các ô đúng một lần mà không lặp lại ô nào. Trong bài viết này, chúng ta sẽ cùng khám phá cách giải bài toán này bằng ngôn ngữ C, với các bước hướng dẫn chi tiết và tối ưu hóa để đạt hiệu quả cao nhất.</p>
+
+<hr />
+
+<h2 id="mục-lục">Mục Lục</h2>
+
+<ol>
+  <li><a href="#mã-đi-tuần-là-gì">Mã Đi Tuần Là Gì?</a></li>
+  <li><a href="#cách-giải-bài-toán-mã-đi-tuần">Cách Giải Bài Toán Mã Đi Tuần</a></li>
+  <li><a href="#thuật-toán-backtracking-trong-bài-toán-mã-đi-tuần">Thuật Toán Backtracking Trong Bài Toán Mã Đi Tuần</a></li>
+  <li><a href="#cài-đặt-mã-nguồn-bài-toán-mã-đi-tuần-trong-c">Cài Đặt Mã Nguồn Bài Toán Mã Đi Tuần Trong C</a></li>
+  <li><a href="#tối-ưu-hóa-thuật-toán-mã-đi-tuần">Tối Ưu Hóa Thuật Toán Mã Đi Tuần</a></li>
+  <li><a href="#kết-luận">Kết Luận</a></li>
+</ol>
+
+<hr />
+
+<h3 id="mã-đi-tuần-là-gì">Mã Đi Tuần Là Gì?</h3>
+
+<p>Bài toán mã đi tuần yêu cầu quân mã trên bàn cờ vua (8x8) di chuyển sao cho đi qua tất cả các ô đúng một lần và không lặp lại. Một nước đi hợp lệ của quân mã tuân theo quy tắc sau: từ một ô, quân mã có thể di chuyển theo hình chữ “L” đến ô tiếp theo (hai ô theo một hướng và một ô theo hướng vuông góc).</p>
+
+<h3 id="cách-giải-bài-toán-mã-đi-tuần">Cách Giải Bài Toán Mã Đi Tuần</h3>
+
+<p>Để giải quyết bài toán mã đi tuần, chúng ta có thể áp dụng <strong>thuật toán quay lui (backtracking)</strong> - một phương pháp mạnh mẽ để thử và kiểm tra các khả năng di chuyển khác nhau. Thuật toán này tìm kiếm theo chiều sâu, thử di chuyển quân mã đến tất cả các ô có thể, và nếu gặp bế tắc (tất cả ô tiếp theo đã đi qua), nó sẽ quay lui để thử hướng đi khác.</p>
+
+<h3 id="thuật-toán-backtracking-trong-bài-toán-mã-đi-tuần">Thuật Toán Backtracking Trong Bài Toán Mã Đi Tuần</h3>
+
+<ol>
+  <li><strong>Bắt đầu từ một ô khởi đầu</strong> (thường là góc trên bên trái).</li>
+  <li><strong>Thử di chuyển</strong> quân mã theo từng hướng hợp lệ.</li>
+  <li><strong>Đánh dấu ô</strong> đã đi qua bằng cách lưu số bước.</li>
+  <li>Nếu tất cả các ô trên bàn cờ đều đã đi qua, thuật toán dừng lại và hiển thị kết quả. Nếu gặp bế tắc (tức không thể đi tiếp từ một ô), quay lui về ô trước đó để thử hướng khác.</li>
+</ol>
+
+<hr />
+
+<h3 id="cài-đặt-mã-nguồn-bài-toán-mã-đi-tuần-trong-c">Cài Đặt Mã Nguồn Bài Toán Mã Đi Tuần Trong C</h3>
+
+<p>Dưới đây là chương trình C đơn giản để giải bài toán mã đi tuần bằng thuật toán backtracking.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="cp">#define N 8
+</span>
+<span class="c1">// Mảng chứa 8 hướng di chuyển hợp lệ của quân mã</span>
+<span class="kt">int</span> <span class="n">dx</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">};</span>
+<span class="kt">int</span> <span class="n">dy</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">};</span>
+
+<span class="c1">// Kiểm tra xem quân mã có thể di chuyển đến ô (x, y) không</span>
+<span class="kt">int</span> <span class="nf">isSafe</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">board</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">board</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Hàm in ra bàn cờ kết quả</span>
+<span class="kt">void</span> <span class="nf">printSolution</span><span class="p">(</span><span class="kt">int</span> <span class="n">board</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">y</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%2d "</span><span class="p">,</span> <span class="n">board</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Hàm backtracking giải bài toán mã đi tuần</span>
+<span class="kt">int</span> <span class="nf">solveKTUtil</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">movei</span><span class="p">,</span> <span class="kt">int</span> <span class="n">board</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">],</span> <span class="kt">int</span> <span class="n">dx</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">dy</span><span class="p">[])</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="n">next_x</span><span class="p">,</span> <span class="n">next_y</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">movei</span> <span class="o">==</span> <span class="n">N</span> <span class="o">*</span> <span class="n">N</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">next_x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+        <span class="n">next_y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">isSafe</span><span class="p">(</span><span class="n">next_x</span><span class="p">,</span> <span class="n">next_y</span><span class="p">,</span> <span class="n">board</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">next_x</span><span class="p">][</span><span class="n">next_y</span><span class="p">]</span> <span class="o">=</span> <span class="n">movei</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">solveKTUtil</span><span class="p">(</span><span class="n">next_x</span><span class="p">,</span> <span class="n">next_y</span><span class="p">,</span> <span class="n">movei</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">board</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+            <span class="k">else</span>
+                <span class="n">board</span><span class="p">[</span><span class="n">next_x</span><span class="p">][</span><span class="n">next_y</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// Hủy bỏ bước đi trước khi quay lui</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Hàm chính khởi tạo bàn cờ và giải bài toán mã đi tuần</span>
+<span class="kt">int</span> <span class="nf">solveKT</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">board</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="n">N</span><span class="p">];</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">x</span><span class="o">++</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">;</span> <span class="n">y</span><span class="o">++</span><span class="p">)</span>
+            <span class="n">board</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">startX</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">startY</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// Khởi đầu từ góc trên bên trái</span>
+    <span class="n">board</span><span class="p">[</span><span class="n">startX</span><span class="p">][</span><span class="n">startY</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">solveKTUtil</span><span class="p">(</span><span class="n">startX</span><span class="p">,</span> <span class="n">startY</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">board</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Không tồn tại giải pháp.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span>
+        <span class="n">printSolution</span><span class="p">(</span><span class="n">board</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">solveKT</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="giải-thích-mã-nguồn">Giải Thích Mã Nguồn:</h4>
+
+<ol>
+  <li><strong>Mảng <code class="language-plaintext highlighter-rouge">dx</code> và <code class="language-plaintext highlighter-rouge">dy</code></strong>: Chứa các hướng di chuyển hợp lệ của quân mã.</li>
+  <li><strong>Hàm <code class="language-plaintext highlighter-rouge">isSafe</code></strong>: Kiểm tra xem bước đi có hợp lệ không.</li>
+  <li><strong>Hàm <code class="language-plaintext highlighter-rouge">solveKTUtil</code></strong>: Hàm đệ quy chính để tìm giải pháp với thuật toán backtracking.</li>
+  <li><strong>Hàm <code class="language-plaintext highlighter-rouge">solveKT</code></strong>: Khởi tạo bàn cờ và gọi hàm giải bài toán mã đi tuần.</li>
+</ol>
+
+<hr />
+
+<h3 id="tối-ưu-hóa-thuật-toán-mã-đi-tuần">Tối Ưu Hóa Thuật Toán Mã Đi Tuần</h3>
+
+<p>Bài toán mã đi tuần có thể được tối ưu hóa bằng <strong>thuật toán Heuristic Warnsdorff</strong> - một chiến lược thông minh giúp giảm thiểu số bước đi thử bằng cách ưu tiên di chuyển đến các ô có ít lựa chọn di chuyển nhất trong bước tiếp theo. Điều này làm tăng khả năng hoàn thành hành trình mà không gặp bế tắc.</p>
+
+<h3 id="các-bước-thực-hiện">Các Bước Thực Hiện:</h3>
+
+<ol>
+  <li>Với mỗi ô hợp lệ có thể đi đến, tính số bước có thể thực hiện tiếp từ ô đó.</li>
+  <li>Di chuyển đến ô có ít lựa chọn di chuyển nhất.</li>
+  <li>Cập nhật lại các lựa chọn cho bước tiếp theo và tiếp tục cho đến khi hoàn thành bàn cờ.</li>
+</ol>
+
+<hr />
+
+<h3 id="kết-luận">Kết Luận</h3>
+
+<p>Bài toán mã đi tuần không chỉ là một bài toán kinh điển trong lập trình mà còn là bài toán thực tế giúp rèn luyện khả năng tối ưu hóa và tư duy thuật toán. Bằng cách áp dụng <strong>thuật toán backtracking</strong> hoặc <strong>Heuristic Warnsdorff</strong>, bạn có thể giải bài toán này một cách hiệu quả.</p>
+
+<p>Hy vọng qua bài viết này, bạn có thể hiểu rõ hơn về bài toán mã đi tuần và tự mình triển khai giải pháp với ngôn ngữ C.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Tâm's Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Tâm's Blog</li>
+          <li><a href="mailto:vovantam.dev@gmail.com">vovantam.dev@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://gitlab.com/vovantamvn"><span class="icon icon--gitlab"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.97 9.058l-.895-2.756L13.3.842c-.09-.282-.488-.282-.58 0L10.946 6.3H5.054L3.28.842C3.188.56 2.79.56 2.7.84L.924 6.3.03 9.058c-.082.25.008.526.22.682L8 15.37l7.75-5.63c.212-.156.302-.43.22-.682"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/vovantamvn"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Ghi lại những gì đã học được là sở thích của mình.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

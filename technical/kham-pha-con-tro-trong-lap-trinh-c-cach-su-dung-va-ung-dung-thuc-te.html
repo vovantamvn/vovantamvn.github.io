@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Khám Phá Con Trỏ Trong Lập Trình C - Cách Sử Dụng Và Ứng Dụng Thực Tế</title>
+  <meta name="description" content="Trong ngôn ngữ lập trình C, con trỏ (pointer) là một trong những khái niệm quan trọng nhất mà bất kỳ lập trình viên nào cũng cần nắm vững. Con trỏ không chỉ ...">
+  
+  <link rel="shortcut icon" type="image/png" href="/assets/images/photo.jpg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://vovantamvn.github.io/technical/kham-pha-con-tro-trong-lap-trinh-c-cach-su-dung-va-ung-dung-thuc-te.html">
+  <link rel="alternate" type="application/rss+xml" title="Tâm's Blog" href="https://vovantamvn.github.io/feed.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0EM3PWHD1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M0EM3PWHD1');
+  </script>
+
+  <!-- Google Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2360531707906785" crossorigin="anonymous"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Tâm's Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about.html">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/password-generator.html">Password Generator</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Khám Phá Con Trỏ Trong Lập Trình C - Cách Sử Dụng Và Ứng Dụng Thực Tế</h1>
+    <p class="post-meta"><time datetime="2024-11-10T00:00:00+00:00" itemprop="datePublished">Nov 10, 2024</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Trong ngôn ngữ lập trình C, con trỏ (pointer) là một trong những khái niệm quan trọng nhất mà bất kỳ lập trình viên nào cũng cần nắm vững. Con trỏ không chỉ giúp quản lý bộ nhớ hiệu quả mà còn mở ra các khả năng xử lý dữ liệu linh hoạt hơn. Bài viết này sẽ giúp bạn hiểu rõ khái niệm, cách khai báo, sử dụng con trỏ, cũng như các ứng dụng thực tế của chúng trong lập trình C.</p>
+
+<h2 id="1-con-trỏ-là-gì">1. Con Trỏ Là Gì?</h2>
+
+<p><strong>Con trỏ</strong> là một biến đặc biệt trong C dùng để lưu trữ địa chỉ của một biến khác. Con trỏ không lưu giá trị cụ thể của biến mà chỉ lưu địa chỉ của biến đó trong bộ nhớ. Để khai báo con trỏ, chúng ta sử dụng dấu <code class="language-plaintext highlighter-rouge">*</code>.</p>
+
+<p>Ví dụ:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="kt">int</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">;</span> <span class="c1">// ptr là con trỏ trỏ đến biến a</span>
+</code></pre></div></div>
+
+<p>Ở đây, <code class="language-plaintext highlighter-rouge">ptr</code> là một con trỏ lưu địa chỉ của biến <code class="language-plaintext highlighter-rouge">a</code>. Dấu <code class="language-plaintext highlighter-rouge">&amp;</code> được sử dụng để lấy địa chỉ của biến <code class="language-plaintext highlighter-rouge">a</code>.</p>
+
+<h2 id="2-tại-sao-con-trỏ-quan-trọng">2. Tại Sao Con Trỏ Quan Trọng?</h2>
+
+<p>Con trỏ rất quan trọng vì chúng giúp thực hiện các thao tác như:</p>
+
+<ul>
+  <li><strong>Quản lý bộ nhớ động</strong>: Sử dụng hàm <code class="language-plaintext highlighter-rouge">malloc</code> và <code class="language-plaintext highlighter-rouge">free</code> để cấp phát và giải phóng bộ nhớ trong thời gian chạy.</li>
+  <li><strong>Truyền tham chiếu</strong>: Con trỏ giúp truyền tham chiếu cho hàm, giúp hàm có thể thay đổi giá trị của biến gốc.</li>
+  <li><strong>Xử lý cấu trúc dữ liệu phức tạp</strong>: Như danh sách liên kết, cây nhị phân, đồ thị.</li>
+  <li><strong>Tối ưu hóa hiệu suất</strong>: Giảm bớt sao chép dữ liệu trong các chương trình lớn.</li>
+</ul>
+
+<h2 id="3-cách-khai-báo-và-khởi-tạo-con-trỏ">3. Cách Khai Báo và Khởi Tạo Con Trỏ</h2>
+
+<p>Để khai báo một con trỏ, bạn cần chỉ định kiểu dữ liệu mà nó sẽ trỏ tới. Dưới đây là ví dụ:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="o">*</span><span class="n">p</span><span class="p">;</span>     <span class="c1">// con trỏ trỏ đến kiểu int</span>
+<span class="kt">float</span> <span class="o">*</span><span class="n">f</span><span class="p">;</span>   <span class="c1">// con trỏ trỏ đến kiểu float</span>
+<span class="kt">char</span> <span class="o">*</span><span class="n">c</span><span class="p">;</span>    <span class="c1">// con trỏ trỏ đến kiểu char</span>
+</code></pre></div></div>
+
+<p>Một con trỏ chưa được khởi tạo sẽ lưu một giá trị ngẫu nhiên. Do đó, luôn khởi tạo con trỏ về <code class="language-plaintext highlighter-rouge">NULL</code> trước khi sử dụng để tránh các lỗi không mong muốn.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+</code></pre></div></div>
+
+<h2 id="4-toán-tử--và--trong-con-trỏ">4. Toán Tử <code class="language-plaintext highlighter-rouge">&amp;</code> và <code class="language-plaintext highlighter-rouge">*</code> trong Con Trỏ</h2>
+
+<ul>
+  <li><strong>Toán tử <code class="language-plaintext highlighter-rouge">&amp;</code></strong>: Dùng để lấy địa chỉ của một biến.</li>
+  <li><strong>Toán tử <code class="language-plaintext highlighter-rouge">*</code></strong>: Dùng để truy xuất giá trị tại địa chỉ mà con trỏ đang trỏ tới (được gọi là dereferencing).</li>
+</ul>
+
+<p>Ví dụ:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="kt">int</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">;</span>
+
+<span class="n">printf</span><span class="p">(</span><span class="s">"Giá trị của x: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="n">ptr</span><span class="p">);</span>  <span class="c1">// Kết quả là 5</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">"Địa chỉ của x: %p</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ptr</span><span class="p">);</span>   <span class="c1">// In ra địa chỉ của x</span>
+</code></pre></div></div>
+
+<h2 id="5-con-trỏ-null">5. Con Trỏ NULL</h2>
+
+<p>Con trỏ NULL là con trỏ không trỏ đến bất kỳ địa chỉ hợp lệ nào trong bộ nhớ. Trong nhiều tình huống, việc kiểm tra một con trỏ có phải là NULL hay không giúp tránh được lỗi truy xuất bộ nhớ không hợp lệ.</p>
+
+<p>Ví dụ:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">ptr</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Con trỏ không phải là NULL</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Con trỏ đang trỏ đến NULL</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="6-con-trỏ-và-mảng">6. Con Trỏ và Mảng</h2>
+
+<p>Con trỏ có mối quan hệ đặc biệt với mảng. Tên mảng trong C thực chất là địa chỉ của phần tử đầu tiên trong mảng, do đó chúng ta có thể sử dụng con trỏ để thao tác với các phần tử trong mảng.</p>
+
+<p>Ví dụ:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">int</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
+<span class="kt">int</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="n">arr</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Phần tử %d: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">ptr</span> <span class="o">+</span> <span class="n">i</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="7-con-trỏ-hàm">7. Con Trỏ Hàm</h2>
+
+<p>Con trỏ hàm là một loại con trỏ đặc biệt, lưu địa chỉ của hàm thay vì biến. Nó cho phép bạn gọi một hàm thông qua địa chỉ của nó, điều này rất hữu ích khi làm việc với callback hoặc các hàm được truyền vào như tham số.</p>
+
+<p>Ví dụ:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">void</span> <span class="nf">greet</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Xin chào!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">ptr</span><span class="p">)()</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">greet</span><span class="p">;</span>
+    <span class="p">(</span><span class="o">*</span><span class="n">ptr</span><span class="p">)();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="8-cấp-phát-bộ-nhớ-động-với-con-trỏ">8. Cấp Phát Bộ Nhớ Động với Con Trỏ</h2>
+
+<p>Trong C, chúng ta có thể cấp phát bộ nhớ động cho các con trỏ bằng cách sử dụng các hàm <code class="language-plaintext highlighter-rouge">malloc</code>, <code class="language-plaintext highlighter-rouge">calloc</code>, và giải phóng bộ nhớ bằng <code class="language-plaintext highlighter-rouge">free</code>.</p>
+
+<p>Ví dụ:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span> <span class="c1">// Cấp phát bộ nhớ cho mảng 5 số nguyên</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">ptr</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Không thể cấp phát bộ nhớ</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Phần tử %d: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">ptr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="n">free</span><span class="p">(</span><span class="n">ptr</span><span class="p">);</span> <span class="c1">// Giải phóng bộ nhớ</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="9-con-trỏ-đến-con-trỏ-double-pointer">9. Con Trỏ Đến Con Trỏ (Double Pointer)</h2>
+
+<p>Con trỏ đến con trỏ là một khái niệm phức tạp hơn. Một con trỏ đến con trỏ lưu địa chỉ của một con trỏ khác, được sử dụng rộng rãi trong các chương trình phức tạp như quản lý mảng con trỏ hoặc các cấu trúc dữ liệu động.</p>
+
+<p>Ví dụ:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">x</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="o">**</span><span class="n">ptr2</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">ptr</span><span class="p">;</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Giá trị của x: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">**</span><span class="n">ptr2</span><span class="p">);</span> <span class="c1">// Kết quả là 10</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="10-các-lỗi-phổ-biến-khi-làm-việc-với-con-trỏ">10. Các Lỗi Phổ Biến Khi Làm Việc Với Con Trỏ</h2>
+
+<ul>
+  <li><strong>Truy cập con trỏ NULL</strong>: Dẫn đến lỗi truy cập bộ nhớ không hợp lệ.</li>
+  <li><strong>Rò rỉ bộ nhớ</strong>: Quên giải phóng bộ nhớ đã cấp phát động sau khi sử dụng, gây rò rỉ bộ nhớ.</li>
+  <li><strong>Sử dụng con trỏ không hợp lệ</strong>: Đọc hoặc ghi dữ liệu từ một con trỏ đã được giải phóng hoặc chưa được khởi tạo.</li>
+  <li><strong>Truy cập vùng nhớ ngoài giới hạn</strong>: Truy cập phần tử ngoài phạm vi mảng khi làm việc với con trỏ và mảng.</li>
+</ul>
+
+<h2 id="11-ứng-dụng-của-con-trỏ-trong-thực-tế">11. Ứng Dụng Của Con Trỏ Trong Thực Tế</h2>
+
+<p>Con trỏ đóng vai trò quan trọng trong nhiều ứng dụng thực tế, từ xử lý chuỗi ký tự, quản lý bộ nhớ, đến các cấu trúc dữ liệu phức tạp.</p>
+
+<h4 id="quản-lý-chuỗi-ký-tự">Quản lý chuỗi ký tự</h4>
+
+<p>Con trỏ được sử dụng rộng rãi trong xử lý chuỗi ký tự vì các chuỗi trong C thực chất là mảng ký tự. Với con trỏ, bạn có thể duyệt qua các ký tự, so sánh hoặc thay đổi chuỗi.</p>
+
+<h4 id="xây-dựng-các-cấu-trúc-dữ-liệu-phức-tạp">Xây dựng các cấu trúc dữ liệu phức tạp</h4>
+
+<p>Con trỏ là nền tảng để xây dựng các cấu trúc dữ liệu động như danh sách liên kết, cây, và đồ thị. Chúng cho phép quản lý bộ nhớ hiệu quả, giúp tiết kiệm không gian bộ nhớ.</p>
+
+<h4 id="lập-trình-hệ-thống-và-nhúng">Lập trình hệ thống và nhúng</h4>
+
+<p>Trong lập trình hệ thống và lập trình nhúng, con trỏ giúp truy cập và điều khiển các vùng nhớ cụ thể, tương tác với phần cứng hoặc tối ưu hóa chương trình.</p>
+
+<h2 id="12-kết-luận">12. Kết Luận</h2>
+
+<p>Con trỏ trong C là một khái niệm quan trọng nhưng khá phức tạp. Việc hiểu rõ cách hoạt động của con trỏ, cách khai báo, sử dụng cũng như tránh các lỗi phổ biến khi làm việc với con trỏ là bước đầu tiên để trở thành một lập trình viên C giỏi. Bằng cách thành thạo con trỏ, bạn sẽ có thể viết các chương trình hiệu quả, tối ưu và linh hoạt hơn, đặc biệt trong các dự án đòi hỏi sự quản lý bộ nhớ chính xác hoặc xử lý các cấu trúc dữ liệu phức tạp.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Tâm's Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Tâm's Blog</li>
+          <li><a href="mailto:vovantam.dev@gmail.com">vovantam.dev@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://gitlab.com/vovantamvn"><span class="icon icon--gitlab"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.97 9.058l-.895-2.756L13.3.842c-.09-.282-.488-.282-.58 0L10.946 6.3H5.054L3.28.842C3.188.56 2.79.56 2.7.84L.924 6.3.03 9.058c-.082.25.008.526.22.682L8 15.37l7.75-5.63c.212-.156.302-.43.22-.682"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/vovantamvn"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Ghi lại những gì đã học được là sở thích của mình.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

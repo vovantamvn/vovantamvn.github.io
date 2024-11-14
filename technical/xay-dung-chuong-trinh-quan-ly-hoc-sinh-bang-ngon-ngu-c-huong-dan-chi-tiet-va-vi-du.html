@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Xây Dựng Chương Trình Quản Lý Học Sinh Bằng Ngôn Ngữ C - Hướng Dẫn Chi Tiết và Ví Dụ</title>
+  <meta name="description" content="Quản lý học sinh là một bài toán phổ biến trong lĩnh vực lập trình và phát triển phần mềm, đặc biệt trong các ứng dụng liên quan đến giáo dục. Việc xây dựng ...">
+  
+  <link rel="shortcut icon" type="image/png" href="/assets/images/photo.jpg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://vovantamvn.github.io/technical/xay-dung-chuong-trinh-quan-ly-hoc-sinh-bang-ngon-ngu-c-huong-dan-chi-tiet-va-vi-du.html">
+  <link rel="alternate" type="application/rss+xml" title="Tâm's Blog" href="https://vovantamvn.github.io/feed.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0EM3PWHD1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M0EM3PWHD1');
+  </script>
+
+  <!-- Google Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2360531707906785" crossorigin="anonymous"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Tâm's Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about.html">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/password-generator.html">Password Generator</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Xây Dựng Chương Trình Quản Lý Học Sinh Bằng Ngôn Ngữ C - Hướng Dẫn Chi Tiết và Ví Dụ</h1>
+    <p class="post-meta"><time datetime="2024-11-12T00:00:00+00:00" itemprop="datePublished">Nov 12, 2024</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Quản lý học sinh là một bài toán phổ biến trong lĩnh vực lập trình và phát triển phần mềm, đặc biệt trong các ứng dụng liên quan đến giáo dục. Việc xây dựng một chương trình quản lý học sinh bằng ngôn ngữ C không chỉ giúp lưu trữ và quản lý thông tin học sinh dễ dàng, mà còn là một bài tập hữu ích để cải thiện kỹ năng lập trình của bạn. Bài viết này sẽ hướng dẫn bạn cách xây dựng một chương trình quản lý học sinh cơ bản trong C, cùng với các bước cài đặt, mô tả chi tiết, và ví dụ minh họa.</p>
+
+<h2 id="1-giới-thiệu-về-quản-lý-học-sinh-bằng-ngôn-ngữ-c">1. Giới Thiệu Về Quản Lý Học Sinh Bằng Ngôn Ngữ C</h2>
+
+<p>Trong một chương trình quản lý học sinh, chúng ta cần lưu trữ các thông tin cơ bản của từng học sinh như: tên, tuổi, điểm số và các thông tin khác. Thông qua chương trình này, người dùng có thể thêm mới, sửa đổi, tìm kiếm, và xóa thông tin học sinh một cách dễ dàng.</p>
+
+<p>Các bước xây dựng chương trình quản lý học sinh bao gồm:</p>
+<ul>
+  <li>Xác định cấu trúc dữ liệu phù hợp để lưu trữ thông tin học sinh.</li>
+  <li>Tạo các hàm để thêm, sửa, tìm kiếm và xóa thông tin.</li>
+  <li>Xây dựng giao diện cơ bản để người dùng tương tác với chương trình.</li>
+</ul>
+
+<h2 id="2-cấu-trúc-dữ-liệu-cho-quản-lý-học-sinh">2. Cấu Trúc Dữ Liệu cho Quản Lý Học Sinh</h2>
+
+<p>Để lưu trữ thông tin học sinh, chúng ta sử dụng <strong>struct</strong> trong ngôn ngữ C. Struct cho phép chúng ta nhóm các thuộc tính liên quan thành một thực thể duy nhất.</p>
+
+<p>Dưới đây là cấu trúc dữ liệu cơ bản cho một học sinh, bao gồm ID, tên, tuổi và điểm số:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="cp">#define MAX 100
+</span>
+<span class="k">struct</span> <span class="n">Student</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">grade</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Student</span> <span class="n">students</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">student_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Trong đó:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">id</code>: mã số định danh duy nhất cho mỗi học sinh.</li>
+  <li><code class="language-plaintext highlighter-rouge">name</code>: tên học sinh.</li>
+  <li><code class="language-plaintext highlighter-rouge">age</code>: tuổi của học sinh.</li>
+  <li><code class="language-plaintext highlighter-rouge">grade</code>: điểm số của học sinh.</li>
+  <li><code class="language-plaintext highlighter-rouge">students[MAX]</code>: mảng lưu trữ danh sách học sinh, với tối đa 100 học sinh.</li>
+  <li><code class="language-plaintext highlighter-rouge">student_count</code>: đếm số lượng học sinh hiện có trong danh sách.</li>
+</ul>
+
+<h2 id="3-các-chức-năng-của-chương-trình-quản-lý-học-sinh">3. Các Chức Năng Của Chương Trình Quản Lý Học Sinh</h2>
+
+<p>Chúng ta sẽ triển khai các chức năng cơ bản sau đây trong chương trình:</p>
+<ol>
+  <li>Thêm học sinh</li>
+  <li>Hiển thị danh sách học sinh</li>
+  <li>Tìm kiếm học sinh theo ID</li>
+  <li>Sửa thông tin học sinh</li>
+  <li>Xóa học sinh theo ID</li>
+</ol>
+
+<h3 id="31-thêm-học-sinh">3.1 Thêm Học Sinh</h3>
+
+<p>Hàm <code class="language-plaintext highlighter-rouge">addStudent</code> giúp thêm thông tin học sinh mới vào danh sách.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">addStudent</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">student_count</span> <span class="o">&gt;=</span> <span class="n">MAX</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Danh sách học sinh đã đầy!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">struct</span> <span class="n">Student</span> <span class="n">new_student</span><span class="p">;</span>
+    <span class="n">new_student</span><span class="p">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">student_count</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập tên học sinh: "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">" %[^</span><span class="se">\n</span><span class="s">]"</span><span class="p">,</span> <span class="n">new_student</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập tuổi: "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new_student</span><span class="p">.</span><span class="n">age</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập điểm số: "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%f"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">new_student</span><span class="p">.</span><span class="n">grade</span><span class="p">);</span>
+
+    <span class="n">students</span><span class="p">[</span><span class="n">student_count</span><span class="o">++</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_student</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Thêm học sinh thành công!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="32-hiển-thị-danh-sách-học-sinh">3.2 Hiển Thị Danh Sách Học Sinh</h3>
+
+<p>Hàm <code class="language-plaintext highlighter-rouge">displayStudents</code> giúp hiển thị tất cả học sinh có trong danh sách.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">displayStudents</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Danh sách học sinh:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%-5s %-20s %-5s %-5s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="s">"ID"</span><span class="p">,</span> <span class="s">"Tên"</span><span class="p">,</span> <span class="s">"Tuổi"</span><span class="p">,</span> <span class="s">"Điểm"</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">student_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%-5d %-20s %-5d %-5.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">id</span><span class="p">,</span> <span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span><span class="p">,</span> <span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">age</span><span class="p">,</span> <span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">grade</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="33-tìm-kiếm-học-sinh-theo-id">3.3 Tìm Kiếm Học Sinh Theo ID</h3>
+
+<p>Hàm <code class="language-plaintext highlighter-rouge">findStudentById</code> giúp tìm kiếm thông tin học sinh dựa vào ID.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">findStudentById</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập ID học sinh cần tìm: "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">id</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">student_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">id</span> <span class="o">==</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"Học sinh tìm thấy: ID=%d, Tên=%s, Tuổi=%d, Điểm=%.2f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> 
+                    <span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">id</span><span class="p">,</span> <span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span><span class="p">,</span> <span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">age</span><span class="p">,</span> <span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">grade</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Không tìm thấy học sinh với ID %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">id</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="34-sửa-thông-tin-học-sinh">3.4 Sửa Thông Tin Học Sinh</h3>
+
+<p>Hàm <code class="language-plaintext highlighter-rouge">editStudentById</code> giúp chỉnh sửa thông tin của học sinh dựa trên ID.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">editStudentById</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập ID học sinh cần sửa: "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">id</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">student_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">id</span> <span class="o">==</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập tên mới: "</span><span class="p">);</span>
+            <span class="n">scanf</span><span class="p">(</span><span class="s">" %[^</span><span class="se">\n</span><span class="s">]"</span><span class="p">,</span> <span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">name</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập tuổi mới: "</span><span class="p">);</span>
+            <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">age</span><span class="p">);</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập điểm mới: "</span><span class="p">);</span>
+            <span class="n">scanf</span><span class="p">(</span><span class="s">"%f"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">grade</span><span class="p">);</span>
+
+            <span class="n">printf</span><span class="p">(</span><span class="s">"Sửa thông tin học sinh thành công!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Không tìm thấy học sinh với ID %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">id</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="35-xóa-học-sinh-theo-id">3.5 Xóa Học Sinh Theo ID</h3>
+
+<p>Hàm <code class="language-plaintext highlighter-rouge">deleteStudentById</code> giúp xóa một học sinh khỏi danh sách dựa trên ID.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">deleteStudentById</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập ID học sinh cần xóa: "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">id</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">found</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">student_count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">id</span> <span class="o">==</span> <span class="n">id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">found</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">found</span> <span class="o">&amp;&amp;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">student_count</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">students</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">students</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">found</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">student_count</span><span class="o">--</span><span class="p">;</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Xóa học sinh thành công!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Không tìm thấy học sinh với ID %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">id</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="4-xây-dựng-giao-diện-điều-khiển-chương-trình">4. Xây Dựng Giao Diện Điều Khiển Chương Trình</h2>
+
+<p>Dưới đây là mã hoàn chỉnh của chương trình, bao gồm cả phần menu để người dùng có thể chọn các chức năng:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="cp">#define MAX 100
+</span>
+<span class="k">struct</span> <span class="n">Student</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+    <span class="kt">float</span> <span class="n">grade</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="k">struct</span> <span class="n">Student</span> <span class="n">students</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">student_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">addStudent</span><span class="p">();</span>
+<span class="kt">void</span> <span class="nf">displayStudents</span><span class="p">();</span>
+<span class="kt">void</span> <span class="nf">findStudentById</span><span class="p">();</span>
+<span class="kt">void</span> <span class="nf">editStudentById</span><span class="p">();</span>
+<span class="kt">void</span> <span class="nf">deleteStudentById</span><span class="p">();</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">choice</span><span class="p">;</span>
+    <span class="k">do</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">--- Quản Lý Học Sinh ---</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"1. Thêm học sinh</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"2. Hiển thị danh sách học sinh</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"3. Tìm kiếm học sinh theo ID</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"4. Sửa thông tin học sinh</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"5. Xóa học sinh theo ID</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"6. Thoát</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Lựa chọn của bạn: "</span><span class="p">);</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">choice</span><span class="p">);</span>
+
+        <span class="k">switch</span> <span class="p">(</span><span class="n">choice</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">addStudent</span><span class="p">();</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">displayStudents</span><span class="p">();</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">findStudentById</span><span class="p">();</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="n">editStudentById</span><span class="p">();</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">5</span><span class="p">:</span>
+                <span class="n">deleteStudentById</span><span class="p">();</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">6</span><span class="p">:</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"Thoát chương trình.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="nl">default:</span>
+                <span class="n">printf</span><span class="p">(</span><span class="s">"Lựa chọn không hợp lệ!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">choice</span> <span class="o">!=</span> <span class="mi">6</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="5-kết-luận">5. Kết Luận</h2>
+
+<p>Trên đây là hướng dẫn chi tiết xây dựng chương trình quản lý học sinh trong ngôn ngữ C. Chương trình này bao gồm các chức năng cơ bản như thêm, sửa, tìm kiếm, xóa và hiển thị danh sách học sinh. Hy vọng qua bài viết này, bạn đã nắm vững cách sử dụng cấu trúc dữ liệu <code class="language-plaintext highlighter-rouge">struct</code>, mảng và cách triển khai một chương trình hoàn chỉnh trong C.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Tâm's Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Tâm's Blog</li>
+          <li><a href="mailto:vovantam.dev@gmail.com">vovantam.dev@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://gitlab.com/vovantamvn"><span class="icon icon--gitlab"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.97 9.058l-.895-2.756L13.3.842c-.09-.282-.488-.282-.58 0L10.946 6.3H5.054L3.28.842C3.188.56 2.79.56 2.7.84L.924 6.3.03 9.058c-.082.25.008.526.22.682L8 15.37l7.75-5.63c.212-.156.302-.43.22-.682"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/vovantamvn"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Ghi lại những gì đã học được là sở thích của mình.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

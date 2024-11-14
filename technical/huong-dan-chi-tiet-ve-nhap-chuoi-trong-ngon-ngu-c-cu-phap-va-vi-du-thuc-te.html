@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Hướng Dẫn Chi Tiết về Nhập Chuỗi trong Ngôn Ngữ C - Cú Pháp và Ví Dụ Thực Tế</title>
+  <meta name="description" content="Nhập chuỗi là một trong những thao tác phổ biến và quan trọng trong lập trình C, đặc biệt khi bạn xây dựng các ứng dụng cần tương tác với người dùng. Chuỗi t...">
+  
+  <link rel="shortcut icon" type="image/png" href="/assets/images/photo.jpg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://vovantamvn.github.io/technical/huong-dan-chi-tiet-ve-nhap-chuoi-trong-ngon-ngu-c-cu-phap-va-vi-du-thuc-te.html">
+  <link rel="alternate" type="application/rss+xml" title="Tâm's Blog" href="https://vovantamvn.github.io/feed.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0EM3PWHD1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M0EM3PWHD1');
+  </script>
+
+  <!-- Google Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2360531707906785" crossorigin="anonymous"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Tâm's Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about.html">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/password-generator.html">Password Generator</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Hướng Dẫn Chi Tiết về Nhập Chuỗi trong Ngôn Ngữ C - Cú Pháp và Ví Dụ Thực Tế</h1>
+    <p class="post-meta"><time datetime="2024-11-12T00:00:00+00:00" itemprop="datePublished">Nov 12, 2024</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Nhập chuỗi là một trong những thao tác phổ biến và quan trọng trong lập trình C, đặc biệt khi bạn xây dựng các ứng dụng cần tương tác với người dùng. Chuỗi trong C không giống với các ngôn ngữ lập trình cấp cao khác; chúng là các mảng ký tự và yêu cầu sự quản lý cẩn thận về bộ nhớ. Bài viết này sẽ giúp bạn hiểu rõ cách nhập chuỗi trong C một cách chi tiết nhất, từ cú pháp cơ bản đến các ví dụ thực tế.</p>
+
+<h2 id="mục-lục">Mục Lục</h2>
+<ol>
+  <li><a href="#chuỗi-trong-c-là-gì">Chuỗi trong C là gì?</a></li>
+  <li><a href="#cách-nhập-chuỗi-trong-c">Cách Nhập Chuỗi trong C</a></li>
+  <li><a href="#các-hàm-nhập-chuỗi-thường-dùng">Các Hàm Nhập Chuỗi Thường Dùng</a></li>
+  <li><a href="#ví-dụ-thực-tế-về-nhập-chuỗi-trong-c">Ví Dụ Thực Tế về Nhập Chuỗi trong C</a></li>
+  <li><a href="#kết-luận">Kết Luận</a></li>
+</ol>
+
+<hr />
+
+<h3 id="chuỗi-trong-c-là-gì">Chuỗi trong C là gì?</h3>
+
+<p>Trong ngôn ngữ C, chuỗi (string) thực chất là một mảng các ký tự được kết thúc bằng ký tự đặc biệt <code class="language-plaintext highlighter-rouge">\0</code>, còn gọi là ký tự null. Chuỗi trong C không phải là kiểu dữ liệu riêng biệt mà được lưu trữ dưới dạng mảng ký tự <code class="language-plaintext highlighter-rouge">char</code>. Ví dụ:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">char</span> <span class="n">str</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="s">"Hello"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Ở đây, <code class="language-plaintext highlighter-rouge">str</code> là một mảng ký tự, chứa chuỗi <code class="language-plaintext highlighter-rouge">"Hello"</code>. Cấu trúc của mảng ký tự này sẽ như sau:</p>
+
+<p>| H | e | l | l | o | \0 |
+|—|—|—|—|—|—-|</p>
+
+<p>Ký tự null <code class="language-plaintext highlighter-rouge">\0</code> được thêm vào cuối chuỗi để đánh dấu điểm kết thúc, giúp trình biên dịch hiểu rằng chuỗi đã kết thúc tại đó.</p>
+
+<hr />
+
+<h3 id="cách-nhập-chuỗi-trong-c">Cách Nhập Chuỗi trong C</h3>
+
+<p>Có một số cách khác nhau để nhập chuỗi trong C, phổ biến nhất là sử dụng các hàm như <code class="language-plaintext highlighter-rouge">scanf</code>, <code class="language-plaintext highlighter-rouge">gets</code>, <code class="language-plaintext highlighter-rouge">fgets</code>, tùy thuộc vào mục đích và yêu cầu của chương trình.</p>
+
+<h3 id="1-nhập-chuỗi-với-scanf">1. Nhập Chuỗi với <code class="language-plaintext highlighter-rouge">scanf</code></h3>
+
+<p>Hàm <code class="language-plaintext highlighter-rouge">scanf</code> là một trong những cách nhập liệu cơ bản trong C. Tuy nhiên, khi sử dụng <code class="language-plaintext highlighter-rouge">scanf</code> để nhập chuỗi, hàm này sẽ dừng ngay khi gặp khoảng trắng, vì vậy <code class="language-plaintext highlighter-rouge">scanf</code> thường không thích hợp để nhập các chuỗi chứa nhiều từ.</p>
+
+<p>Ví dụ:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập tên của bạn: "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%s"</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Xin chào, %s!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Trong ví dụ này, nếu người dùng nhập <code class="language-plaintext highlighter-rouge">"Nguyen Van A"</code>, <code class="language-plaintext highlighter-rouge">scanf</code> chỉ nhận <code class="language-plaintext highlighter-rouge">"Nguyen"</code> vì nó dừng ngay khi gặp khoảng trắng.</p>
+
+<h3 id="2-nhập-chuỗi-với-gets">2. Nhập Chuỗi với <code class="language-plaintext highlighter-rouge">gets</code></h3>
+
+<p>Hàm <code class="language-plaintext highlighter-rouge">gets</code> có thể nhập cả chuỗi có khoảng trắng, nhưng hàm này không an toàn vì không giới hạn độ dài nhập vào, dẫn đến nguy cơ <strong>tràn bộ nhớ</strong> (buffer overflow).</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập tên của bạn: "</span><span class="p">);</span>
+    <span class="n">gets</span><span class="p">(</span><span class="n">name</span><span class="p">);</span> <span class="c1">// Không khuyến khích dùng gets trong thực tế</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Xin chào, %s!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="3-nhập-chuỗi-với-fgets">3. Nhập Chuỗi với <code class="language-plaintext highlighter-rouge">fgets</code></h3>
+
+<p>Hàm <code class="language-plaintext highlighter-rouge">fgets</code> được khuyến khích sử dụng thay cho <code class="language-plaintext highlighter-rouge">gets</code> vì nó an toàn hơn, cho phép giới hạn số lượng ký tự nhập vào và có thể xử lý chuỗi có khoảng trắng.</p>
+
+<p>Cú pháp của <code class="language-plaintext highlighter-rouge">fgets</code> như sau:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fgets</span><span class="p">(</span><span class="n">t</span><span class="err">ê</span><span class="n">n_m</span><span class="err">ả</span><span class="n">ng</span><span class="p">,</span> <span class="n">k</span><span class="err">í</span><span class="n">ch_th</span><span class="err">ướ</span><span class="n">c</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Ví dụ:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập tên của bạn: "</span><span class="p">);</span>
+    <span class="n">fgets</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="n">stdin</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Xin chào, %s"</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Ở đây, <code class="language-plaintext highlighter-rouge">fgets</code> sẽ nhập tối đa 49 ký tự vào <code class="language-plaintext highlighter-rouge">name</code> (vì ký tự cuối dành cho <code class="language-plaintext highlighter-rouge">\0</code>). <code class="language-plaintext highlighter-rouge">fgets</code> cũng bao gồm ký tự xuống dòng (<code class="language-plaintext highlighter-rouge">\n</code>) nếu người dùng nhấn Enter.</p>
+
+<hr />
+
+<h3 id="các-hàm-nhập-chuỗi-thường-dùng">Các Hàm Nhập Chuỗi Thường Dùng</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Hàm</th>
+      <th>Mô tả</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">scanf</code></td>
+      <td>Nhập chuỗi không chứa khoảng trắng.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">gets</code></td>
+      <td>Nhập chuỗi bao gồm khoảng trắng, nhưng không an toàn và không được khuyến khích sử dụng.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">fgets</code></td>
+      <td>Nhập chuỗi an toàn, có thể chứa khoảng trắng, cho phép giới hạn số ký tự nhập vào.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="ví-dụ-thực-tế-về-nhập-chuỗi-trong-c">Ví Dụ Thực Tế về Nhập Chuỗi trong C</h3>
+
+<p>Hãy cùng xem một ví dụ thực tế về chương trình nhập thông tin học sinh bao gồm họ và tên, tuổi, và địa chỉ sử dụng <code class="language-plaintext highlighter-rouge">fgets</code> để xử lý các chuỗi có khoảng trắng.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="k">struct</span> <span class="n">Student</span> <span class="p">{</span>
+    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">address</span><span class="p">[</span><span class="mi">100</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">Student</span> <span class="n">student</span><span class="p">;</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập tên học sinh: "</span><span class="p">);</span>
+    <span class="n">fgets</span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="n">name</span><span class="p">),</span> <span class="n">stdin</span><span class="p">);</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập tuổi học sinh: "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">student</span><span class="p">.</span><span class="n">age</span><span class="p">);</span>
+    <span class="n">getchar</span><span class="p">();</span> <span class="c1">// Xóa bỏ ký tự xuống dòng còn sót trong bộ đệm</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhập địa chỉ: "</span><span class="p">);</span>
+    <span class="n">fgets</span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="n">address</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">student</span><span class="p">.</span><span class="n">address</span><span class="p">),</span> <span class="n">stdin</span><span class="p">);</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Thông tin học sinh:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Tên: %s"</span><span class="p">,</span> <span class="n">student</span><span class="p">.</span><span class="n">name</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Tuổi: %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">student</span><span class="p">.</span><span class="n">age</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Địa chỉ: %s"</span><span class="p">,</span> <span class="n">student</span><span class="p">.</span><span class="n">address</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Trong chương trình trên:</p>
+<ul>
+  <li>Sử dụng <code class="language-plaintext highlighter-rouge">fgets</code> để nhập tên và địa chỉ, giúp nhập chuỗi có khoảng trắng.</li>
+  <li><code class="language-plaintext highlighter-rouge">getchar()</code> dùng để xóa ký tự xuống dòng còn sót trong bộ đệm sau khi nhập tuổi bằng <code class="language-plaintext highlighter-rouge">scanf</code>.</li>
+</ul>
+
+<h3 id="lưu-ý-khi-sử-dụng-chuỗi-trong-c">Lưu Ý Khi Sử Dụng Chuỗi trong C</h3>
+
+<ol>
+  <li><strong>Quản lý bộ nhớ</strong>: Chuỗi trong C yêu cầu quản lý bộ nhớ cẩn thận. Luôn dành đủ không gian để lưu chuỗi, bao gồm ký tự null (<code class="language-plaintext highlighter-rouge">\0</code>) ở cuối.</li>
+  <li><strong>Kiểm tra đầu vào</strong>: Khi nhập chuỗi từ người dùng, kiểm tra đầu vào là rất quan trọng, đặc biệt khi làm việc với chuỗi lớn.</li>
+  <li><strong>Sử dụng hàm an toàn</strong>: Nên sử dụng <code class="language-plaintext highlighter-rouge">fgets</code> thay cho <code class="language-plaintext highlighter-rouge">gets</code> vì nó an toàn hơn.</li>
+</ol>
+
+<hr />
+
+<h3 id="kết-luận">Kết Luận</h3>
+
+<p>Nhập chuỗi trong C là một kỹ năng cơ bản nhưng rất quan trọng khi làm việc với dữ liệu văn bản trong chương trình. Việc hiểu rõ cách nhập và xử lý chuỗi không chỉ giúp bạn xây dựng các chương trình tương tác tốt hơn mà còn giúp tránh được các lỗi phổ biến như tràn bộ nhớ. Hy vọng qua bài viết này, bạn đã nắm được cách nhập chuỗi hiệu quả và an toàn trong ngôn ngữ C.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Tâm's Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Tâm's Blog</li>
+          <li><a href="mailto:vovantam.dev@gmail.com">vovantam.dev@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://gitlab.com/vovantamvn"><span class="icon icon--gitlab"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.97 9.058l-.895-2.756L13.3.842c-.09-.282-.488-.282-.58 0L10.946 6.3H5.054L3.28.842C3.188.56 2.79.56 2.7.84L.924 6.3.03 9.058c-.082.25.008.526.22.682L8 15.37l7.75-5.63c.212-.156.302-.43.22-.682"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/vovantamvn"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Ghi lại những gì đã học được là sở thích của mình.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

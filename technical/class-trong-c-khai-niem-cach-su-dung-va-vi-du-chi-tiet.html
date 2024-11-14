@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Class trong C++ - Khái Niệm, Cách Sử Dụng và Ví Dụ Chi Tiết</title>
+  <meta name="description" content="Mục Lục:">
+  
+  <link rel="shortcut icon" type="image/png" href="/assets/images/photo.jpg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://vovantamvn.github.io/technical/class-trong-c-khai-niem-cach-su-dung-va-vi-du-chi-tiet.html">
+  <link rel="alternate" type="application/rss+xml" title="Tâm's Blog" href="https://vovantamvn.github.io/feed.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0EM3PWHD1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M0EM3PWHD1');
+  </script>
+
+  <!-- Google Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2360531707906785" crossorigin="anonymous"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Tâm's Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about.html">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/password-generator.html">Password Generator</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Class trong C++ - Khái Niệm, Cách Sử Dụng và Ví Dụ Chi Tiết</h1>
+    <p class="post-meta"><time datetime="2024-11-14T00:00:00+00:00" itemprop="datePublished">Nov 14, 2024</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><strong>Mục Lục:</strong></p>
+
+<ol>
+  <li>Class trong C++ là gì?</li>
+  <li>Cấu trúc của một Class trong C++</li>
+  <li>Tính chất của Class: Thuộc tính và Phương thức</li>
+  <li>Tính đóng gói (Encapsulation) trong Class</li>
+  <li>Tạo và sử dụng đối tượng từ Class</li>
+  <li>Ví dụ về Class trong C++</li>
+  <li>Tính kế thừa (Inheritance) và tính đa hình (Polymorphism)</li>
+  <li>Lợi ích của Class trong lập trình C++</li>
+  <li>Kết luận</li>
+</ol>
+
+<hr />
+
+<h2 id="1-class-trong-c-là-gì">1. Class trong C++ là gì?</h2>
+
+<p>Class (lớp) trong C++ là một thành phần cơ bản trong lập trình hướng đối tượng (OOP), giúp tổ chức và quản lý dữ liệu, cũng như các chức năng xử lý dữ liệu liên quan. Class có thể coi như một bản mẫu để tạo ra các đối tượng (object), nơi mà mỗi đối tượng đều có các thuộc tính (attributes) và phương thức (methods) riêng.</p>
+
+<hr />
+
+<h2 id="2-cấu-trúc-của-một-class-trong-c">2. Cấu trúc của một Class trong C++</h2>
+
+<p>Một class trong C++ có cấu trúc cơ bản bao gồm:</p>
+
+<ul>
+  <li><strong>Tên class</strong>: Đại diện cho tên của lớp, phải tuân thủ quy tắc đặt tên.</li>
+  <li><strong>Thuộc tính (Attributes)</strong>: Các biến thành viên của class, đại diện cho các đặc điểm của đối tượng.</li>
+  <li><strong>Phương thức (Methods)</strong>: Các hàm thành viên, đại diện cho các hành động mà đối tượng có thể thực hiện.</li>
+</ul>
+
+<p>Cú pháp khai báo class trong C++ như sau:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">T</span><span class="err">ê</span><span class="n">nClass</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="c1">// Hàm tạo (Constructor)</span>
+    <span class="n">T</span><span class="err">ê</span><span class="n">nClass</span><span class="p">();</span>
+
+    <span class="c1">// Các phương thức (Methods)</span>
+    <span class="kt">void</span> <span class="n">method</span><span class="p">();</span>
+
+<span class="nl">private:</span>
+    <span class="c1">// Các thuộc tính (Attributes)</span>
+    <span class="kt">int</span> <span class="n">thu</span><span class="err">ộ</span><span class="n">cT</span><span class="err">í</span><span class="n">nh</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="3-tính-chất-của-class-thuộc-tính-và-phương-thức">3. Tính chất của Class: Thuộc tính và Phương thức</h2>
+
+<ul>
+  <li><strong>Thuộc tính</strong> là các biến bên trong class dùng để lưu trữ dữ liệu. Ví dụ, một class <code class="language-plaintext highlighter-rouge">Student</code> có thể có thuộc tính <code class="language-plaintext highlighter-rouge">name</code>, <code class="language-plaintext highlighter-rouge">age</code>.</li>
+  <li><strong>Phương thức</strong> là các hàm được khai báo trong class để thực hiện các chức năng. Ví dụ, một class <code class="language-plaintext highlighter-rouge">Student</code> có thể có phương thức <code class="language-plaintext highlighter-rouge">study()</code>.</li>
+</ul>
+
+<hr />
+
+<h2 id="4-tính-đóng-gói-encapsulation-trong-class">4. Tính đóng gói (Encapsulation) trong Class</h2>
+
+<p>Tính đóng gói là việc bảo vệ dữ liệu trong class bằng cách sử dụng các từ khóa truy cập như <code class="language-plaintext highlighter-rouge">private</code>, <code class="language-plaintext highlighter-rouge">protected</code>, và <code class="language-plaintext highlighter-rouge">public</code>. Trong đó:</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">private</code></strong>: Chỉ các thành viên của class có thể truy cập.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">public</code></strong>: Bất kỳ ai cũng có thể truy cập.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">protected</code></strong>: Được truy cập bởi các class dẫn xuất và chính class đó.</li>
+</ul>
+
+<h2 id="5-tạo-và-sử-dụng-đối-tượng-từ-class">5. Tạo và sử dụng đối tượng từ Class</h2>
+
+<p>Sau khi khai báo class, bạn có thể tạo một đối tượng từ class đó và truy cập vào các thành phần <code class="language-plaintext highlighter-rouge">public</code>:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Student</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="n">string</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">age</span><span class="p">;</span>
+
+    <span class="kt">void</span> <span class="n">study</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">" is studying."</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Student</span> <span class="n">student1</span><span class="p">;</span>
+    <span class="n">student1</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">"John"</span><span class="p">;</span>
+    <span class="n">student1</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="n">student1</span><span class="p">.</span><span class="n">study</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="6-ví-dụ-về-class-trong-c">6. Ví dụ về Class trong C++</h2>
+
+<p>Dưới đây là một ví dụ về class <code class="language-plaintext highlighter-rouge">Rectangle</code> đại diện cho một hình chữ nhật với các thuộc tính <code class="language-plaintext highlighter-rouge">width</code>, <code class="language-plaintext highlighter-rouge">height</code>, và phương thức <code class="language-plaintext highlighter-rouge">getArea()</code> để tính diện tích.</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;iostream&gt;
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Rectangle</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">int</span> <span class="n">width</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">height</span><span class="p">;</span>
+
+    <span class="n">Rectangle</span><span class="p">(</span><span class="kt">int</span> <span class="n">w</span><span class="p">,</span> <span class="kt">int</span> <span class="n">h</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">width</span> <span class="o">=</span> <span class="n">w</span><span class="p">;</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="n">h</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">getArea</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">width</span> <span class="o">*</span> <span class="n">height</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Rectangle</span> <span class="n">rect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Diện tích hình chữ nhật: "</span> <span class="o">&lt;&lt;</span> <span class="n">rect</span><span class="p">.</span><span class="n">getArea</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="7-tính-kế-thừa-inheritance-và-tính-đa-hình-polymorphism">7. Tính kế thừa (Inheritance) và tính đa hình (Polymorphism)</h2>
+
+<ul>
+  <li><strong>Kế thừa</strong> cho phép bạn tạo một class mới dựa trên một class đã có. Điều này giúp tái sử dụng mã nguồn và mở rộng chức năng.</li>
+  <li><strong>Đa hình</strong> cho phép một phương thức có thể có nhiều hình thức khác nhau, giúp tăng cường tính linh hoạt và mở rộng.</li>
+</ul>
+
+<p>Ví dụ kế thừa trong C++:</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Shape</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="k">virtual</span> <span class="kt">void</span> <span class="n">draw</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Drawing a shape"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">Circle</span> <span class="o">:</span> <span class="k">public</span> <span class="n">Shape</span> <span class="p">{</span>
+<span class="nl">public:</span>
+    <span class="kt">void</span> <span class="n">draw</span><span class="p">()</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"Drawing a circle"</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="8-lợi-ích-của-class-trong-lập-trình-c">8. Lợi ích của Class trong lập trình C++</h2>
+
+<ul>
+  <li><strong>Tái sử dụng mã</strong>: Class giúp nhóm các đoạn mã có liên quan thành một đơn vị duy nhất.</li>
+  <li><strong>Dễ bảo trì</strong>: Các phần của chương trình được đóng gói rõ ràng và dễ quản lý.</li>
+  <li><strong>Tổ chức dữ liệu</strong>: Class cung cấp cách lưu trữ và quản lý dữ liệu hiệu quả.</li>
+  <li><strong>Dễ mở rộng</strong>: Có thể dễ dàng mở rộng chương trình bằng cách tạo thêm các class kế thừa.</li>
+</ul>
+
+<hr />
+
+<h2 id="9-kết-luận">9. Kết luận</h2>
+
+<p>Class trong C++ là công cụ mạnh mẽ giúp tổ chức, quản lý và tối ưu hóa chương trình theo cách rõ ràng, dễ bảo trì. Bằng cách nắm vững khái niệm về class và các tính năng của nó, lập trình viên có thể xây dựng các ứng dụng phức tạp, dễ dàng mở rộng và bảo trì lâu dài.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Tâm's Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Tâm's Blog</li>
+          <li><a href="mailto:vovantam.dev@gmail.com">vovantam.dev@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://gitlab.com/vovantamvn"><span class="icon icon--gitlab"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.97 9.058l-.895-2.756L13.3.842c-.09-.282-.488-.282-.58 0L10.946 6.3H5.054L3.28.842C3.188.56 2.79.56 2.7.84L.924 6.3.03 9.058c-.082.25.008.526.22.682L8 15.37l7.75-5.63c.212-.156.302-.43.22-.682"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/vovantamvn"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Ghi lại những gì đã học được là sở thích của mình.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
