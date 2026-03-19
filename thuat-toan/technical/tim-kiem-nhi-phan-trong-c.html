@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Thuật Toán Tìm Kiếm Nhị Phân Trong C — Ví Dụ Thực Tế</title>
+  <meta name="description" content="Bạn đã bao giờ thắc mắc tại sao tìm kiếm nhị phân trong C lại nhanh hơn hàng chục, thậm chí hàng nghìn lần so với cách tìm kiếm thông thường? Đây là một tron...">
+  
+  <link rel="shortcut icon" type="image/png" href="/assets/images/photo.jpg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://vovantamvn.github.io/thuat-toan/technical/tim-kiem-nhi-phan-trong-c.html">
+  <link rel="alternate" type="application/rss+xml" title="Tâm's Blog" href="https://vovantamvn.github.io/feed.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0EM3PWHD1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M0EM3PWHD1');
+  </script>
+
+  <!-- Google Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2360531707906785" crossorigin="anonymous"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Tâm's Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about.html">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/password-generator.html">Password Generator</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Thuật Toán Tìm Kiếm Nhị Phân Trong C — Ví Dụ Thực Tế</h1>
+    <p class="post-meta"><time datetime="2026-03-19T01:00:00+00:00" itemprop="datePublished">Mar 19, 2026</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Bạn đã bao giờ thắc mắc tại sao <strong>tìm kiếm nhị phân trong C</strong> lại nhanh hơn hàng chục, thậm chí hàng nghìn lần so với cách tìm kiếm thông thường? Đây là một trong những thuật toán căn bản mà mọi sinh viên lập trình đều cần nắm vững. Trong bài này, bạn sẽ học cách thuật toán hoạt động, cách cài đặt bằng C (cả vòng lặp lẫn đệ quy), và thực hành qua các ví dụ có đầy đủ code chạy được.</p>
+
+<h2 id="tìm-kiếm-nhị-phân-là-gì">Tìm Kiếm Nhị Phân Là Gì?</h2>
+
+<p><strong>Tìm kiếm nhị phân</strong> (binary search) là thuật toán tìm kiếm một phần tử trong <strong>mảng đã được sắp xếp</strong> bằng cách liên tục chia đôi phạm vi tìm kiếm.</p>
+
+<p>Ý tưởng cốt lõi:</p>
+
+<ul>
+  <li>So sánh phần tử cần tìm với phần tử ở <strong>giữa</strong> mảng.</li>
+  <li>Nếu bằng nhau → tìm thấy, dừng lại.</li>
+  <li>Nếu nhỏ hơn → tiếp tục tìm ở <strong>nửa trái</strong>.</li>
+  <li>Nếu lớn hơn → tiếp tục tìm ở <strong>nửa phải</strong>.</li>
+  <li>Lặp lại cho đến khi tìm thấy hoặc phạm vi tìm kiếm rỗng.</li>
+</ul>
+
+<h3 id="so-sánh-với-tìm-kiếm-tuyến-tính">So Sánh Với Tìm Kiếm Tuyến Tính</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Thuật toán</th>
+      <th>Độ phức tạp</th>
+      <th>Cần mảng sắp xếp?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tìm kiếm tuyến tính</td>
+      <td>O(n)</td>
+      <td>Không</td>
+    </tr>
+    <tr>
+      <td><strong>Tìm kiếm nhị phân</strong></td>
+      <td><strong>O(log n)</strong></td>
+      <td><strong>Có</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Với mảng 1.000.000 phần tử, tìm kiếm tuyến tính cần tối đa 1.000.000 bước, trong khi tìm kiếm nhị phân chỉ cần tối đa <strong>20 bước</strong> (vì log₂(1.000.000) ≈ 20). Đây là lý do thuật toán này cực kỳ quan trọng trong thực tế.</p>
+
+<h2 id="điều-kiện-áp-dụng-tìm-kiếm-nhị-phân">Điều Kiện Áp Dụng Tìm Kiếm Nhị Phân</h2>
+
+<p>Trước khi sử dụng, bạn cần đảm bảo:</p>
+
+<ol>
+  <li><strong>Mảng đã được sắp xếp</strong> (tăng dần hoặc giảm dần) — đây là điều kiện bắt buộc.</li>
+  <li>Bạn biết số lượng phần tử trong mảng.</li>
+  <li>Có thể truy cập phần tử theo chỉ số (random access) — mảng thông thường trong C đáp ứng điều này.</li>
+</ol>
+
+<p>Nếu mảng chưa được sắp xếp, bạn cần sắp xếp trước bằng <code class="language-plaintext highlighter-rouge">qsort()</code> hoặc một thuật toán sắp xếp bất kỳ.</p>
+
+<h2 id="cách-cài-đặt-tìm-kiếm-nhị-phân-trong-c">Cách Cài Đặt Tìm Kiếm Nhị Phân Trong C</h2>
+
+<h3 id="phiên-bản-vòng-lặp-iterative">Phiên Bản Vòng Lặp (Iterative)</h3>
+
+<p>Đây là cách cài đặt phổ biến nhất trong thực tế, dùng vòng lặp <code class="language-plaintext highlighter-rouge">while</code> để thu hẹp dần phạm vi tìm kiếm:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="cm">/* Hàm tìm kiếm nhị phân dùng vòng lặp
+ * arr[] : mảng số nguyên đã sắp xếp tăng dần
+ * n     : số phần tử trong mảng
+ * target: giá trị cần tìm
+ * Trả về: chỉ số của target, hoặc -1 nếu không tìm thấy
+ */</span>
+<span class="kt">int</span> <span class="nf">binarySearch</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">left</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>       <span class="cm">/* biên trái của phạm vi tìm kiếm */</span>
+    <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>   <span class="cm">/* biên phải của phạm vi tìm kiếm */</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/* Tính chỉ số giữa — cách này tránh tràn số so với (left+right)/2 */</span>
+        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="p">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">mid</span><span class="p">;</span>           <span class="cm">/* Tìm thấy: trả về vị trí */</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>       <span class="cm">/* target nằm ở nửa phải */</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>      <span class="cm">/* target nằm ở nửa trái */</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="cm">/* Không tìm thấy */</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">91</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">n</span>     <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="kt">int</span> <span class="n">target</span> <span class="o">=</span> <span class="mi">23</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">binarySearch</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">target</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Tim thay %d tai chi so %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Khong tim thay %d trong mang</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">target</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Tim thay 23 tai chi so 5
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Lưu ý quan trọng</strong>: Luôn dùng <code class="language-plaintext highlighter-rouge">mid = left + (right - left) / 2</code> thay vì <code class="language-plaintext highlighter-rouge">(left + right) / 2</code>. Khi <code class="language-plaintext highlighter-rouge">left</code> và <code class="language-plaintext highlighter-rouge">right</code> đều là số nguyên lớn, phép cộng <code class="language-plaintext highlighter-rouge">left + right</code> có thể gây <strong>tràn số nguyên</strong> (integer overflow) — một lỗi rất phổ biến trong lập trình thi đấu.</p>
+</blockquote>
+
+<h3 id="phiên-bản-đệ-quy-recursive">Phiên Bản Đệ Quy (Recursive)</h3>
+
+<p><strong>Đệ quy</strong> (recursion) là kỹ thuật một hàm tự gọi lại chính nó với bài toán nhỏ hơn. Phiên bản này diễn đạt ý tưởng thuật toán một cách tự nhiên hơn:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+</span>
+<span class="cm">/* Hàm tìm kiếm nhị phân đệ quy
+ * Tìm target trong arr[left..right]
+ */</span>
+<span class="kt">int</span> <span class="nf">binarySearchRec</span><span class="p">(</span><span class="kt">int</span> <span class="n">arr</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">left</span><span class="p">,</span> <span class="kt">int</span> <span class="n">right</span><span class="p">,</span> <span class="kt">int</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* Trường hợp cơ sở: phạm vi tìm kiếm rỗng */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">left</span> <span class="o">&gt;</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="p">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">mid</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+        <span class="cm">/* Gọi đệ quy tìm trong nửa phải */</span>
+        <span class="k">return</span> <span class="n">binarySearchRec</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">target</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="cm">/* Gọi đệ quy tìm trong nửa trái */</span>
+        <span class="k">return</span> <span class="n">binarySearchRec</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">target</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">arr</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">99</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">n</span>     <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">/</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="kt">int</span> <span class="n">target</span> <span class="o">=</span> <span class="mi">49</span><span class="p">;</span>
+
+    <span class="kt">int</span> <span class="n">result</span> <span class="o">=</span> <span class="n">binarySearchRec</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">target</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Tim thay %d tai chi so %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Khong tim thay %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">target</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Tim thay 49 tai chi so 6
+</code></pre></div></div>
+
+<p>Trong thực tế, phiên bản <strong>vòng lặp được ưu tiên hơn</strong> vì nó tránh được lỗi tràn stack (stack overflow) khi mảng rất lớn. Phiên bản đệ quy hữu ích hơn cho việc học và hiểu thuật toán.</p>
+
+<h2 id="ví-dụ-thực-tế--tra-cứu-mã-sinh-viên">Ví Dụ Thực Tế — Tra Cứu Mã Sinh Viên</h2>
+
+<p>Giả sử bạn có danh sách mã sinh viên đã sắp xếp và cần tra cứu nhanh xem một mã có tồn tại không:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span>
+<span class="cm">/* Tìm kiếm nhị phân trên mảng chuỗi ký tự */</span>
+<span class="kt">int</span> <span class="nf">searchStudentID</span><span class="p">(</span><span class="kt">char</span> <span class="n">ids</span><span class="p">[][</span><span class="mi">20</span><span class="p">],</span> <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">target</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">left</span> <span class="o">&lt;=</span> <span class="n">right</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="p">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+
+        <span class="cm">/* strcmp trả về 0 nếu bằng nhau, &lt;0 nếu ids[mid] &lt; target */</span>
+        <span class="kt">int</span> <span class="n">cmp</span> <span class="o">=</span> <span class="n">strcmp</span><span class="p">(</span><span class="n">ids</span><span class="p">[</span><span class="n">mid</span><span class="p">],</span> <span class="n">target</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">cmp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">mid</span><span class="p">;</span>           <span class="cm">/* Tìm thấy mã sinh viên */</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">cmp</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>       <span class="cm">/* Tìm nửa sau */</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="n">mid</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>      <span class="cm">/* Tìm nửa trước */</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="cm">/* Không tìm thấy */</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="cm">/* Danh sách mã sinh viên đã sắp xếp theo bảng chữ cái */</span>
+    <span class="kt">char</span> <span class="n">ids</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="mi">20</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s">"SV001"</span><span class="p">,</span> <span class="s">"SV002"</span><span class="p">,</span> <span class="s">"SV010"</span><span class="p">,</span> <span class="s">"SV025"</span><span class="p">,</span> <span class="s">"SV042"</span><span class="p">,</span> <span class="s">"SV099"</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">6</span><span class="p">;</span>
+
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">query</span> <span class="o">=</span> <span class="s">"SV025"</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">searchStudentID</span><span class="p">(</span><span class="n">ids</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">query</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">idx</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Ma %s duoc tim thay tai vi tri chi so %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">idx</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Khong tim thay ma %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">query</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Ma SV025 duoc tim thay tai vi tri chi so 3
+</code></pre></div></div>
+
+<h2 id="bài-tập-luyện-tập">Bài Tập Luyện Tập</h2>
+
+<p>Hãy tự giải các bài sau để củng cố kiến thức:</p>
+
+<p><strong>Bài 1 — Cơ bản</strong>: Nhập mảng <code class="language-plaintext highlighter-rouge">n</code> số nguyên từ bàn phím, sắp xếp tăng dần bằng <code class="language-plaintext highlighter-rouge">qsort()</code>, rồi dùng tìm kiếm nhị phân để tìm một giá trị <code class="language-plaintext highlighter-rouge">k</code> do người dùng nhập vào.</p>
+
+<p><strong>Bài 2 — Biến thể</strong>: Viết hàm tìm <strong>lần xuất hiện đầu tiên</strong> của một phần tử trong mảng có thể có phần tử trùng lặp. Ví dụ: <code class="language-plaintext highlighter-rouge">{1, 2, 2, 2, 3}</code>, tìm <code class="language-plaintext highlighter-rouge">2</code> → trả về chỉ số <code class="language-plaintext highlighter-rouge">1</code>, không phải <code class="language-plaintext highlighter-rouge">2</code> hay <code class="language-plaintext highlighter-rouge">3</code>.</p>
+
+<p><strong>Bài 3 — Nâng cao</strong>: Dùng tìm kiếm nhị phân để tính <strong>căn bậc hai nguyên</strong> của một số <code class="language-plaintext highlighter-rouge">n</code> — tức là số nguyên lớn nhất <code class="language-plaintext highlighter-rouge">x</code> sao cho <code class="language-plaintext highlighter-rouge">x * x &lt;= n</code>. Ví dụ: <code class="language-plaintext highlighter-rouge">n = 17</code> → kết quả là <code class="language-plaintext highlighter-rouge">4</code>.</p>
+
+<details>
+<summary>Gợi ý Bài 2 — Tìm lần xuất hiện đầu tiên</summary>
+
+```c
+int firstOccurrence(int arr[], int n, int target) {
+    int left = 0, right = n - 1, result = -1;
+
+    while (left &lt;= right) {
+        int mid = left + (right - left) / 2;
+
+        if (arr[mid] == target) {
+            result = mid;        /* Ghi nhận vị trí tìm thấy */
+            right = mid - 1;     /* Tiếp tục tìm sang trái để lấy vị trí đầu tiên */
+        } else if (arr[mid] &lt; target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    return result;
+}
+```
+
+</details>
+
+<h2 id="kết-luận">Kết Luận</h2>
+
+<p>Dưới đây là những điểm quan trọng nhất về <strong>tìm kiếm nhị phân trong C</strong> mà bạn cần ghi nhớ:</p>
+
+<ul>
+  <li><strong>Điều kiện tiên quyết</strong>: mảng phải được sắp xếp — đây là điều bắt buộc, không có ngoại lệ.</li>
+  <li><strong>Hiệu suất vượt trội</strong>: O(log n) nhanh hơn rất nhiều so với O(n) khi dữ liệu lớn.</li>
+  <li><strong>Hai cách cài đặt</strong>: vòng lặp (an toàn hơn, dùng trong thực tế) và đệ quy (dễ hiểu hơn về mặt tư duy).</li>
+  <li><strong>Tránh lỗi tràn số</strong>: luôn tính <code class="language-plaintext highlighter-rouge">mid = left + (right - left) / 2</code>.</li>
+  <li><strong>Ứng dụng rộng</strong>: tìm kiếm nhị phân không chỉ dùng trên mảng số — bạn có thể áp dụng cho chuỗi, đối tượng, và cả các bài toán tối ưu hóa kiểu “binary search on answer”.</li>
+</ul>
+
+<p>Hãy tự mình gõ lại toàn bộ code, biên dịch, chạy thử với nhiều bộ dữ liệu khác nhau, và giải từng bài tập ở trên. Hiểu thuật toán qua lý thuyết là tốt, nhưng <strong>thực hành mới là con đường duy nhất để thực sự thành thạo lập trình</strong>!
+```</p>
+
+<hr />
+
+<p><strong>Summary:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mục</th>
+      <th>Giá trị</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>File</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">_posts/2026-03-19---tim-kiem-nhi-phan-trong-c.md</code></td>
+    </tr>
+    <tr>
+      <td><strong>Primary keyword</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">tìm kiếm nhị phân trong C</code></td>
+    </tr>
+    <tr>
+      <td><strong>Category</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">thuat-toan</code></td>
+    </tr>
+    <tr>
+      <td><strong>Word count (est.)</strong></td>
+      <td>~1,000 từ</td>
+    </tr>
+    <tr>
+      <td><strong>Description</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">Tìm kiếm nhị phân trong C giúp tìm phần tử trong mảng với tốc độ O(log n). Code C đầy đủ, giải thích từng bước và bài tập luyện tập cho sinh viên.</code> (155 ký tự)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Summary:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mục</th>
+      <th>Giá trị</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>File</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">_posts/2026-03-19---tim-kiem-nhi-phan-trong-c.md</code></td>
+    </tr>
+    <tr>
+      <td><strong>Primary keyword</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">tìm kiếm nhị phân trong C</code></td>
+    </tr>
+    <tr>
+      <td><strong>Category</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">thuat-toan</code></td>
+    </tr>
+    <tr>
+      <td><strong>Word count (est.)</strong></td>
+      <td>~1,000 từ</td>
+    </tr>
+    <tr>
+      <td><strong>Description</strong></td>
+      <td><code class="language-plaintext highlighter-rouge">Tìm kiếm nhị phân trong C giúp tìm phần tử trong mảng với tốc độ O(log n). Code C đầy đủ, giải thích từng bước và bài tập luyện tập cho sinh viên.</code> (155 ký tự)</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Tâm's Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Tâm's Blog</li>
+          <li><a href="mailto:vovantam.dev@gmail.com">vovantam.dev@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://gitlab.com/vovantamvn"><span class="icon icon--gitlab"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.97 9.058l-.895-2.756L13.3.842c-.09-.282-.488-.282-.58 0L10.946 6.3H5.054L3.28.842C3.188.56 2.79.56 2.7.84L.924 6.3.03 9.058c-.082.25.008.526.22.682L8 15.37l7.75-5.63c.212-.156.302-.43.22-.682"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/vovantamvn"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Ghi lại những gì đã học được là sở thích của mình.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
