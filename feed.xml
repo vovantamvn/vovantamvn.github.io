@@ -5,8 +5,8 @@
     <description>Ghi lại những gì đã học được là sở thích của mình.</description>
     <link>https://vovantamvn.github.io/</link>
     <atom:link href="https://vovantamvn.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Mar 2026 17:06:35 +0000</pubDate>
-    <lastBuildDate>Tue, 24 Mar 2026 17:06:35 +0000</lastBuildDate>
+    <pubDate>Tue, 24 Mar 2026 17:09:31 +0000</pubDate>
+    <lastBuildDate>Tue, 24 Mar 2026 17:09:31 +0000</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -364,8 +364,8 @@ int firstOccurrence(int arr[], int n, int target) {
       </item>
     
       <item>
-        <title>Sắp xếp mảng trong C - Các Thuật Toán và Cách Cài Đặt Chi Tiết</title>
-        <description>&lt;p&gt;Sắp xếp mảng là một trong những thao tác cơ bản trong lập trình, giúp tổ chức và xử lý dữ liệu một cách hiệu quả. Trong ngôn ngữ lập trình C, có nhiều thuật toán sắp xếp phổ biến, mỗi thuật toán có ưu và nhược điểm riêng. Trong bài viết này, chúng ta sẽ tìm hiểu về sắp xếp mảng trong C, các thuật toán sắp xếp phổ biến như Bubble Sort, Selection Sort, Insertion Sort, và Quick Sort, cùng các ví dụ cài đặt chi tiết.&lt;/p&gt;
+        <title>Sắp xếp mảng trong C/C++ - Bubble Sort, Selection Sort, Insertion Sort, Quick Sort</title>
+        <description>&lt;p&gt;Sắp xếp mảng là một trong những bài tập lập trình C/C++ phổ biến nhất ở bậc đại học. Trong bài viết này, chúng ta sẽ tìm hiểu 4 thuật toán sắp xếp cơ bản nhất — &lt;strong&gt;Bubble Sort, Selection Sort, Insertion Sort và Quick Sort&lt;/strong&gt; — kèm theo code hoàn chỉnh, ví dụ chạy được và bảng so sánh độ phức tạp để bạn dễ lựa chọn.&lt;/p&gt;
 
 &lt;h3 id=&quot;mục-lục&quot;&gt;Mục Lục&lt;/h3&gt;
 
@@ -576,9 +576,34 @@ int firstOccurrence(int arr[], int n, int target) {
 
 &lt;hr /&gt;
 
+&lt;hr /&gt;
+
 &lt;h2 id=&quot;5-kết-luận&quot;&gt;5. Kết luận&lt;/h2&gt;
 
 &lt;p&gt;Sắp xếp mảng là thao tác quan trọng giúp tổ chức dữ liệu, nâng cao hiệu suất và khả năng xử lý của chương trình. Hiểu rõ về các thuật toán sắp xếp giúp lập trình viên lựa chọn giải pháp phù hợp cho từng tình huống cụ thể. Hy vọng qua bài viết này, bạn đã nắm vững cách cài đặt và sử dụng các thuật toán sắp xếp mảng trong C.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;6-bài-tập-thực-hành&quot;&gt;6. Bài tập thực hành&lt;/h2&gt;
+
+&lt;p&gt;Sau khi đã nắm các thuật toán, hãy thử các bài tập sau để củng cố kiến thức:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Sắp xếp giảm dần&lt;/strong&gt;: Sửa lại các thuật toán trên để sắp xếp mảng theo thứ tự từ lớn đến nhỏ.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Đếm số lần hoán đổi&lt;/strong&gt;: In ra số lần hoán đổi (swap) mà Bubble Sort thực hiện với mỗi mảng đầu vào.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Sắp xếp mảng 2 chiều&lt;/strong&gt;: Sắp xếp từng hàng của một ma trận &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m x n&lt;/code&gt; bằng Insertion Sort.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Đo thời gian chạy&lt;/strong&gt;: Dùng &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clock()&lt;/code&gt; trong &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;time.h&amp;gt;&lt;/code&gt; để đo và so sánh thời gian thực thi của 4 thuật toán trên cùng một mảng ngẫu nhiên 10.000 phần tử.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;xem-thêm&quot;&gt;Xem thêm&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/technical/kiem-tra-so-nguyen-to-trong-c.html&quot;&gt;Kiểm tra số nguyên tố trong C/C++&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/technical/nhap-xuat-mang-2-chieu-trong-c.html&quot;&gt;Nhập xuất mảng 2 chiều trong C&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/technical/ham-trong-ngon-ngu-lap-trinh-c-khai-niem-cach-cai-dat-va-ung-dung.html&quot;&gt;Hàm trong ngôn ngữ lập trình C&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Thu, 14 Nov 2024 00:00:00 +0000</pubDate>
         <link>https://vovantamvn.github.io/technical/sap-xep-mang-trong-c-cac-thuat-toan-va-cach-cai-dat-chi-tiet.html</link>
@@ -1734,7 +1759,7 @@ int firstOccurrence(int arr[], int n, int target) {
       </item>
     
       <item>
-        <title>Lập Trình Hướng Đối Tượng Trong C++ - Khái Niệm, Nguyên Lý và Ứng Dụng Thực Tế</title>
+        <title>Lập trình hướng đối tượng trong C++ (OOP) - 4 tính chất và ví dụ thực tế</title>
         <description>&lt;p&gt;Lập trình hướng đối tượng (Object-Oriented Programming - OOP) là một trong những tư duy quan trọng và phổ biến nhất trong lập trình hiện đại. Trong C++, OOP đóng vai trò cốt lõi giúp tổ chức mã nguồn một cách có hệ thống, dễ bảo trì và phát triển. Nếu bạn là người mới tiếp cận OOP hoặc đang muốn nâng cao kỹ năng lập trình C++ của mình, bài viết này sẽ giúp bạn hiểu rõ khái niệm và cách áp dụng OOP trong C++.&lt;/p&gt;
 
 &lt;h2 id=&quot;1-lập-trình-hướng-đối-tượng-là-gì&quot;&gt;1. Lập Trình Hướng Đối Tượng Là Gì?&lt;/h2&gt;
@@ -1904,6 +1929,16 @@ int firstOccurrence(int arr[], int n, int target) {
 &lt;h2 id=&quot;6-tổng-kết&quot;&gt;6. Tổng Kết&lt;/h2&gt;
 
 &lt;p&gt;Lập trình hướng đối tượng trong C++ là một kỹ thuật mạnh mẽ giúp tổ chức mã nguồn dễ quản lý, dễ mở rộng và có tính bảo trì cao. Việc nắm vững các khái niệm về lớp, đối tượng, tính kế thừa, tính đa hình và tính đóng gói sẽ giúp bạn xây dựng các chương trình phức tạp một cách hiệu quả. Hãy áp dụng các kiến thức trên vào các dự án thực tế để hiểu rõ hơn về OOP trong C++.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;xem-thêm&quot;&gt;Xem thêm&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/technical/kham-pha-con-tro-trong-lap-trinh-c-cach-su-dung-va-ung-dung-thuc-te.html&quot;&gt;Con trỏ trong lập trình C&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/technical/tim-hieu-struct-trong-c-khai-niem-cach-su-dung-va-ung-dung-thuc-tien.html&quot;&gt;Struct trong C - Khái niệm và cách sử dụng&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/technical/ham-trong-ngon-ngu-lap-trinh-c-khai-niem-cach-cai-dat-va-ung-dung.html&quot;&gt;Hàm trong ngôn ngữ lập trình C&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Mon, 11 Nov 2024 00:00:00 +0000</pubDate>
         <link>https://vovantamvn.github.io/technical/lap-trinh-huong-doi-tuong-trong-c-khai-niem-nguyen-ly-va-ung-dung-thuc-te.html</link>
