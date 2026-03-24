@@ -5,8 +5,8 @@
     <description>Ghi lại những gì đã học được là sở thích của mình.</description>
     <link>https://vovantamvn.github.io/</link>
     <atom:link href="https://vovantamvn.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 Mar 2026 17:09:31 +0000</pubDate>
-    <lastBuildDate>Tue, 24 Mar 2026 17:09:31 +0000</lastBuildDate>
+    <pubDate>Tue, 24 Mar 2026 17:21:23 +0000</pubDate>
+    <lastBuildDate>Tue, 24 Mar 2026 17:21:23 +0000</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
@@ -273,78 +273,10 @@ int firstOccurrence(int arr[], int n, int target) {
 
 &lt;p&gt;Hãy tự mình gõ lại toàn bộ code, biên dịch, chạy thử với nhiều bộ dữ liệu khác nhau, và giải từng bài tập ở trên. Hiểu thuật toán qua lý thuyết là tốt, nhưng &lt;strong&gt;thực hành mới là con đường duy nhất để thực sự thành thạo lập trình&lt;/strong&gt;!
 ```&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;strong&gt;Summary:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Mục&lt;/th&gt;
-      &lt;th&gt;Giá trị&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;File&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts/2026-03-19---tim-kiem-nhi-phan-trong-c.md&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Primary keyword&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tìm kiếm nhị phân trong C&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Category&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;thuat-toan&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Word count (est.)&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;~1,000 từ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Tìm kiếm nhị phân trong C giúp tìm phần tử trong mảng với tốc độ O(log n). Code C đầy đủ, giải thích từng bước và bài tập luyện tập cho sinh viên.&lt;/code&gt; (155 ký tự)&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;strong&gt;Summary:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Mục&lt;/th&gt;
-      &lt;th&gt;Giá trị&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;File&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_posts/2026-03-19---tim-kiem-nhi-phan-trong-c.md&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Primary keyword&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tìm kiếm nhị phân trong C&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Category&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;thuat-toan&lt;/code&gt;&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Word count (est.)&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;~1,000 từ&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;strong&gt;Description&lt;/strong&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Tìm kiếm nhị phân trong C giúp tìm phần tử trong mảng với tốc độ O(log n). Code C đầy đủ, giải thích từng bước và bài tập luyện tập cho sinh viên.&lt;/code&gt; (155 ký tự)&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
 </description>
-        <pubDate>Thu, 19 Mar 2026 01:00:00 +0000</pubDate>
-        <link>https://vovantamvn.github.io/thuat-toan/technical/tim-kiem-nhi-phan-trong-c.html</link>
-        <guid isPermaLink="true">https://vovantamvn.github.io/thuat-toan/technical/tim-kiem-nhi-phan-trong-c.html</guid>
+        <pubDate>Thu, 19 Mar 2026 00:00:00 +0000</pubDate>
+        <link>https://vovantamvn.github.io/technical/tim-kiem-nhi-phan-trong-c.html</link>
+        <guid isPermaLink="true">https://vovantamvn.github.io/technical/tim-kiem-nhi-phan-trong-c.html</guid>
         
         <category>tim-kiem-nhi-phan</category>
         
@@ -356,8 +288,6 @@ int firstOccurrence(int arr[], int n, int target) {
         
         <category>mang</category>
         
-        
-        <category>thuat-toan</category>
         
         <category>Technical</category>
         
