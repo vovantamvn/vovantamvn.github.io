@@ -5,9 +5,322 @@
     <description>Ghi lại những gì đã học được là sở thích của mình.</description>
     <link>https://vovantamvn.github.io/</link>
     <atom:link href="https://vovantamvn.github.io/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 25 Mar 2026 15:30:52 +0000</pubDate>
-    <lastBuildDate>Wed, 25 Mar 2026 15:30:52 +0000</lastBuildDate>
+    <pubDate>Wed, 25 Mar 2026 15:56:06 +0000</pubDate>
+    <lastBuildDate>Wed, 25 Mar 2026 15:56:06 +0000</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
+    
+      <item>
+        <title>MCP Server là gì? Hướng dẫn Model Context Protocol cho lập trình viên</title>
+        <description>&lt;p&gt;Nếu bạn đang theo dõi xu hướng AI trong thời gian gần đây, chắc hẳn bạn đã nghe đến cụm từ &lt;strong&gt;MCP server&lt;/strong&gt;. Đây là một trong những khái niệm đang được cộng đồng lập trình viên thảo luận sôi nổi nhất. Bài viết này sẽ giải thích MCP là gì, tại sao nó quan trọng và cách bạn — dù là sinh viên — cũng có thể bắt đầu sử dụng ngay hôm nay.&lt;/p&gt;
+
+&lt;h2 id=&quot;mcp-là-gì&quot;&gt;MCP Là Gì?&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;MCP (Model Context Protocol)&lt;/strong&gt; là một giao thức mã nguồn mở do Anthropic (công ty tạo ra Claude AI) phát triển và công bố vào cuối năm 2024. MCP định nghĩa một chuẩn thống nhất để các mô hình AI có thể &lt;strong&gt;kết nối và tương tác với các công cụ, dữ liệu bên ngoài&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Nói đơn giản hơn: trước đây, AI chỉ trả lời dựa trên dữ liệu nó được huấn luyện. Với MCP, AI có thể &lt;strong&gt;đọc file, gọi API, truy vấn database, thực thi lệnh terminal&lt;/strong&gt;… tất cả thông qua một chuẩn giao tiếp chung.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;MCP giống như một “ổ cắm điện chuẩn” — bất kỳ thiết bị nào (AI model) cũng có thể cắm vào bất kỳ nguồn điện nào (công cụ/dữ liệu) mà không cần adapter riêng.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;tại-sao-mcp-quan-trọng&quot;&gt;Tại Sao MCP Quan Trọng?&lt;/h2&gt;
+
+&lt;p&gt;Trước MCP, mỗi AI assistant có cách tích hợp công cụ riêng:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;GitHub Copilot dùng plugin riêng&lt;/li&gt;
+  &lt;li&gt;ChatGPT dùng function calling riêng&lt;/li&gt;
+  &lt;li&gt;Claude dùng tool use riêng&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Điều này khiến lập trình viên phải viết code tích hợp khác nhau cho từng AI. &lt;strong&gt;MCP giải quyết vấn đề này&lt;/strong&gt; bằng cách chuẩn hóa giao tiếp giữa AI và công cụ.&lt;/p&gt;
+
+&lt;h3 id=&quot;lợi-ích-chính&quot;&gt;Lợi ích chính:&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Đặc điểm&lt;/th&gt;
+      &lt;th&gt;Không có MCP&lt;/th&gt;
+      &lt;th&gt;Có MCP&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Tích hợp công cụ&lt;/td&gt;
+      &lt;td&gt;Mỗi AI một cách&lt;/td&gt;
+      &lt;td&gt;Một chuẩn duy nhất&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Bảo mật&lt;/td&gt;
+      &lt;td&gt;Khó kiểm soát&lt;/td&gt;
+      &lt;td&gt;Người dùng kiểm soát quyền truy cập&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Khả năng mở rộng&lt;/td&gt;
+      &lt;td&gt;Hạn chế&lt;/td&gt;
+      &lt;td&gt;Dễ thêm công cụ mới&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Cộng đồng&lt;/td&gt;
+      &lt;td&gt;Phân tán&lt;/td&gt;
+      &lt;td&gt;Sinh thái chung&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;kiến-trúc-mcp-hoạt-động-như-thế-nào&quot;&gt;Kiến Trúc MCP Hoạt Động Như Thế Nào?&lt;/h2&gt;
+
+&lt;p&gt;MCP có ba thành phần chính:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;┌─────────────────┐         ┌─────────────────┐         ┌──────────────────┐
+│   MCP Client    │ ◄─────► │   MCP Server    │ ◄─────► │  Dữ liệu/Công cụ │
+│ (AI Assistant)  │  JSON-  │ (do bạn hoặc   │         │  (GitHub, DB,    │
+│ Claude/Copilot  │  RPC    │  cộng đồng tạo) │         │  File system...) │
+└─────────────────┘         └─────────────────┘         └──────────────────┘
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;MCP Client&lt;/strong&gt;: AI model (Claude, GitHub Copilot, Cursor…) — bên yêu cầu thông tin&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;MCP Server&lt;/strong&gt;: Chương trình trung gian — nhận yêu cầu từ AI, thực thi và trả kết quả&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Dữ liệu/Công cụ&lt;/strong&gt;: Nguồn tài nguyên thực tế (GitHub repo, database, API…)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ví-dụ-luồng-hoạt-động&quot;&gt;Ví dụ luồng hoạt động:&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Người dùng: &quot;Hãy xem file README.md trong project của tôi&quot;
+     ↓
+AI (Claude): Gửi yêu cầu đến MCP Server (read_file)
+     ↓
+MCP Server: Đọc file README.md từ hệ thống
+     ↓
+AI (Claude): Nhận nội dung và trả lời người dùng
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;các-mcp-server-phổ-biến-hiện-nay&quot;&gt;Các MCP Server Phổ Biến Hiện Nay&lt;/h2&gt;
+
+&lt;p&gt;Cộng đồng đã xây dựng hàng trăm MCP server cho nhiều mục đích khác nhau. Dưới đây là một số server hữu ích nhất cho lập trình viên:&lt;/p&gt;
+
+&lt;h3 id=&quot;1-filesystem-mcp-server&quot;&gt;1. Filesystem MCP Server&lt;/h3&gt;
+&lt;p&gt;Cho phép AI đọc/ghi file trên máy tính của bạn.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Cài đặt qua npx&lt;/span&gt;
+npx @modelcontextprotocol/server-filesystem /path/to/workspace
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;2-github-mcp-server&quot;&gt;2. GitHub MCP Server&lt;/h3&gt;
+&lt;p&gt;Cho phép AI tương tác với GitHub: đọc code, tạo issue, review PR…&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npx @modelcontextprotocol/server-github
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;3-sqlite-mcp-server&quot;&gt;3. SQLite MCP Server&lt;/h3&gt;
+&lt;p&gt;Cho phép AI truy vấn và thao tác với database SQLite.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npx @modelcontextprotocol/server-sqlite /path/to/database.db
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;4-brave-search-mcp-server&quot;&gt;4. Brave Search MCP Server&lt;/h3&gt;
+&lt;p&gt;Tích hợp tìm kiếm web vào AI.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npx @modelcontextprotocol/server-brave-search
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Bạn có thể xem danh sách đầy đủ tại: &lt;a href=&quot;https://github.com/modelcontextprotocol/servers&quot;&gt;github.com/modelcontextprotocol/servers&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;cách-cấu-hình-mcp-server-với-claude-desktop&quot;&gt;Cách Cấu Hình MCP Server với Claude Desktop&lt;/h2&gt;
+
+&lt;p&gt;Đây là ví dụ thực tế cách thêm Filesystem MCP Server vào Claude Desktop:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Bước 1:&lt;/strong&gt; Cài đặt Node.js (nếu chưa có)&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Kiểm tra Node.js&lt;/span&gt;
+node &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Nếu chưa có, cài tại https://nodejs.org&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Bước 2:&lt;/strong&gt; Mở file cấu hình Claude Desktop&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;macOS&lt;/strong&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/Library/Application Support/Claude/claude_desktop_config.json&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Windows&lt;/strong&gt;: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%APPDATA%\Claude\claude_desktop_config.json&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Bước 3:&lt;/strong&gt; Thêm cấu hình MCP server&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;mcpServers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;filesystem&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;command&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;npx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;args&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-y&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@modelcontextprotocol/server-filesystem&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/Users/your-username/Documents/projects&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;github&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;command&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;npx&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;args&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-y&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@modelcontextprotocol/server-github&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;env&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;GITHUB_PERSONAL_ACCESS_TOKEN&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;your_token_here&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Bước 4:&lt;/strong&gt; Khởi động lại Claude Desktop và kiểm tra&lt;/p&gt;
+
+&lt;p&gt;Sau khi cấu hình xong, Claude sẽ có biểu tượng công cụ (🔧) ở góc dưới cửa sổ chat — đó là dấu hiệu MCP đang hoạt động.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;cách-tự-viết-mcp-server-đơn-giản&quot;&gt;Cách Tự Viết MCP Server Đơn Giản&lt;/h2&gt;
+
+&lt;p&gt;Bạn hoàn toàn có thể tự tạo MCP server bằng Python hoặc TypeScript. Dưới đây là ví dụ server đơn giản bằng Python:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# server.py
+&lt;/span&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;mcp.server&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Server&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;mcp.server.stdio&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stdio_server&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;mcp.types&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TextContent&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;mcp.types&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;types&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Khởi tạo server
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;my-first-mcp&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;list_tools&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;list_tools&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Khai báo các tool mà server cung cấp&quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;Tool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;say_hello&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Chào người dùng bằng tiếng Việt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;inputSchema&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;object&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;s&quot;&gt;&quot;properties&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                    &lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                        &lt;span class=&quot;s&quot;&gt;&quot;type&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;string&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                        &lt;span class=&quot;s&quot;&gt;&quot;description&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Tên người dùng&quot;&lt;/span&gt;
+                    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+                &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+                &lt;span class=&quot;s&quot;&gt;&quot;required&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;call_tool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;call_tool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arguments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Xử lý khi AI gọi tool&quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;say_hello&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;user_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arguments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;bạn&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TextContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+            &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Xin chào &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user_name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;! Đây là MCP server đầu tiên của bạn.&quot;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ValueError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sa&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Tool không tồn tại: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stdio_server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_stream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;write_stream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_stream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;write_stream&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;create_initialization_options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;__main__&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;asyncio&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;asyncio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Cài đặt thư viện cần thiết:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pip &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mcp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Thêm vào file cấu hình Claude:&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;mcpServers&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;my-server&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;command&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;python&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;args&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/path/to/server.py&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;mcp-trong-hệ-sinh-thái-ai-hiện-tại&quot;&gt;MCP Trong Hệ Sinh Thái AI Hiện Tại&lt;/h2&gt;
+
+&lt;p&gt;Hiện tại, nhiều AI assistant và IDE đã hỗ trợ MCP:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Claude Desktop&lt;/strong&gt; (Anthropic) — hỗ trợ đầy đủ, là client gốc&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;GitHub Copilot&lt;/strong&gt; (Microsoft/GitHub) — hỗ trợ từ đầu 2025&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cursor&lt;/strong&gt; — IDE AI phổ biến, hỗ trợ MCP&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Zed&lt;/strong&gt; — editor hiện đại, hỗ trợ MCP&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Continue.dev&lt;/strong&gt; — extension VS Code mã nguồn mở&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Với tốc độ phát triển hiện tại, MCP đang trở thành tiêu chuẩn không thể thiếu cho bất kỳ lập trình viên nào làm việc với AI.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;những-điều-cần-lưu-ý-về-bảo-mật&quot;&gt;Những Điều Cần Lưu Ý Về Bảo Mật&lt;/h2&gt;
+
+&lt;p&gt;Khi sử dụng MCP server, đặc biệt là server của bên thứ ba, bạn cần chú ý:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Chỉ cấp quyền cần thiết&lt;/strong&gt; — Không cho AI đọc toàn bộ ổ cứng nếu chỉ cần đọc một thư mục cụ thể&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Kiểm tra mã nguồn&lt;/strong&gt; — Ưu tiên dùng MCP server mã nguồn mở và có nhiều người dùng&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Không đặt API key trong code&lt;/strong&gt; — Luôn dùng biến môi trường (environment variables)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Cẩn thận với MCP server lạ&lt;/strong&gt; — Tấn công “prompt injection” qua MCP là mối nguy thực tế&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;tổng-kết&quot;&gt;Tổng Kết&lt;/h2&gt;
+
+&lt;p&gt;MCP (Model Context Protocol) là bước tiến quan trọng trong việc biến AI từ một “chatbot” thành một &lt;strong&gt;trợ lý lập trình thực sự&lt;/strong&gt;. Điểm mấu chốt cần nhớ:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MCP chuẩn hóa cách AI kết nối với công cụ bên ngoài&lt;/li&gt;
+  &lt;li&gt;Kiến trúc gồm 3 phần: Client (AI) — Server (trung gian) — Dữ liệu&lt;/li&gt;
+  &lt;li&gt;Cộng đồng đã có hàng trăm MCP server sẵn dùng&lt;/li&gt;
+  &lt;li&gt;Bạn có thể tự viết MCP server bằng Python hoặc TypeScript&lt;/li&gt;
+  &lt;li&gt;Luôn chú ý bảo mật khi cấp quyền cho AI&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Dù bạn đang học lập trình hay đã đi làm, hiểu về MCP sẽ giúp bạn tận dụng AI hiệu quả hơn trong công việc hàng ngày.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;xem-thêm&quot;&gt;Xem Thêm&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/2021/04/03/cach-viet-code-sach&quot;&gt;Cách viết code sạch&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2021/06/29/quy-tac-dat-ten-trong-lap-trinh&quot;&gt;Quy tắc đặt tên trong lập trình&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/2021/04/21/cach-viet-readme-cho-du-an-cua-ban&quot;&gt;Hướng dẫn viết README cho dự án của bạn&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 25 Mar 2026 00:00:00 +0000</pubDate>
+        <link>https://vovantamvn.github.io/technical/mcp-server-la-gi-va-cach-su-dung.html</link>
+        <guid isPermaLink="true">https://vovantamvn.github.io/technical/mcp-server-la-gi-va-cach-su-dung.html</guid>
+        
+        <category>ai</category>
+        
+        <category>mcp</category>
+        
+        <category>công cụ lập trình</category>
+        
+        
+        <category>Technical</category>
+        
+      </item>
     
       <item>
         <title>Viết chương trình giải phương trình bậc 2 bằng C/C++</title>
@@ -1990,197 +2303,6 @@ int firstOccurrence(int arr[], int n, int target) {
         <pubDate>Mon, 11 Nov 2024 00:00:00 +0000</pubDate>
         <link>https://vovantamvn.github.io/technical/tim-hieu-struct-trong-c-khai-niem-cach-su-dung-va-ung-dung-thuc-tien.html</link>
         <guid isPermaLink="true">https://vovantamvn.github.io/technical/tim-hieu-struct-trong-c-khai-niem-cach-su-dung-va-ung-dung-thuc-tien.html</guid>
-        
-        
-        <category>Technical</category>
-        
-      </item>
-    
-      <item>
-        <title>Lập trình hướng đối tượng trong C++ (OOP) - 4 tính chất và ví dụ thực tế</title>
-        <description>&lt;p&gt;Lập trình hướng đối tượng (Object-Oriented Programming - OOP) là một trong những tư duy quan trọng và phổ biến nhất trong lập trình hiện đại. Trong C++, OOP đóng vai trò cốt lõi giúp tổ chức mã nguồn một cách có hệ thống, dễ bảo trì và phát triển. Nếu bạn là người mới tiếp cận OOP hoặc đang muốn nâng cao kỹ năng lập trình C++ của mình, bài viết này sẽ giúp bạn hiểu rõ khái niệm và cách áp dụng OOP trong C++.&lt;/p&gt;
-
-&lt;h2 id=&quot;1-lập-trình-hướng-đối-tượng-là-gì&quot;&gt;1. Lập Trình Hướng Đối Tượng Là Gì?&lt;/h2&gt;
-
-&lt;p&gt;Lập trình hướng đối tượng là phương pháp lập trình tập trung vào việc tổ chức mã theo các &lt;strong&gt;đối tượng&lt;/strong&gt; (objects). Mỗi đối tượng đại diện cho một thực thể trong thế giới thực và có các &lt;strong&gt;thuộc tính&lt;/strong&gt; (attributes) và &lt;strong&gt;hành vi&lt;/strong&gt; (methods). OOP giúp cho việc lập trình trở nên gần gũi hơn với thực tế và dễ hiểu hơn, vì nó mô phỏng cách mà con người nhìn nhận và tương tác với thế giới xung quanh.&lt;/p&gt;
-
-&lt;h3 id=&quot;các-khái-niệm-chính-trong-lập-trình-hướng-đối-tượng&quot;&gt;Các Khái Niệm Chính Trong Lập Trình Hướng Đối Tượng&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Lớp (Class)&lt;/strong&gt;: Lớp là một mô hình hoặc khuôn mẫu cho các đối tượng. Lớp định nghĩa các thuộc tính và phương thức của đối tượng.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Đối Tượng (Object)&lt;/strong&gt;: Đối tượng là một thực thể cụ thể của lớp, với các giá trị cụ thể cho các thuộc tính.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Thuộc Tính (Attributes)&lt;/strong&gt;: Các biến bên trong lớp, đại diện cho trạng thái của đối tượng.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Phương Thức (Methods)&lt;/strong&gt;: Các hàm hoặc thủ tục trong lớp, biểu diễn hành vi của đối tượng.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;2-các-nguyên-lý-cơ-bản-của-lập-trình-hướng-đối-tượng&quot;&gt;2. Các Nguyên Lý Cơ Bản Của Lập Trình Hướng Đối Tượng&lt;/h2&gt;
-
-&lt;p&gt;Có bốn nguyên lý chính trong lập trình hướng đối tượng:&lt;/p&gt;
-
-&lt;h3 id=&quot;21-tính-đóng-gói-encapsulation&quot;&gt;2.1 Tính Đóng Gói (Encapsulation)&lt;/h3&gt;
-
-&lt;p&gt;Tính đóng gói cho phép che giấu các chi tiết bên trong của đối tượng, chỉ cung cấp những thông tin cần thiết để tương tác với đối tượng. Việc này giúp mã nguồn dễ bảo trì và bảo vệ dữ liệu bên trong lớp.&lt;/p&gt;
-
-&lt;h3 id=&quot;22-tính-kế-thừa-inheritance&quot;&gt;2.2 Tính Kế Thừa (Inheritance)&lt;/h3&gt;
-
-&lt;p&gt;Kế thừa cho phép tạo ra một lớp mới từ một lớp đã có, thừa hưởng tất cả các thuộc tính và phương thức của lớp cha. Điều này giúp tái sử dụng mã và xây dựng các lớp chuyên biệt dựa trên lớp chung.&lt;/p&gt;
-
-&lt;h3 id=&quot;23-tính-đa-hình-polymorphism&quot;&gt;2.3 Tính Đa Hình (Polymorphism)&lt;/h3&gt;
-
-&lt;p&gt;Đa hình cho phép một hành động có thể thực hiện theo nhiều cách khác nhau. Trong C++, tính đa hình thường được triển khai qua phương thức ảo (virtual functions) và nạp chồng hàm (function overloading).&lt;/p&gt;
-
-&lt;h3 id=&quot;24-tính-trừu-tượng-abstraction&quot;&gt;2.4 Tính Trừu Tượng (Abstraction)&lt;/h3&gt;
-
-&lt;p&gt;Trừu tượng hóa là quá trình đơn giản hóa một đối tượng bằng cách chỉ giữ lại những thuộc tính và phương thức cần thiết. Điều này giúp tập trung vào các chức năng chính của đối tượng.&lt;/p&gt;
-
-&lt;h2 id=&quot;3-cách-triển-khai-oop-trong-c&quot;&gt;3. Cách Triển Khai OOP Trong C++&lt;/h2&gt;
-
-&lt;h3 id=&quot;31-khai-báo-lớp-và-đối-tượng&quot;&gt;3.1 Khai Báo Lớp và Đối Tượng&lt;/h3&gt;
-
-&lt;p&gt;Để khai báo một lớp, bạn sử dụng từ khóa &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;class&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Animal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;nl&quot;&gt;private:&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;setAge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getAge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Trong ví dụ này, lớp &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Animal&lt;/code&gt; có thuộc tính &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;age&lt;/code&gt; và hai phương thức &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setAge&lt;/code&gt; và &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getAge&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;32-tạo-đối-tượng-từ-lớp&quot;&gt;3.2 Tạo Đối Tượng từ Lớp&lt;/h3&gt;
-
-&lt;p&gt;Sau khi khai báo lớp, bạn có thể tạo đối tượng của lớp đó:&lt;/p&gt;
-
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Animal&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;dog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setAge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Dog&apos;s age: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getAge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;33-tính-kế-thừa-trong-c&quot;&gt;3.3 Tính Kế Thừa Trong C++&lt;/h3&gt;
-
-&lt;p&gt;C++ hỗ trợ kế thừa thông qua cú pháp &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;:&lt;/code&gt;. Ví dụ, lớp &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dog&lt;/code&gt; có thể kế thừa từ lớp &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Animal&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Dog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Animal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Woof! Woof!&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Bây giờ, lớp &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dog&lt;/code&gt; có thể truy cập các thuộc tính và phương thức công khai (public) của &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Animal&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;34-tính-đa-hình-trong-c&quot;&gt;3.4 Tính Đa Hình Trong C++&lt;/h3&gt;
-
-&lt;p&gt;Để thể hiện tính đa hình, bạn có thể sử dụng các phương thức ảo. Ví dụ:&lt;/p&gt;
-
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Animal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;virtual&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sound&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Some animal sound&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Dog&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Animal&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sound&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Woof! Woof!&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Animal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;animal&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Dog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;animal&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sound&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// Kết quả: Woof! Woof!&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;animal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Trong ví dụ này, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sound()&lt;/code&gt; là một phương thức ảo, cho phép lớp &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dog&lt;/code&gt; định nghĩa lại.&lt;/p&gt;
-
-&lt;h2 id=&quot;4-các-ứng-dụng-thực-tế-của-oop-trong-c&quot;&gt;4. Các Ứng Dụng Thực Tế Của OOP Trong C++&lt;/h2&gt;
-
-&lt;p&gt;Lập trình hướng đối tượng trong C++ có thể được ứng dụng trong nhiều lĩnh vực, từ phát triển trò chơi đến quản lý cơ sở dữ liệu. Một số ví dụ bao gồm:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Quản lý Thông Tin Sinh Viên&lt;/strong&gt;: Dễ dàng tạo các lớp &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Student&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Classroom&lt;/code&gt; để quản lý danh sách sinh viên và lớp học.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Hệ Thống Ngân Hàng&lt;/strong&gt;: Các lớp &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Account&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Customer&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Transaction&lt;/code&gt; có thể được sử dụng để xây dựng hệ thống quản lý tài khoản ngân hàng.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Phát Triển Game&lt;/strong&gt;: Tạo các lớp &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Player&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Enemy&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Game&lt;/code&gt; để phát triển trò chơi dễ bảo trì và mở rộng.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;5-ví-dụ-hoàn-chỉnh-quản-lý-thông-tin-sinh-viên&quot;&gt;5. Ví Dụ Hoàn Chỉnh: Quản Lý Thông Tin Sinh Viên&lt;/h2&gt;
-
-&lt;p&gt;Dưới đây là ví dụ minh họa về quản lý thông tin sinh viên sử dụng OOP trong C++:&lt;/p&gt;
-
-&lt;div class=&quot;language-cpp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#include &amp;lt;iostream&amp;gt;
-#include &amp;lt;string&amp;gt;
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;namespace&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;std&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Student&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-&lt;span class=&quot;nl&quot;&gt;private:&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gpa&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;nl&quot;&gt;public:&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Constructor&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Student&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gpa&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// Getter methods&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getAge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;float&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;getGpa&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gpa&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// Method to display student information&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;displayInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;cout&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Name: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;, Age: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;age&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;, GPA: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gpa&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;endl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;Student&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;student1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Alice&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;student1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;displayInfo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;giải-thích&quot;&gt;Giải Thích&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Student&lt;/code&gt; là một lớp với các thuộc tính &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;name&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;age&lt;/code&gt;, và &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gpa&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;Phương thức &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;displayInfo()&lt;/code&gt; in ra thông tin của sinh viên.&lt;/li&gt;
-  &lt;li&gt;Trong hàm &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main&lt;/code&gt;, một đối tượng &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Student&lt;/code&gt; được tạo và thông tin của nó được hiển thị.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;6-tổng-kết&quot;&gt;6. Tổng Kết&lt;/h2&gt;
-
-&lt;p&gt;Lập trình hướng đối tượng trong C++ là một kỹ thuật mạnh mẽ giúp tổ chức mã nguồn dễ quản lý, dễ mở rộng và có tính bảo trì cao. Việc nắm vững các khái niệm về lớp, đối tượng, tính kế thừa, tính đa hình và tính đóng gói sẽ giúp bạn xây dựng các chương trình phức tạp một cách hiệu quả. Hãy áp dụng các kiến thức trên vào các dự án thực tế để hiểu rõ hơn về OOP trong C++.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h2 id=&quot;xem-thêm&quot;&gt;Xem thêm&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/technical/kham-pha-con-tro-trong-lap-trinh-c-cach-su-dung-va-ung-dung-thuc-te.html&quot;&gt;Con trỏ trong lập trình C&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/technical/tim-hieu-struct-trong-c-khai-niem-cach-su-dung-va-ung-dung-thuc-tien.html&quot;&gt;Struct trong C - Khái niệm và cách sử dụng&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;/technical/ham-trong-ngon-ngu-lap-trinh-c-khai-niem-cach-cai-dat-va-ung-dung.html&quot;&gt;Hàm trong ngôn ngữ lập trình C&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        <pubDate>Mon, 11 Nov 2024 00:00:00 +0000</pubDate>
-        <link>https://vovantamvn.github.io/technical/lap-trinh-huong-doi-tuong-trong-c-khai-niem-nguyen-ly-va-ung-dung-thuc-te.html</link>
-        <guid isPermaLink="true">https://vovantamvn.github.io/technical/lap-trinh-huong-doi-tuong-trong-c-khai-niem-nguyen-ly-va-ung-dung-thuc-te.html</guid>
         
         
         <category>Technical</category>
