@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Viết chương trình giải phương trình bậc 2 bằng C/C++</title>
+  <meta name="description" content="Hướng dẫn viết chương trình C/C++ giải phương trình bậc 2 ax²+bx+c=0: tính delta, xử lý đủ 3 trường hợp nghiệm, có code đầy đủ chạy được và bài tập mở rộng.">
+  
+  <link rel="shortcut icon" type="image/png" href="/assets/images/photo.jpg">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://vovantamvn.github.io/technical/chuong-trinh-giai-phuong-trinh-bac-2-trong-c.html">
+  <link rel="alternate" type="application/rss+xml" title="Tâm's Blog" href="https://vovantamvn.github.io/feed.xml">
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0EM3PWHD1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-M0EM3PWHD1');
+  </script>
+
+  <!-- Google Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2360531707906785" crossorigin="anonymous"></script>
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">Tâm's Blog</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+        
+          
+          <a class="page-link" href="/about.html">About</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/password-generator.html">Password Generator</a>
+          
+        
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Viết chương trình giải phương trình bậc 2 bằng C/C++</h1>
+    <p class="post-meta"><time datetime="2026-03-25T00:00:00+00:00" itemprop="datePublished">Mar 25, 2026</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>Giải phương trình bậc 2 là một trong những bài tập lập trình C/C++ xuất hiện nhiều nhất trong các đề thi và bài tập ở trường. Bài viết này hướng dẫn từng bước cách xây dựng chương trình giải phương trình bậc 2 <strong>ax² + bx + c = 0</strong>, xử lý đầy đủ các trường hợp về nghiệm, kèm code hoàn chỉnh có thể chạy ngay.</p>
+
+<h2 id="ôn-lại-lý-thuyết">Ôn Lại Lý Thuyết</h2>
+
+<p>Cho phương trình bậc 2: <strong>ax² + bx + c = 0</strong> (a ≠ 0)</p>
+
+<p><strong>Biệt thức</strong>: Δ = b² - 4ac</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Điều kiện</th>
+      <th>Kết luận</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Δ &gt; 0</td>
+      <td>Phương trình có <strong>2 nghiệm phân biệt</strong>: x₁ = (-b + √Δ) / 2a, x₂ = (-b - √Δ) / 2a</td>
+    </tr>
+    <tr>
+      <td>Δ = 0</td>
+      <td>Phương trình có <strong>nghiệm kép</strong>: x₁ = x₂ = -b / 2a</td>
+    </tr>
+    <tr>
+      <td>Δ &lt; 0</td>
+      <td>Phương trình <strong>vô nghiệm</strong> (trong tập số thực)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="code-c-giải-phương-trình-bậc-2">Code C Giải Phương Trình Bậc 2</h2>
+
+<p>Trước khi viết code, hãy phân tích bài toán thành các bước nhỏ — đây là kỹ năng quan trọng mà sinh viên cần rèn luyện:</p>
+
+<p><strong>Luồng xử lý của chương trình:</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Nhập a, b, c
+    │
+    ▼
+a == 0? ──── Có ──→ Thông báo "không phải bậc 2", dừng
+    │
+   Không
+    │
+    ▼
+Tính Δ = b² - 4ac
+    │
+    ├── Δ &gt; 0 ──→ x1 = (-b + √Δ) / 2a
+    │              x2 = (-b - √Δ) / 2a → In 2 nghiệm
+    │
+    ├── Δ = 0 ──→ x = -b / 2a → In nghiệm kép
+    │
+    └── Δ &lt; 0 ──→ In "vô nghiệm"
+</code></pre></div></div>
+
+<p>Mỗi nhánh trong sơ đồ trên tương ứng với một khối <code class="language-plaintext highlighter-rouge">if-else</code> trong code. Khi đã vẽ được luồng xử lý, việc dịch sang C chỉ là bước cơ học.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">double</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Giai phuong trinh bac 2: ax^2 + bx + c = 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhap a: "</span><span class="p">);</span> <span class="n">scanf</span><span class="p">(</span><span class="s">"%lf"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhap b: "</span><span class="p">);</span> <span class="n">scanf</span><span class="p">(</span><span class="s">"%lf"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhap c: "</span><span class="p">);</span> <span class="n">scanf</span><span class="p">(</span><span class="s">"%lf"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+
+    <span class="cm">/* Kiểm tra hệ số a */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"He so a = 0, day khong phai phuong trinh bac 2!</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">double</span> <span class="n">delta</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">b</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">delta</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">delta</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">);</span>
+        <span class="kt">double</span> <span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">delta</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Delta = %.2f &gt; 0</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">delta</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Phuong trinh co 2 nghiem phan biet:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"  x1 = %.4f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x1</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"  x2 = %.4f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x2</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">delta</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Delta = 0</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Phuong trinh co nghiem kep: x1 = x2 = %.4f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Delta = %.2f &lt; 0</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">delta</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Phuong trinh vo nghiem thuc.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>Lưu ý khi biên dịch</strong>: Vì dùng hàm <code class="language-plaintext highlighter-rouge">sqrt()</code> từ thư viện <code class="language-plaintext highlighter-rouge">&lt;math.h&gt;</code>, bạn cần thêm cờ <code class="language-plaintext highlighter-rouge">-lm</code> khi biên dịch:</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gcc phuong_trinh_bac2.c <span class="nt">-o</span> phuong_trinh_bac2 <span class="nt">-lm</span>
+</code></pre></div>  </div>
+</blockquote>
+
+<hr />
+
+<h2 id="ví-dụ-chạy-thử">Ví Dụ Chạy Thử</h2>
+
+<p><strong>Trường hợp 1 — 2 nghiệm phân biệt</strong> (a=1, b=-5, c=6):</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Nhap a: 1
+Nhap b: -5
+Nhap c: 6
+Delta = 1.00 &gt; 0
+Phuong trinh co 2 nghiem phan biet:
+  x1 = 3.0000
+  x2 = 2.0000
+</code></pre></div></div>
+
+<p><strong>Trường hợp 2 — Nghiệm kép</strong> (a=1, b=-2, c=1):</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Nhap a: 1
+Nhap b: -2
+Nhap c: 1
+Delta = 0
+Phuong trinh co nghiem kep: x1 = x2 = 1.0000
+</code></pre></div></div>
+
+<p><strong>Trường hợp 3 — Vô nghiệm</strong> (a=1, b=0, c=1):</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Nhap a: 1
+Nhap b: 0
+Nhap c: 1
+Delta = -4.00 &lt; 0
+Phuong trinh vo nghiem thuc.
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="giải-thích-chi-tiết-từng-bước-trong-code">Giải Thích Chi Tiết Từng Bước Trong Code</h2>
+
+<h3 id="tại-sao-dùng-double-thay-vì-int-hay-float">Tại sao dùng <code class="language-plaintext highlighter-rouge">double</code> thay vì <code class="language-plaintext highlighter-rouge">int</code> hay <code class="language-plaintext highlighter-rouge">float</code>?</h3>
+
+<p>Nghiệm của phương trình bậc 2 thường là số thực có phần thập phân (ví dụ: x = 1.732…). Kiểu <code class="language-plaintext highlighter-rouge">int</code> chỉ lưu số nguyên nên sẽ mất dữ liệu. Kiểu <code class="language-plaintext highlighter-rouge">float</code> có độ chính xác khoảng 7 chữ số thập phân, đủ dùng nhưng dễ sai số. <strong><code class="language-plaintext highlighter-rouge">double</code></strong> có độ chính xác 15–16 chữ số — đây là lựa chọn tiêu chuẩn cho các bài toán số học trong C.</p>
+
+<h3 id="tại-sao-scanflf--chứ-không-phải-f">Tại sao <code class="language-plaintext highlighter-rouge">scanf("%lf", ...)</code> chứ không phải <code class="language-plaintext highlighter-rouge">%f</code>?</h3>
+
+<p>Khi đọc số thực kiểu <code class="language-plaintext highlighter-rouge">double</code> bằng <code class="language-plaintext highlighter-rouge">scanf</code>, bắt buộc dùng <code class="language-plaintext highlighter-rouge">%lf</code> (l = long, f = float). Ngược lại, <code class="language-plaintext highlighter-rouge">printf</code> có thể dùng <code class="language-plaintext highlighter-rouge">%f</code> hoặc <code class="language-plaintext highlighter-rouge">%lf</code> đều được — đây là điểm khác biệt tế nhị mà nhiều sinh viên hay nhầm.</p>
+
+<h3 id="hàm-sqrt-hoạt-động-thế-nào">Hàm <code class="language-plaintext highlighter-rouge">sqrt()</code> hoạt động thế nào?</h3>
+
+<p><code class="language-plaintext highlighter-rouge">sqrt(x)</code> trả về căn bậc hai của <code class="language-plaintext highlighter-rouge">x</code>. Hàm này chỉ hoạt động đúng khi <code class="language-plaintext highlighter-rouge">x &gt;= 0</code> — đây là lý do chúng ta <strong>kiểm tra Δ trước</strong>, chỉ gọi <code class="language-plaintext highlighter-rouge">sqrt(delta)</code> khi <code class="language-plaintext highlighter-rouge">delta &gt;= 0</code>. Gọi <code class="language-plaintext highlighter-rouge">sqrt()</code> với số âm không gây crash nhưng trả về <code class="language-plaintext highlighter-rouge">NaN</code> (Not a Number), dẫn đến kết quả sai.</p>
+
+<hr />
+
+<h2 id="phiên-bản-dùng-hàm-tách-biệt-logic">Phiên Bản Dùng Hàm (Tách Biệt Logic)</h2>
+
+<p>Đây là cách viết chuyên nghiệp hơn, tách logic giải phương trình ra thành hàm riêng — phù hợp khi bạn cần tái sử dụng hoặc làm bài tập lớn.</p>
+
+<p><strong>Tại sao nên tách hàm?</strong> Giả sử bạn cần giải 100 phương trình bậc 2 trong cùng một chương trình — nếu không tách hàm, bạn sẽ phải copy-paste khối code 20 dòng tới 100 lần. Khi cần sửa logic, bạn phải sửa 100 chỗ. Với hàm <code class="language-plaintext highlighter-rouge">solveQuadratic()</code>, bạn chỉ sửa 1 chỗ duy nhất.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+</span>
+<span class="cm">/* Giải phương trình bậc 2 ax^2 + bx + c = 0
+ * Kết quả được lưu vào x1 và x2 (nếu có nghiệm)
+ * Trả về: số nghiệm (0, 1, hoặc 2), -1 nếu a == 0
+ */</span>
+<span class="kt">int</span> <span class="nf">solveQuadratic</span><span class="p">(</span><span class="kt">double</span> <span class="n">a</span><span class="p">,</span> <span class="kt">double</span> <span class="n">b</span><span class="p">,</span> <span class="kt">double</span> <span class="n">c</span><span class="p">,</span>
+                   <span class="kt">double</span> <span class="o">*</span><span class="n">x1</span><span class="p">,</span> <span class="kt">double</span> <span class="o">*</span><span class="n">x2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+
+    <span class="kt">double</span> <span class="n">delta</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">b</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">c</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">delta</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">delta</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">*</span><span class="n">x1</span> <span class="o">=</span> <span class="o">*</span><span class="n">x2</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="o">*</span><span class="n">x1</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">delta</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">);</span>
+        <span class="o">*</span><span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">b</span> <span class="o">-</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">delta</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">a</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">double</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">;</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Nhap a, b, c: "</span><span class="p">);</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%lf %lf %lf"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">soNghiem</span> <span class="o">=</span> <span class="n">solveQuadratic</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x1</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">x2</span><span class="p">);</span>
+
+    <span class="k">switch</span> <span class="p">(</span><span class="n">soNghiem</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"a = 0, khong phai phuong trinh bac 2.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"Phuong trinh vo nghiem thuc.</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"Nghiem kep: x = %.4f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x1</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"x1 = %.4f, x2 = %.4f</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="mối-liên-hệ-với-định-lý-viète">Mối Liên Hệ Với Định Lý Viète</h2>
+
+<p>Sau khi tìm được hai nghiệm x₁ và x₂, bạn có thể <strong>kiểm tra nhanh kết quả</strong> bằng định lý Viète mà không cần thay lại vào phương trình:</p>
+
+<ul>
+  <li><strong>Tổng hai nghiệm</strong>: x₁ + x₂ = <strong>-b/a</strong></li>
+  <li><strong>Tích hai nghiệm</strong>: x₁ × x₂ = <strong>c/a</strong></li>
+</ul>
+
+<p><strong>Ví dụ kiểm tra</strong>: Phương trình x² - 5x + 6 = 0 có nghiệm x₁ = 3, x₂ = 2.</p>
+<ul>
+  <li>Tổng: 3 + 2 = 5 = -(-5)/1 ✓</li>
+  <li>Tích: 3 × 2 = 6 = 6/1 ✓</li>
+</ul>
+
+<p>Bạn có thể thêm phần kiểm tra này vào chương trình để tự động xác nhận kết quả:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* Kiểm tra bằng định lý Viète */</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">soNghiem</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Kiem tra Viet:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"  x1 + x2 = %.4f (phai bang %.4f)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">,</span> <span class="o">-</span><span class="n">b</span> <span class="o">/</span> <span class="n">a</span><span class="p">);</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"  x1 * x2 = %.4f (phai bang %.4f)</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">x1</span> <span class="o">*</span> <span class="n">x2</span><span class="p">,</span> <span class="n">c</span> <span class="o">/</span> <span class="n">a</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="các-lỗi-thường-gặp">Các Lỗi Thường Gặp</h2>
+
+<p><strong>1. Quên kiểm tra a = 0</strong>
+Nếu <code class="language-plaintext highlighter-rouge">a = 0</code>, phương trình trở thành bậc 1 (bx + c = 0) — chương trình sẽ chia cho 0 gây lỗi. Luôn kiểm tra <code class="language-plaintext highlighter-rouge">a</code> trước khi tính toán.</p>
+
+<p><strong>2. So sánh số thực bằng <code class="language-plaintext highlighter-rouge">==</code></strong>
+<code class="language-plaintext highlighter-rouge">delta == 0</code> có thể thất bại do sai số dấu phẩy động. Trong thực tế nên dùng:</p>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define EPSILON 1e-9
+</span><span class="k">if</span> <span class="p">(</span><span class="n">fabs</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">EPSILON</span><span class="p">)</span> <span class="p">{</span> <span class="cm">/* nghiệm kép */</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>3. Quên <code class="language-plaintext highlighter-rouge">-lm</code> khi biên dịch</strong>
+Hàm <code class="language-plaintext highlighter-rouge">sqrt()</code> thuộc thư viện toán học, cần link thêm bằng cờ <code class="language-plaintext highlighter-rouge">-lm</code>.</p>
+
+<hr />
+
+<h2 id="bài-tập-mở-rộng">Bài Tập Mở Rộng</h2>
+
+<ol>
+  <li>
+    <p><strong>Tổng hợp bậc 1 và bậc 2</strong>: Viết chương trình đọc <code class="language-plaintext highlighter-rouge">a</code>, <code class="language-plaintext highlighter-rouge">b</code>, <code class="language-plaintext highlighter-rouge">c</code> từ bàn phím. Nếu <code class="language-plaintext highlighter-rouge">a = 0</code> thì giải phương trình bậc 1 (<code class="language-plaintext highlighter-rouge">bx + c = 0</code>), nếu <code class="language-plaintext highlighter-rouge">a ≠ 0</code> thì giải phương trình bậc 2.</p>
+  </li>
+  <li>
+    <p><strong>Hiển thị nghiệm phức</strong>: Khi Δ &lt; 0, thay vì in “vô nghiệm”, hãy in hai nghiệm phức dạng <code class="language-plaintext highlighter-rouge">x = p ± qi</code> với <code class="language-plaintext highlighter-rouge">p = -b/(2a)</code> và <code class="language-plaintext highlighter-rouge">q = √(|Δ|)/(2a)</code>.</p>
+  </li>
+  <li>
+    <p><strong>Giải nhiều phương trình</strong>: Cho phép người dùng nhập liên tiếp nhiều bộ <code class="language-plaintext highlighter-rouge">(a, b, c)</code> cho đến khi nhập <code class="language-plaintext highlighter-rouge">a = b = c = 0</code> thì dừng.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="kết-luận">Kết Luận</h2>
+
+<p>Chương trình giải phương trình bậc 2 trong C cần xử lý đủ 3 trường hợp của Δ. Điểm mấu chốt cần nhớ:</p>
+
+<ul>
+  <li>Luôn kiểm tra <code class="language-plaintext highlighter-rouge">a ≠ 0</code> trước.</li>
+  <li>Dùng <code class="language-plaintext highlighter-rouge">sqrt()</code> từ <code class="language-plaintext highlighter-rouge">&lt;math.h&gt;</code> và biên dịch với <code class="language-plaintext highlighter-rouge">-lm</code>.</li>
+  <li>Nên tách logic vào hàm riêng để code sạch và dễ tái sử dụng.</li>
+</ul>
+
+<hr />
+
+<h2 id="xem-thêm">Xem thêm</h2>
+
+<ul>
+  <li><a href="/technical/chuong-trinh-giai-phuong-trinh-bac-1-c.html">Viết chương trình giải phương trình bậc 1 bằng C/C++</a></li>
+  <li><a href="/technical/kiem-tra-so-nguyen-to-trong-c.html">Kiểm tra số nguyên tố trong C/C++</a></li>
+  <li><a href="/technical/ham-trong-ngon-ngu-lap-trinh-c-khai-niem-cach-cai-dat-va-ung-dung.html">Hàm trong ngôn ngữ lập trình C</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Tâm's Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>Tâm's Blog</li>
+          <li><a href="mailto:vovantam.dev@gmail.com">vovantam.dev@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://gitlab.com/vovantamvn"><span class="icon icon--gitlab"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="1.414"><path d="M15.97 9.058l-.895-2.756L13.3.842c-.09-.282-.488-.282-.58 0L10.946 6.3H5.054L3.28.842C3.188.56 2.79.56 2.7.84L.924 6.3.03 9.058c-.082.25.008.526.22.682L8 15.37l7.75-5.63c.212-.156.302-.43.22-.682"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+          <li>
+            <a href="https://github.com/vovantamvn"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">vovantamvn</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>Ghi lại những gì đã học được là sở thích của mình.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
